@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014FBD7626581FDE006427CC /* PaletteHeaderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FBD7526581FDE006427CC /* PaletteHeaderTextField.swift */; };
 		017A68CB26572E7B001D5097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A68CA26572E7B001D5097 /* AppDelegate.swift */; };
 		017A68CD26572E7B001D5097 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A68CC26572E7B001D5097 /* SceneDelegate.swift */; };
 		017A68D226572E7B001D5097 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D026572E7B001D5097 /* Main.storyboard */; };
 		017A68D426572E7C001D5097 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D326572E7C001D5097 /* Assets.xcassets */; };
 		017A68D726572E7C001D5097 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D526572E7C001D5097 /* LaunchScreen.storyboard */; };
+		01E73FF5265807570068CA21 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E73FF4265807570068CA21 /* Color.swift */; };
+		01E73FF72658102D0068CA21 /* ColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E73FF62658102D0068CA21 /* ColorTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		014FBD7526581FDE006427CC /* PaletteHeaderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaletteHeaderTextField.swift; path = TintThat/View/PaletteHeaderTextField.swift; sourceTree = SOURCE_ROOT; };
 		017A68C726572E7B001D5097 /* TintThat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TintThat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		017A68CA26572E7B001D5097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		017A68CC26572E7B001D5097 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		017A68D326572E7C001D5097 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		017A68D626572E7C001D5097 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		017A68D826572E7C001D5097 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01E73FF4265807570068CA21 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		01E73FF62658102D0068CA21 /* ColorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		014FBD7226581E46006427CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				014FBD7526581FDE006427CC /* PaletteHeaderTextField.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		017A68BE26572E7B001D5097 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +68,9 @@
 		017A68C926572E7B001D5097 /* TintThat */ = {
 			isa = PBXGroup;
 			children = (
+				014FBD7226581E46006427CC /* View */,
+				01E73FF1265806360068CA21 /* Model */,
+				01E73FF02658062C0068CA21 /* ViewModel */,
 				017A68CA26572E7B001D5097 /* AppDelegate.swift */,
 				017A68CC26572E7B001D5097 /* SceneDelegate.swift */,
 				017A68D026572E7B001D5097 /* Main.storyboard */,
@@ -62,6 +79,22 @@
 				017A68D826572E7C001D5097 /* Info.plist */,
 			);
 			path = TintThat;
+			sourceTree = "<group>";
+		};
+		01E73FF02658062C0068CA21 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01E73FF62658102D0068CA21 /* ColorTableViewController.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01E73FF1265806360068CA21 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01E73FF4265807570068CA21 /* Color.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +168,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				017A68CB26572E7B001D5097 /* AppDelegate.swift in Sources */,
+				01E73FF5265807570068CA21 /* Color.swift in Sources */,
 				017A68CD26572E7B001D5097 /* SceneDelegate.swift in Sources */,
+				014FBD7626581FDE006427CC /* PaletteHeaderTextField.swift in Sources */,
+				01E73FF72658102D0068CA21 /* ColorTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +329,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Sebery.TintThat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -313,7 +349,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Sebery.TintThat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
