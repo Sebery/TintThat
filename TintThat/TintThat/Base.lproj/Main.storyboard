@@ -68,7 +68,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="44n-HQ-7ba" kind="presentation" identifier="ColorOptionsSegue" id="wNM-UZ-eQa"/>
+                                            <segue destination="44n-HQ-7ba" kind="show" identifier="ColorOptionsSegue" id="LCj-Hu-IfR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -256,7 +256,10 @@
                             <constraint firstItem="54Q-Sz-Fgc" firstAttribute="trailing" secondItem="j8W-Gj-QWg" secondAttribute="trailing" constant="8" id="pee-rZ-IFI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eIv-cI-SxH"/>
+                    <navigationItem key="navigationItem" id="eIv-cI-SxH">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Fhj-Fu-Dct"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="IVJ-dI-tS1"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="bSlider" destination="n9W-zM-Lsc" id="fSU-Tf-3QT"/>
                         <outlet property="colorView" destination="Crj-cu-fP5" id="UEd-Br-GeJ"/>
@@ -271,11 +274,15 @@
         <!--Change Color Navigation-->
         <scene sceneID="5a0-Kh-v4J">
             <objects>
-                <navigationController id="44n-HQ-7ba" userLabel="Change Color Navigation" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="44n-HQ-7ba" userLabel="Change Color Navigation" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="sDo-MC-eio"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5bC-ee-wMY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cCN-1q-QBg">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="W2y-cG-nz9" kind="relationship" relationship="rootViewController" id="i66-zX-cEX"/>
                     </connections>
