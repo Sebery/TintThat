@@ -18,30 +18,36 @@ class ColorPickerViewController: UIViewController {
         case bSlider = 1002
     }
     
-    // MARK: Outlets
-    @IBOutlet weak var rSlider: UISlider!
-    @IBOutlet weak var gSlider: UISlider!
-    @IBOutlet weak var bSlider: UISlider!
-    
     // MARK: - Custom Methods
-    private func UpdateUI() {
+    private func updateUI() {
         colorView.backgroundColor = currentColor.rawColor
         rSlider.value = Float(currentColor.r)
         gSlider.value = Float(currentColor.g)
         bSlider.value = Float(currentColor.b)
     }
     
-    // MARK: - UIViewController
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        UpdateUI()
-    }
-    
     // MARK: - Outlets
     @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var rSlider: UISlider!
+    @IBOutlet weak var gSlider: UISlider!
+    @IBOutlet weak var bSlider: UISlider!
     
     // MARK: - Actions
-    @IBAction func ChangeColor(_ slider: UISlider) {
+    @IBAction func discardChanges() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func saveChanges() {
+        if let paletteCreatorController = navigationController?.viewControllers.first as? PaletteCreatorViewController, let indexPath = currentColor.indexPath {
+            
+            paletteCreatorController.dataSource[indexPath.section][indexPath.row] = currentColor
+            paletteCreatorController.colorsTableView.reloadData()
+        }
+        
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func changeColor(_ slider: UISlider) {
         let sliderTag = SliderTag(rawValue: slider.tag)
         let sliderValue = CGFloat(slider.value)
         
@@ -57,6 +63,12 @@ class ColorPickerViewController: UIViewController {
         }
         
         colorView.backgroundColor = currentColor.rawColor
+    }
+    
+    // MARK: - UIViewController
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
     }
 
 }

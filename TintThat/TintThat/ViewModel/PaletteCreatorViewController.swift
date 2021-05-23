@@ -10,7 +10,7 @@ import UIKit
 class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Properties
-    private var dataSource = [[Color]]()
+    var dataSource = [[Color]]()
     
     struct Identifiers {
         static let colorCell = "ColorCell"
@@ -36,17 +36,15 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Identifiers.colorOptionsSegue, let controller = segue.destination as? UINavigationController {
-            
-            // TODO: Probably change this to support more view controllers in navigation controller
-            let colorOptionsVC = controller.viewControllers.first as! ColorOptionsTableViewController
+        if segue.identifier == Identifiers.colorOptionsSegue, let controller = segue.destination as? ColorOptionsTableViewController {
             
             let cell = sender as! UITableViewCell
             
             let indexPath = colorsTableView.indexPath(for: cell)
             
             if let indexPath = indexPath {
-                colorOptionsVC.currentColor = dataSource[indexPath.section][indexPath.row]
+                let color = dataSource[indexPath.section][indexPath.row]
+                controller.currentColor = Color(r: color.r, g: color.g, b: color.b, indexPath: indexPath)
             }
         }
     }
@@ -58,11 +56,6 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
         field.text = "Palette \(section + 1)"
     
         return field
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("Row Selected")
     }
     
     // MARK: - UITableViewDataSource

@@ -19,9 +19,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="o40-Qj-7qj" kind="relationship" relationship="viewControllers" id="jXz-hu-ldH"/>
-                        <segue destination="bzx-7f-ECw" kind="relationship" relationship="viewControllers" id="tUm-o5-sDs"/>
-                        <segue destination="BA3-Em-Hhu" kind="relationship" relationship="viewControllers" id="zJd-gO-N6V"/>
+                        <segue destination="44n-HQ-7ba" kind="relationship" relationship="viewControllers" id="MKG-qB-D12"/>
+                        <segue destination="bzx-7f-ECw" kind="relationship" relationship="viewControllers" id="LMl-2P-erG"/>
+                        <segue destination="BA3-Em-Hhu" kind="relationship" relationship="viewControllers" id="fhm-Su-9zK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bv2-b9-624" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -57,7 +57,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bmD-Fx-Ua1">
-                                <rect key="frame" x="8" y="52" width="398" height="689"/>
+                                <rect key="frame" x="8" y="96" width="398" height="645"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ColorCell" id="gzl-6e-39u">
@@ -68,7 +68,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="44n-HQ-7ba" kind="show" identifier="ColorOptionsSegue" id="LCj-Hu-IfR"/>
+                                            <segue destination="W2y-cG-nz9" kind="show" identifier="ColorOptionsSegue" id="fXk-CU-RYd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -91,20 +91,21 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Create" id="g3D-7S-kwf"/>
+                    <navigationItem key="navigationItem" id="yoO-Kc-4xk"/>
                     <connections>
                         <outlet property="colorsTableView" destination="bmD-Fx-Ua1" id="EEp-nu-4zi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHd-OU-bpq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-304.34782608695656" y="752.67857142857144"/>
+            <point key="canvasLocation" x="506" y="753"/>
         </scene>
         <!--Options-->
         <scene sceneID="JkL-RP-NLZ">
             <objects>
                 <tableViewController id="W2y-cG-nz9" customClass="ColorOptionsTableViewController" customModule="TintThat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="QNV-sM-IOb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -176,11 +177,11 @@
             <objects>
                 <viewController id="9gk-In-6Q0" userLabel="Color Picker" customClass="ColorPickerViewController" customModule="TintThat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zpi-Sa-yMo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="j8W-Gj-QWg">
-                                <rect key="frame" x="8" y="670" width="398" height="130"/>
+                                <rect key="frame" x="8" y="675" width="398" height="130"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eCq-pn-16t">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="30"/>
@@ -194,7 +195,7 @@
                                             <slider opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="D9k-Di-gVJ">
                                                 <rect key="frame" x="6" y="0.0" width="394" height="31"/>
                                                 <connections>
-                                                    <action selector="ChangeColor:" destination="9gk-In-6Q0" eventType="valueChanged" id="a9A-vH-yqB"/>
+                                                    <action selector="changeColor:" destination="9gk-In-6Q0" eventType="valueChanged" id="a9A-vH-yqB"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -211,7 +212,7 @@
                                             <slider opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mcI-5b-WJa">
                                                 <rect key="frame" x="6" y="0.0" width="394" height="31"/>
                                                 <connections>
-                                                    <action selector="ChangeColor:" destination="9gk-In-6Q0" eventType="valueChanged" id="fjB-k6-A6T"/>
+                                                    <action selector="changeColor:" destination="9gk-In-6Q0" eventType="valueChanged" id="fjB-k6-A6T"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -228,7 +229,7 @@
                                             <slider opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="n9W-zM-Lsc">
                                                 <rect key="frame" x="6" y="0.0" width="394" height="31"/>
                                                 <connections>
-                                                    <action selector="ChangeColor:" destination="9gk-In-6Q0" eventType="valueChanged" id="oJk-vP-w8l"/>
+                                                    <action selector="changeColor:" destination="9gk-In-6Q0" eventType="valueChanged" id="oJk-vP-w8l"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -240,7 +241,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Crj-cu-fP5">
-                                <rect key="frame" x="8" y="64" width="398" height="598"/>
+                                <rect key="frame" x="8" y="96" width="398" height="571"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                             </view>
                         </subviews>
@@ -257,8 +258,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eIv-cI-SxH">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Fhj-Fu-Dct"/>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="IVJ-dI-tS1"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Fhj-Fu-Dct">
+                            <connections>
+                                <action selector="discardChanges" destination="9gk-In-6Q0" id="EOS-lY-JmU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="IVJ-dI-tS1">
+                            <connections>
+                                <action selector="saveChanges" destination="9gk-In-6Q0" id="Lk0-mh-pvb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bSlider" destination="n9W-zM-Lsc" id="fSU-Tf-3QT"/>
@@ -275,6 +284,7 @@
         <scene sceneID="5a0-Kh-v4J">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="44n-HQ-7ba" userLabel="Change Color Navigation" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Create" id="g6L-Zp-fGe"/>
                     <navigationItem key="navigationItem" id="sDo-MC-eio"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5bC-ee-wMY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -284,12 +294,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="W2y-cG-nz9" kind="relationship" relationship="rootViewController" id="i66-zX-cEX"/>
+                        <segue destination="o40-Qj-7qj" kind="relationship" relationship="rootViewController" id="6lf-Ft-XYd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K52-Qm-48n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="530" y="753"/>
+            <point key="canvasLocation" x="-303" y="753"/>
         </scene>
         <!--Generate-->
         <scene sceneID="LIU-Lp-yRh">

@@ -8,7 +8,6 @@
 import UIKit
 
 struct Color {
-    
     // MARK: - Properties
     var r: CGFloat
     var g: CGFloat
@@ -16,5 +15,6 @@ struct Color {
     var rawColor: UIColor {
         UIColor(red: r, green: g, blue: b, alpha: 1.0)
     }
+    var indexPath: IndexPath?
     
 }
