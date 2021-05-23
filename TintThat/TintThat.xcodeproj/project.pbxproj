@@ -15,6 +15,7 @@
 		017A68D226572E7B001D5097 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D026572E7B001D5097 /* Main.storyboard */; };
 		017A68D426572E7C001D5097 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D326572E7C001D5097 /* Assets.xcassets */; };
 		017A68D726572E7C001D5097 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D526572E7C001D5097 /* LaunchScreen.storyboard */; };
+		01BAC1DF265AD463008D1776 /* ColorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC1DE265AD463008D1776 /* ColorHeaderView.swift */; };
 		01C74656265988FB00CA46BB /* PaletteCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C74655265988FB00CA46BB /* PaletteCreatorViewController.swift */; };
 		01E73FF5265807570068CA21 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E73FF4265807570068CA21 /* Color.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		017A68D326572E7C001D5097 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		017A68D626572E7C001D5097 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		017A68D826572E7C001D5097 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01BAC1DE265AD463008D1776 /* ColorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHeaderView.swift; sourceTree = "<group>"; };
 		01C74655265988FB00CA46BB /* PaletteCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteCreatorViewController.swift; sourceTree = "<group>"; };
 		01E73FF4265807570068CA21 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				014FBD7526581FDE006427CC /* PaletteHeaderTextField.swift */,
+				01BAC1DE265AD463008D1776 /* ColorHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				017A68CB26572E7B001D5097 /* AppDelegate.swift in Sources */,
 				01E73FF5265807570068CA21 /* Color.swift in Sources */,
 				013DFE982659C2AF000C2E39 /* ColorPickerViewController.swift in Sources */,
+				01BAC1DF265AD463008D1776 /* ColorHeaderView.swift in Sources */,
 				013DFE9A2659E72F000C2E39 /* ColorOptionsTableViewController.swift in Sources */,
 				017A68CD26572E7B001D5097 /* SceneDelegate.swift in Sources */,
 				01C74656265988FB00CA46BB /* PaletteCreatorViewController.swift in Sources */,

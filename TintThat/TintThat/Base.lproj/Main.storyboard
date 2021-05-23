@@ -40,14 +40,21 @@
                                 <rect key="frame" x="8" y="749" width="398" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OK-HR-NKK">
-                                        <rect key="frame" x="0.0" y="0.0" width="199" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="132.5" height="56"/>
                                         <state key="normal" title="Edit"/>
                                         <connections>
-                                            <action selector="EditColors" destination="o40-Qj-7qj" eventType="touchUpInside" id="cpB-e2-utm"/>
+                                            <action selector="editColors" destination="o40-Qj-7qj" eventType="touchUpInside" id="cpB-e2-utm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7O-dX-YjS">
+                                        <rect key="frame" x="132.5" y="0.0" width="133" height="56"/>
+                                        <state key="normal" title="Add"/>
+                                        <connections>
+                                            <action selector="addPalette" destination="o40-Qj-7qj" eventType="touchUpInside" id="oKJ-Ei-GzK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zu-cS-jTr">
-                                        <rect key="frame" x="199" y="0.0" width="199" height="56"/>
+                                        <rect key="frame" x="265.5" y="0.0" width="132.5" height="56"/>
                                         <state key="normal" title="Save"/>
                                     </button>
                                 </subviews>
@@ -56,9 +63,8 @@
                                     <constraint firstAttribute="height" constant="56" id="PEv-rW-PVt"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bmD-Fx-Ua1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bmD-Fx-Ua1">
                                 <rect key="frame" x="8" y="96" width="398" height="645"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ColorCell" id="gzl-6e-39u">
                                         <rect key="frame" x="0.0" y="24.5" width="398" height="44"/>
@@ -109,10 +115,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="Change Color" id="nWy-z7-O37">
+                            <tableViewSection id="nWy-z7-O37">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="43.5" id="hwN-Mp-Laf">
-                                        <rect key="frame" x="0.0" y="49.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="18" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hwN-Mp-Laf" id="nDf-M8-Okc">
                                             <rect key="frame" x="0.0" y="0.0" width="384.5" height="43.5"/>
@@ -134,7 +140,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="43.5" id="0J4-X6-5xv">
-                                        <rect key="frame" x="0.0" y="93" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="61.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0J4-X6-5xv" id="236-dr-Zzs">
                                             <rect key="frame" x="0.0" y="0.0" width="384.5" height="43.5"/>

@@ -12,8 +12,13 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - Properties
     var dataSource = [[Color]]()
     
+    struct Config {
+        static let rowHeight: CGFloat = 44.0
+    }
+    
     struct Identifiers {
         static let colorCell = "ColorCell"
+        static let colorHeaderView = "ColorHeaderView"
         static let colorOptionsSegue = "ColorOptionsSegue"
     }
     
@@ -21,13 +26,21 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var colorsTableView: UITableView!
     
     // MARK: - Actions
-    @IBAction func EditColors() {
+    @IBAction func editColors() {
         colorsTableView.isEditing.toggle()
+    }
+    
+    @IBAction func addPalette() {
+        dataSource.append([Color(r: 1.0, g: 0.0, b: 0.0), Color(r: 0.0, g: 1.0, b: 0.0), Color(r: 0.0, g: 0.0, b: 1.0)])
+        
+        colorsTableView.reloadData()
     }
     
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        colorsTableView.register(ColorHeaderView.self, forHeaderFooterViewReuseIdentifier: Identifiers.colorHeaderView)
         
         // Add default colors
         dataSource.append([Color(r: 1.0, g: 0.0, b: 0.0), Color(r: 0.0, g: 1.0, b: 0.0), Color(r: 0.0, g: 0.0, b: 1.0)])
@@ -52,10 +65,19 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let field = PaletteHeaderTextField()
-        field.text = "Palette \(section + 1)"
+        let headerView = colorsTableView.dequeueReusableHeaderFooterView(withIdentifier: Identifiers.colorHeaderView) as! ColorHeaderView
+        
+        return headerView
+    }
     
-        return field
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return Config.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return Config.rowHeight
     }
     
     // MARK: - UITableViewDataSource
@@ -102,6 +124,5 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
         
     }
     
-
     
 }
