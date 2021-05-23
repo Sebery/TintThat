@@ -8,5 +8,13 @@
 import UIKit
 
 struct Color {
-    var rawColor: UIColor
+    
+    // MARK: - Properties
+    var r: CGFloat
+    var g: CGFloat
+    var b: CGFloat
+    var rawColor: UIColor {
+        UIColor(red: r, green: g, blue: b, alpha: 1.0)
+    }
+    
 }

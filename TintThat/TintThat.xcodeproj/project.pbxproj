@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		013DFE982659C2AF000C2E39 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013DFE972659C2AF000C2E39 /* ColorPickerViewController.swift */; };
+		013DFE9A2659E72F000C2E39 /* ColorOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013DFE992659E72F000C2E39 /* ColorOptionsTableViewController.swift */; };
 		014FBD7626581FDE006427CC /* PaletteHeaderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FBD7526581FDE006427CC /* PaletteHeaderTextField.swift */; };
 		017A68CB26572E7B001D5097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A68CA26572E7B001D5097 /* AppDelegate.swift */; };
 		017A68CD26572E7B001D5097 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A68CC26572E7B001D5097 /* SceneDelegate.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		013DFE972659C2AF000C2E39 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		013DFE992659E72F000C2E39 /* ColorOptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOptionsTableViewController.swift; sourceTree = "<group>"; };
 		014FBD7526581FDE006427CC /* PaletteHeaderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaletteHeaderTextField.swift; path = TintThat/View/PaletteHeaderTextField.swift; sourceTree = SOURCE_ROOT; };
 		017A68C726572E7B001D5097 /* TintThat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TintThat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		017A68CA26572E7B001D5097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 		01E73FF02658062C0068CA21 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				013DFE992659E72F000C2E39 /* ColorOptionsTableViewController.swift */,
+				013DFE972659C2AF000C2E39 /* ColorPickerViewController.swift */,
 				01C74655265988FB00CA46BB /* PaletteCreatorViewController.swift */,
 			);
 			path = ViewModel;
@@ -169,6 +175,8 @@
 			files = (
 				017A68CB26572E7B001D5097 /* AppDelegate.swift in Sources */,
 				01E73FF5265807570068CA21 /* Color.swift in Sources */,
+				013DFE982659C2AF000C2E39 /* ColorPickerViewController.swift in Sources */,
+				013DFE9A2659E72F000C2E39 /* ColorOptionsTableViewController.swift in Sources */,
 				017A68CD26572E7B001D5097 /* SceneDelegate.swift in Sources */,
 				01C74656265988FB00CA46BB /* PaletteCreatorViewController.swift in Sources */,
 				014FBD7626581FDE006427CC /* PaletteHeaderTextField.swift in Sources */,

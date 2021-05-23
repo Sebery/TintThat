@@ -12,12 +12,9 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - Properties
     private var dataSource = [[Color]]()
     
-    struct Config {
-        static let ColorCellHeight = 56
-    }
-    
     struct Identifiers {
-        static let ColorCell = "ColorCell"
+        static let colorCell = "ColorCell"
+        static let colorOptionsSegue = "ColorOptionsSegue"
     }
     
     // MARK: - Outlets
@@ -33,9 +30,25 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         
         // Add default colors
-        dataSource.append([Color(rawColor: .red), Color(rawColor: .green), Color(rawColor: .blue)])
-        dataSource.append([Color(rawColor: .red), Color(rawColor: .green), Color(rawColor: .blue)])
-        dataSource.append([Color(rawColor: .red), Color(rawColor: .green), Color(rawColor: .blue)])
+        dataSource.append([Color(r: 1.0, g: 0.0, b: 0.0), Color(r: 0.0, g: 1.0, b: 0.0), Color(r: 0.0, g: 0.0, b: 1.0)])
+        dataSource.append([Color(r: 1.0, g: 0.0, b: 0.0), Color(r: 0.0, g: 1.0, b: 0.0), Color(r: 0.0, g: 0.0, b: 1.0)])
+        dataSource.append([Color(r: 1.0, g: 0.0, b: 0.0), Color(r: 0.0, g: 1.0, b: 0.0), Color(r: 0.0, g: 0.0, b: 1.0)])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Identifiers.colorOptionsSegue, let controller = segue.destination as? UINavigationController {
+            
+            // TODO: Probably change this to support more view controllers in navigation controller
+            let colorOptionsVC = controller.viewControllers.first as! ColorOptionsTableViewController
+            
+            let cell = sender as! UITableViewCell
+            
+            let indexPath = colorsTableView.indexPath(for: cell)
+            
+            if let indexPath = indexPath {
+                colorOptionsVC.currentColor = dataSource[indexPath.section][indexPath.row]
+            }
+        }
     }
     
     // MARK: - UITableViewDelegate
@@ -65,7 +78,7 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.ColorCell, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.colorCell, for: indexPath)
         
         cell.backgroundColor = dataSource[indexPath.section][indexPath.row].rawColor
         
