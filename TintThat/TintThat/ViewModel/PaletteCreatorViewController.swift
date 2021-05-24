@@ -11,6 +11,12 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
     
     // MARK: - Properties
     var dataSource = [[Color]]()
+    var currentColorOptionsState = ToColorOptionsState.changeColorInSection
+    
+    enum ToColorOptionsState {
+        case changeColorInSection
+        case addColorToSection
+    }
     
     struct Config {
         static let rowHeight: CGFloat = 44.0
@@ -39,7 +45,7 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         colorsTableView.register(ColorHeaderView.self, forHeaderFooterViewReuseIdentifier: Identifiers.colorHeaderView)
         
         // Add default colors
@@ -51,21 +57,38 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Identifiers.colorOptionsSegue, let controller = segue.destination as? ColorOptionsTableViewController {
             
-            let cell = sender as! UITableViewCell
-            
-            let indexPath = colorsTableView.indexPath(for: cell)
-            
-            if let indexPath = indexPath {
-                let color = dataSource[indexPath.section][indexPath.row]
-                controller.currentColor = Color(r: color.r, g: color.g, b: color.b, indexPath: indexPath)
+            if currentColorOptionsState == .changeColorInSection {
+                let cell = sender as! UITableViewCell
+                
+                let indexPath = colorsTableView.indexPath(for: cell)
+                
+                if let indexPath = indexPath {
+                    let color = dataSource[indexPath.section][indexPath.row]
+                    controller.currentColor = Color(r: color.r, g: color.g, b: color.b, indexPath: indexPath)
+                }
+            } else if currentColorOptionsState == .addColorToSection {
+                if  let btn = sender as? UIButton, let headerView = btn.superview?.superview?.superview as? ColorHeaderView, let controller = segue.destination as? ColorOptionsTableViewController {
+                    
+                    controller.currentSection = headerView.currentSection
+                }
             }
+
         }
+    }
+    
+    // MARK: - Selectors
+    @objc private func addColorToSection(sender: UIButton) {
+        currentColorOptionsState = .addColorToSection
+        performSegue(withIdentifier: Identifiers.colorOptionsSegue, sender: sender)
     }
     
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = colorsTableView.dequeueReusableHeaderFooterView(withIdentifier: Identifiers.colorHeaderView) as! ColorHeaderView
+        
+        headerView.currentSection = section
+        headerView.addColorButton.addTarget(self, action: #selector(addColorToSection(sender:)), for: .touchUpInside)
         
         return headerView
     }
@@ -123,6 +146,5 @@ class PaletteCreatorViewController: UIViewController, UITableViewDelegate, UITab
         }
         
     }
-    
     
 }

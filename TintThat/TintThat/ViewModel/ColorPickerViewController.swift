@@ -10,7 +10,8 @@ import UIKit
 class ColorPickerViewController: UIViewController {
     
     // MARK: - Properties
-    var currentColor = Color(r: 0.0, g: 0.0, b: 0.0)
+    var currentColor = Color(r: 0.0, g: 0.0, b: 0.0, indexPath: nil)
+    var currentSection: Int?
     
     enum SliderTag: Int {
         case rSlider = 1000
@@ -38,9 +39,15 @@ class ColorPickerViewController: UIViewController {
     }
     
     @IBAction func saveChanges() {
-        if let paletteCreatorController = navigationController?.viewControllers.first as? PaletteCreatorViewController, let indexPath = currentColor.indexPath {
+        if let paletteCreatorController = navigationController?.viewControllers.first as? PaletteCreatorViewController {
             
-            paletteCreatorController.dataSource[indexPath.section][indexPath.row] = currentColor
+            if let indexPath = currentColor.indexPath {
+                paletteCreatorController.dataSource[indexPath.section][indexPath.row] = currentColor
+            } else if let section = currentSection {
+                let indexPath = IndexPath(row: paletteCreatorController.dataSource[section].count, section: section)
+                paletteCreatorController.dataSource[section].append(Color(r: currentColor.r, g: currentColor.g, b: currentColor.b, indexPath: indexPath))
+            }
+            
             paletteCreatorController.colorsTableView.reloadData()
         }
         

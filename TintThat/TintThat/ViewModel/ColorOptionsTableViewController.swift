@@ -11,6 +11,7 @@ class ColorOptionsTableViewController: UITableViewController {
 
     // MARK: - Properties
     var currentColor: Color?
+    var currentSection: Int?
     
     struct Identifiers {
         static let colorPickerSegue = "ColorPickerSegue"
@@ -18,8 +19,14 @@ class ColorOptionsTableViewController: UITableViewController {
     
     // MARK: - UIViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Identifiers.colorPickerSegue, let controller = segue.destination as? ColorPickerViewController, let color = currentColor {
-            controller.currentColor = color
+        if segue.identifier == Identifiers.colorPickerSegue, let controller = segue.destination as? ColorPickerViewController {
+            
+            if let color = currentColor {
+                controller.currentColor = color
+            } else if let section = currentSection {
+                controller.currentSection = section
+            }
+  
         }
     }
 

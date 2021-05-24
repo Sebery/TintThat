@@ -9,9 +9,11 @@ import UIKit
 
 class ColorHeaderView: UITableViewHeaderFooterView {
     
+    // MARK: - Properties
     private weak var titleField: UITextField!
     private weak var mainStack: UIStackView!
-    private weak var addColorButton: UIButton!
+    weak var addColorButton: UIButton!
+    var currentSection: Int?
     
     // MARK: - UITableViewHeaderFooterView
     override init(reuseIdentifier: String?) {
@@ -46,17 +48,15 @@ class ColorHeaderView: UITableViewHeaderFooterView {
         
         // Add addColorButton to main stack
         let addColorButton = UIButton(type: .system)
+        //addColorButton.addTarget(self, action: #selector(addColorToSection!), for: .touchUpInside)
         addColorButton.contentHorizontalAlignment = .right
         addColorButton.setTitle("Add", for: .normal)
         self.addColorButton = addColorButton
         mainStack.addArrangedSubview(addColorButton)
-        
         mainStack.topAnchor.constraint(equalTo: topAnchor).isActive = true
         mainStack.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         mainStack.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         mainStack.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
-        
         
         contentView.backgroundColor = .white
     }
