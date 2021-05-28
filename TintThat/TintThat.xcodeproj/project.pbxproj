@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		01544694265C75C50082F863 /* MainColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01544693265C75C50082F863 /* MainColor.swift */; };
 		01544697265C7A870082F863 /* UIColor+ToRGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01544696265C7A870082F863 /* UIColor+ToRGBA.swift */; };
+		01589117266084E600FEBD6E /* PaletteFooterMainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01589116266084E600FEBD6E /* PaletteFooterMainContentView.swift */; };
 		0179EFCB265F38B7003E401F /* PaletteCollectionEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179EFCA265F38B7003E401F /* PaletteCollectionEditorViewController.swift */; };
 		0179EFCD265F3B80003E401F /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179EFCC265F3B80003E401F /* Palette.swift */; };
 		017A68CB26572E7B001D5097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A68CA26572E7B001D5097 /* AppDelegate.swift */; };
@@ -16,11 +17,15 @@
 		017A68D226572E7B001D5097 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D026572E7B001D5097 /* Main.storyboard */; };
 		017A68D426572E7C001D5097 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D326572E7C001D5097 /* Assets.xcassets */; };
 		017A68D726572E7C001D5097 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D526572E7C001D5097 /* LaunchScreen.storyboard */; };
+		01D35A33266062C60084C244 /* PaletteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D35A32266062C60084C244 /* PaletteHeaderView.swift */; };
+		01D35A3526606E750084C244 /* PaletteFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D35A3426606E750084C244 /* PaletteFooterView.swift */; };
+		01D35A372660729E0084C244 /* UIView+CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D35A362660729E0084C244 /* UIView+CustomRoundCorners.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		01544693265C75C50082F863 /* MainColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainColor.swift; sourceTree = "<group>"; };
 		01544696265C7A870082F863 /* UIColor+ToRGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ToRGBA.swift"; sourceTree = "<group>"; };
+		01589116266084E600FEBD6E /* PaletteFooterMainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteFooterMainContentView.swift; sourceTree = "<group>"; };
 		0179EFCA265F38B7003E401F /* PaletteCollectionEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteCollectionEditorViewController.swift; sourceTree = "<group>"; };
 		0179EFCC265F3B80003E401F /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		017A68C726572E7B001D5097 /* TintThat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TintThat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,6 +35,9 @@
 		017A68D326572E7C001D5097 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		017A68D626572E7C001D5097 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		017A68D826572E7C001D5097 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01D35A32266062C60084C244 /* PaletteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteHeaderView.swift; sourceTree = "<group>"; };
+		01D35A3426606E750084C244 /* PaletteFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteFooterView.swift; sourceTree = "<group>"; };
+		01D35A362660729E0084C244 /* UIView+CustomRoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CustomRoundCorners.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,13 +51,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		014FBD7226581E46006427CC /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		01544690265C75590082F863 /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				01544696265C7A870082F863 /* UIColor+ToRGBA.swift */,
+				01D35A362660729E0084C244 /* UIView+CustomRoundCorners.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -85,9 +87,9 @@
 		017A68C926572E7B001D5097 /* TintThat */ = {
 			isa = PBXGroup;
 			children = (
+				01D35A2F26605D810084C244 /* View */,
 				01544695265C7A660082F863 /* Extension */,
 				01544690265C75590082F863 /* Global */,
-				014FBD7226581E46006427CC /* View */,
 				01E73FF1265806360068CA21 /* Model */,
 				01E73FF02658062C0068CA21 /* ViewModel */,
 				017A68CA26572E7B001D5097 /* AppDelegate.swift */,
@@ -98,6 +100,16 @@
 				017A68D826572E7C001D5097 /* Info.plist */,
 			);
 			path = TintThat;
+			sourceTree = "<group>";
+		};
+		01D35A2F26605D810084C244 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01D35A32266062C60084C244 /* PaletteHeaderView.swift */,
+				01D35A3426606E750084C244 /* PaletteFooterView.swift */,
+				01589116266084E600FEBD6E /* PaletteFooterMainContentView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		01E73FF02658062C0068CA21 /* ViewModel */ = {
@@ -186,8 +198,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01589117266084E600FEBD6E /* PaletteFooterMainContentView.swift in Sources */,
 				01544697265C7A870082F863 /* UIColor+ToRGBA.swift in Sources */,
 				017A68CB26572E7B001D5097 /* AppDelegate.swift in Sources */,
+				01D35A33266062C60084C244 /* PaletteHeaderView.swift in Sources */,
+				01D35A372660729E0084C244 /* UIView+CustomRoundCorners.swift in Sources */,
+				01D35A3526606E750084C244 /* PaletteFooterView.swift in Sources */,
 				0179EFCB265F38B7003E401F /* PaletteCollectionEditorViewController.swift in Sources */,
 				0179EFCD265F3B80003E401F /* Palette.swift in Sources */,
 				01544694265C75C50082F863 /* MainColor.swift in Sources */,
