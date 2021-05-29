@@ -85,6 +85,8 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
             self?.paletteCollectionTB.insertRows(at: [IndexPath(row: row, section: section)], with: .automatic)
         }
         
+        
+        
         return footer
     }
     

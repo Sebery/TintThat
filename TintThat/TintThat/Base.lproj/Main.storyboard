@@ -117,6 +117,21 @@
             </objects>
             <point key="canvasLocation" x="575" y="753"/>
         </scene>
+        <!--Color Editor View Controller-->
+        <scene sceneID="M8q-Wg-RkB">
+            <objects>
+                <viewController storyboardIdentifier="1000" id="8Kt-BG-txI" customClass="ColorEditorViewController" customModule="TintThat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ibT-zZ-rwi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Lps-wu-fCQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mxZ-37-BmU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1381" y="753"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="6vw-E4-iT3">
             <objects>

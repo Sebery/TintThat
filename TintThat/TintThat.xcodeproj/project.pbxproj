@@ -20,6 +20,7 @@
 		01D35A33266062C60084C244 /* PaletteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D35A32266062C60084C244 /* PaletteHeaderView.swift */; };
 		01D35A3526606E750084C244 /* PaletteFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D35A3426606E750084C244 /* PaletteFooterView.swift */; };
 		01D35A372660729E0084C244 /* UIView+CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D35A362660729E0084C244 /* UIView+CustomRoundCorners.swift */; };
+		01ED74C72661E20400B1FCEC /* ColorEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ED74C62661E20400B1FCEC /* ColorEditorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		01D35A32266062C60084C244 /* PaletteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteHeaderView.swift; sourceTree = "<group>"; };
 		01D35A3426606E750084C244 /* PaletteFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteFooterView.swift; sourceTree = "<group>"; };
 		01D35A362660729E0084C244 /* UIView+CustomRoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CustomRoundCorners.swift"; sourceTree = "<group>"; };
+		01ED74C62661E20400B1FCEC /* ColorEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEditorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				0179EFCA265F38B7003E401F /* PaletteCollectionEditorViewController.swift */,
+				01ED74C62661E20400B1FCEC /* ColorEditorViewController.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				01D35A3526606E750084C244 /* PaletteFooterView.swift in Sources */,
 				0179EFCB265F38B7003E401F /* PaletteCollectionEditorViewController.swift in Sources */,
 				0179EFCD265F3B80003E401F /* Palette.swift in Sources */,
+				01ED74C72661E20400B1FCEC /* ColorEditorViewController.swift in Sources */,
 				01544694265C75C50082F863 /* MainColor.swift in Sources */,
 				017A68CD26572E7B001D5097 /* SceneDelegate.swift in Sources */,
 			);
