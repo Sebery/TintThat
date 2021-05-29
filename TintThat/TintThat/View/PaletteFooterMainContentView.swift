@@ -12,7 +12,7 @@ class PaletteFooterMainContentView: UIView {
     // MARK: - Properties
     private weak var editTitleBtn: UIButton!
     private weak var addColorBtn: UIButton!
-    private weak var deleteSectionBtn: UIButton!
+    weak var deleteSectionBtn: UIButton!
 
     // MARK: - Constructors
     override init(frame: CGRect) {

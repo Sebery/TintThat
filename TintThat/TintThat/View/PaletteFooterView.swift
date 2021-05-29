@@ -10,9 +10,10 @@ import UIKit
 class PaletteFooterView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
-    //private weak var mainContentView: UIView!
     private weak var mainContentView: PaletteFooterMainContentView!
     private weak var marginView: UIView!
+    var section: Int?
+    var deleteSectionAction: ((_: Int) -> Void)?
 
     // MARK: - Constructors
     override init(reuseIdentifier: String?) {
@@ -56,6 +57,15 @@ class PaletteFooterView: UITableViewHeaderFooterView {
         marginView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         self.marginView = marginView
+        
+        mainContentView.deleteSectionBtn.addTarget(self, action: #selector(deleteSection), for: .touchUpInside)
+    }
+    
+    // MARK: - Selectors
+    @objc func deleteSection() {
+        if let section = section, let deleteSectionAction = deleteSectionAction  {
+            deleteSectionAction(section)
+        }
     }
 
 }

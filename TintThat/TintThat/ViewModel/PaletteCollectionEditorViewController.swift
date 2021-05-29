@@ -72,7 +72,13 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifier.paletteFooterView)
+        let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifier.paletteFooterView) as! PaletteFooterView
+        
+        footer.section = section
+        footer.deleteSectionAction = { [weak self] section in
+            self?.palettes.remove(at: section)
+            self?.paletteCollectionTB.deleteSections([section], with: .automatic)
+        }
         
         return footer
     }
