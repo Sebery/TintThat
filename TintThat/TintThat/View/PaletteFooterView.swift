@@ -12,8 +12,8 @@ class PaletteFooterView: UITableViewHeaderFooterView {
     // MARK: - Properties
     private weak var mainContentView: PaletteFooterMainContentView!
     private weak var marginView: UIView!
-    var section: Int?
-    var deleteSectionAction: ((_: Int) -> Void)?
+    var deleteSectionAction: (() -> Void)?
+    var addColorAction: (() -> Void)?
 
     // MARK: - Constructors
     override init(reuseIdentifier: String?) {
@@ -59,12 +59,19 @@ class PaletteFooterView: UITableViewHeaderFooterView {
         self.marginView = marginView
         
         mainContentView.deleteSectionBtn.addTarget(self, action: #selector(deleteSection), for: .touchUpInside)
+        mainContentView.addColorBtn.addTarget(self, action: #selector(addColor), for: .touchUpInside)
     }
     
     // MARK: - Selectors
-    @objc func deleteSection() {
-        if let section = section, let deleteSectionAction = deleteSectionAction  {
-            deleteSectionAction(section)
+    @objc private func deleteSection() {
+        if let deleteSectionAction = deleteSectionAction  {
+            deleteSectionAction()
+        }
+    }
+    
+    @objc private func addColor() {
+        if let addColorAction = addColorAction  {
+            addColorAction()
         }
     }
 

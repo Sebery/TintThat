@@ -74,10 +74,15 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifier.paletteFooterView) as! PaletteFooterView
         
-        footer.section = section
-        footer.deleteSectionAction = { [weak self] section in
+        footer.deleteSectionAction = { [weak self] in
             self?.palettes.remove(at: section)
             self?.paletteCollectionTB.deleteSections([section], with: .automatic)
+        }
+        
+        footer.addColorAction = { [weak self] in
+            let row = self?.palettes[section].colors.count ?? 0
+            self?.palettes[section].colors.insert(.cyan, at: row)
+            self?.paletteCollectionTB.insertRows(at: [IndexPath(row: row, section: section)], with: .automatic)
         }
         
         return footer
