@@ -33,8 +33,8 @@
             <objects>
                 <navigationController id="UPk-YM-SWm" userLabel="Palette Collection Editor Navigation" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Editor" id="8Hr-BG-JQH"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ncf-wR-TlE">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ncf-wR-TlE">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -66,7 +66,20 @@
                                             <subviews>
                                                 <view tag="1000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R9i-r9-dIv">
                                                     <rect key="frame" x="8" y="0.0" width="382" height="44"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyC-1K-vuT">
+                                                            <rect key="frame" x="354" y="5" width="28" height="34"/>
+                                                            <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="28" id="RJs-Id-8Gh"/>
+                                                            </constraints>
+                                                        </button>
+                                                    </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="uyC-1K-vuT" firstAttribute="centerY" secondItem="R9i-r9-dIv" secondAttribute="centerY" id="dgk-IE-WUw"/>
+                                                        <constraint firstAttribute="trailing" secondItem="uyC-1K-vuT" secondAttribute="trailing" id="f6M-5C-G60"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -93,7 +106,9 @@
                             <constraint firstItem="t0O-bK-sgM" firstAttribute="trailing" secondItem="0ST-MU-sbp" secondAttribute="trailing" constant="8" id="Wrg-ff-VEk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="jCU-qD-PAx"/>
+                    <navigationItem key="navigationItem" title="My Collection" id="jCU-qD-PAx">
+                        <barButtonItem key="rightBarButtonItem" title="Options" id="lBZ-6n-T67"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="paletteCollectionTB" destination="0ST-MU-sbp" id="Uhl-c8-o4n"/>
                     </connections>
@@ -138,6 +153,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
