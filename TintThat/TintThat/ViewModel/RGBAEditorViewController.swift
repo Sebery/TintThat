@@ -63,6 +63,7 @@ class RGBAEditorViewController: UIViewController {
         super.viewDidLoad()
         
         setDefaultColor()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Color", style: .done, target: self, action: #selector(addColorToPalette))
     }
     
     // MARK: - Custom methods
@@ -76,6 +77,14 @@ class RGBAEditorViewController: UIViewController {
         gLabel.text = currentColor.gTo255
         bLabel.text = currentColor.bTo255
         aLabel.text = currentColor.aTo255
+    }
+    
+    // MARK: - Selectors
+    @objc func addColorToPalette() {
+        if let section = section, let controller = paletteCollectionEditorVC {
+            controller.addColorToPalette(forSection: section, andColor: currentColor.color)
+            navigationController?.popToRootViewController(animated: true)
+        }
     }
 
 }

@@ -36,8 +36,33 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         palettes.append(Palette(section: 0, withColors: [.red, .green, .blue]))
     }
     
-    func delettePalette(forSection section: Int) {
-        let deleteAlert = UIAlertController(title: "Are you sure you want to delete this palette?", message: nil, preferredStyle: .actionSheet)
+    func showEditTitleAlert(forSection section: Int) {
+        let editTitleAlert = UIAlertController(title: "Insert a new title for the palette", message: nil, preferredStyle: .alert)
+        
+        editTitleAlert.addTextField(configurationHandler: nil)
+        
+        let headerView = paletteCollectionTB.headerView(forSection: section) as? PaletteHeaderView
+        
+        if let textField = editTitleAlert.textFields?.first {
+            textField.placeholder = headerView?.titleLabel.text ?? ""
+        }
+        
+        let save = UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
+            if let text = editTitleAlert.textFields?.first?.text {
+                self?.palettes[section].title = text
+                self?.paletteCollectionTB.reloadData()
+            }
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        editTitleAlert.addAction(save)
+        editTitleAlert.addAction(cancel)
+        
+        present(editTitleAlert, animated: true, completion: nil)
+    }
+    
+    func showDeletePaletteSheet(forSection section: Int) {
+        let deleteSheet = UIAlertController(title: "Are you sure you want to delete this palette?", message: nil, preferredStyle: .actionSheet)
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -49,18 +74,22 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
             }
         })
         
-        deleteAlert.addAction(cancel)
-        deleteAlert.addAction(delete)
+        deleteSheet.addAction(cancel)
+        deleteSheet.addAction(delete)
         
-        present(deleteAlert, animated: true, completion: nil)
+        present(deleteSheet, animated: true, completion: nil)
     }
     
-    func addColorToPalette(forSection section: Int) {
+    func showColorEditor(forSection section: Int) {
         if let controller = storyboard?.instantiateViewController(withIdentifier: Identifier.colorEditorVC) as? ColorEditorViewController {
             controller.paletteCollectionEditorVC = self
             controller.section = section
             navigationController?.pushViewController(controller, animated: true)
         }
+    }
+    
+    func addColorToPalette(forSection section: Int, andColor color: UIColor) {
+        palettes[section].colors.insert(color, at: palettes[section].colors.count)
     }
     
     // MARK: - Outlets
@@ -74,6 +103,12 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         paletteCollectionTB.register(PaletteFooterView.self, forHeaderFooterViewReuseIdentifier: Identifier.paletteFooterView)
         
         SetDefaultCollection()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        paletteCollectionTB.reloadData()
     }
     
     // MARK: - UITableViewDelegate
@@ -94,7 +129,9 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifier.paletteHeaderView)
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifier.paletteHeaderView) as! PaletteHeaderView
+        
+        header.titleLabel?.text = palettes[section].title
         
         return header
     }

@@ -10,7 +10,7 @@ import UIKit
 class PaletteFooterMainContentView: UIView {
     
     // MARK: - Properties
-    private weak var editTitleBtn: UIButton!
+    weak var editTitleBtn: UIButton!
     weak var addColorBtn: UIButton!
     weak var deleteSectionBtn: UIButton!
 

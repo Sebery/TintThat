@@ -10,7 +10,7 @@ import UIKit
 class PaletteHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
-    private weak var titleLabel: UILabel!
+    weak var titleLabel: UILabel!
 
     // MARK: - Constructors
     override init(reuseIdentifier: String?) {
@@ -38,7 +38,6 @@ class PaletteHeaderView: UITableViewHeaderFooterView {
         
         // Configure title label
         let label = UILabel()
-        label.text = "My Palette"
         label.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(label)
         

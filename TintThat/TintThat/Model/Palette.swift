@@ -10,6 +10,7 @@ import UIKit
 struct Palette {
     private let section: Int
     var colors: [UIColor]
+    var title: String = "My Palette"
     
     init(section: Int, withColors colors: [UIColor]) {
         self.section = section

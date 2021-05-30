@@ -60,20 +60,28 @@ class PaletteFooterView: UITableViewHeaderFooterView {
         
         mainContentView.addColorBtn.addTarget(self, action: #selector(addColorAction), for: .touchUpInside)
         mainContentView.deleteSectionBtn.addTarget(self, action: #selector(deleteSectionAction), for: .touchUpInside)
+        mainContentView.editTitleBtn.addTarget(self, action: #selector(editTitleAction), for: .touchUpInside)
     }
     
     // MARK: - Selectors
     @objc private func deleteSectionAction() {
         if let paletteCollectionEditorVC = paletteCollectionEditorVC,
            let section = section {
-            paletteCollectionEditorVC.delettePalette(forSection: section)
+            paletteCollectionEditorVC.showDeletePaletteSheet(forSection: section)
         }
     }
     
     @objc private func addColorAction() {
         if let paletteCollectionEditorVC = paletteCollectionEditorVC,
            let section = section {
-            paletteCollectionEditorVC.addColorToPalette(forSection: section)
+            paletteCollectionEditorVC.showColorEditor(forSection: section)
+        }
+    }
+    
+    @objc private func editTitleAction() {
+        if let paletteCollectionEditorVC = paletteCollectionEditorVC,
+           let section = section {
+            paletteCollectionEditorVC.showEditTitleAlert(forSection: section)
         }
     }
 
