@@ -38,7 +38,7 @@ class PaletteFooterMainContentView: UIView {
     private func initialize() {
         // Configure editTitleBtn
         let editTitleBtn = UIButton()
-        editTitleBtn.backgroundColor = .brown
+        editTitleBtn.setImage(UIImage(named: "TestImage"), for: .normal)
         editTitleBtn.translatesAutoresizingMaskIntoConstraints = false
         addSubview(editTitleBtn)
         
@@ -51,27 +51,27 @@ class PaletteFooterMainContentView: UIView {
         
         // Configure addColorBtn
         let addColorBtn = UIButton()
-        addColorBtn.backgroundColor = .orange
+        addColorBtn.setImage(UIImage(named: "TestImage"), for: .normal)
         addColorBtn.translatesAutoresizingMaskIntoConstraints = false
         addSubview(addColorBtn)
         
         addColorBtn.topAnchor.constraint(equalTo: topAnchor, constant: 8.0).isActive = true
         addColorBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0).isActive = true
-        addColorBtn.leadingAnchor.constraint(equalTo: self.editTitleBtn.trailingAnchor).isActive = true
-        addColorBtn.widthAnchor.constraint(equalToConstant: 28.0).isActive = true
+        addColorBtn.leadingAnchor.constraint(equalTo: self.editTitleBtn.trailingAnchor, constant: 8.0).isActive = true
+        addColorBtn.widthAnchor.constraint(equalToConstant: 32.0).isActive = true
 
         self.addColorBtn = addColorBtn
         
         // Configure deleteSectionBtn
         let deleteSectionBtn = UIButton()
-        deleteSectionBtn.backgroundColor = .orange
+        deleteSectionBtn.setImage(UIImage(named: "TestImage"), for: .normal)
         deleteSectionBtn.translatesAutoresizingMaskIntoConstraints = false
         addSubview(deleteSectionBtn)
         
         deleteSectionBtn.topAnchor.constraint(equalTo: topAnchor, constant: 8.0).isActive = true
         deleteSectionBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0).isActive = true
         deleteSectionBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8.0).isActive = true
-        deleteSectionBtn.widthAnchor.constraint(equalToConstant: 28.0).isActive = true
+        deleteSectionBtn.widthAnchor.constraint(equalToConstant: 32.0).isActive = true
 
         self.deleteSectionBtn = deleteSectionBtn
     }

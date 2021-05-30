@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011AF5B326640D7800348132 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AF5B226640D7800348132 /* Color.swift */; };
 		01544694265C75C50082F863 /* MainColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01544693265C75C50082F863 /* MainColor.swift */; };
 		01544697265C7A870082F863 /* UIColor+ToRGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01544696265C7A870082F863 /* UIColor+ToRGBA.swift */; };
 		01589117266084E600FEBD6E /* PaletteFooterMainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01589116266084E600FEBD6E /* PaletteFooterMainContentView.swift */; };
@@ -17,6 +18,7 @@
 		017A68D226572E7B001D5097 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D026572E7B001D5097 /* Main.storyboard */; };
 		017A68D426572E7C001D5097 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D326572E7C001D5097 /* Assets.xcassets */; };
 		017A68D726572E7C001D5097 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017A68D526572E7C001D5097 /* LaunchScreen.storyboard */; };
+		01C7BD8A2663E7DE0021FF74 /* RGBAEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7BD892663E7DE0021FF74 /* RGBAEditorViewController.swift */; };
 		01D35A33266062C60084C244 /* PaletteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D35A32266062C60084C244 /* PaletteHeaderView.swift */; };
 		01D35A3526606E750084C244 /* PaletteFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D35A3426606E750084C244 /* PaletteFooterView.swift */; };
 		01D35A372660729E0084C244 /* UIView+CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D35A362660729E0084C244 /* UIView+CustomRoundCorners.swift */; };
@@ -24,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		011AF5B226640D7800348132 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		01544693265C75C50082F863 /* MainColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainColor.swift; sourceTree = "<group>"; };
 		01544696265C7A870082F863 /* UIColor+ToRGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ToRGBA.swift"; sourceTree = "<group>"; };
 		01589116266084E600FEBD6E /* PaletteFooterMainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteFooterMainContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		017A68D326572E7C001D5097 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		017A68D626572E7C001D5097 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		017A68D826572E7C001D5097 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01C7BD892663E7DE0021FF74 /* RGBAEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBAEditorViewController.swift; sourceTree = "<group>"; };
 		01D35A32266062C60084C244 /* PaletteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteHeaderView.swift; sourceTree = "<group>"; };
 		01D35A3426606E750084C244 /* PaletteFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteFooterView.swift; sourceTree = "<group>"; };
 		01D35A362660729E0084C244 /* UIView+CustomRoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CustomRoundCorners.swift"; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 			children = (
 				0179EFCA265F38B7003E401F /* PaletteCollectionEditorViewController.swift */,
 				01ED74C62661E20400B1FCEC /* ColorEditorViewController.swift */,
+				01C7BD892663E7DE0021FF74 /* RGBAEditorViewController.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				0179EFCC265F3B80003E401F /* Palette.swift */,
+				011AF5B226640D7800348132 /* Color.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 				01544697265C7A870082F863 /* UIColor+ToRGBA.swift in Sources */,
 				017A68CB26572E7B001D5097 /* AppDelegate.swift in Sources */,
 				01D35A33266062C60084C244 /* PaletteHeaderView.swift in Sources */,
+				011AF5B326640D7800348132 /* Color.swift in Sources */,
 				01D35A372660729E0084C244 /* UIView+CustomRoundCorners.swift in Sources */,
 				01D35A3526606E750084C244 /* PaletteFooterView.swift in Sources */,
 				0179EFCB265F38B7003E401F /* PaletteCollectionEditorViewController.swift in Sources */,
@@ -212,6 +219,7 @@
 				01ED74C72661E20400B1FCEC /* ColorEditorViewController.swift in Sources */,
 				01544694265C75C50082F863 /* MainColor.swift in Sources */,
 				017A68CD26572E7B001D5097 /* SceneDelegate.swift in Sources */,
+				01C7BD8A2663E7DE0021FF74 /* RGBAEditorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

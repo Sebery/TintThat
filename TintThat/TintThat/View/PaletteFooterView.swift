@@ -10,10 +10,10 @@ import UIKit
 class PaletteFooterView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
-    private weak var mainContentView: PaletteFooterMainContentView!
     private weak var marginView: UIView!
-    var deleteSectionAction: (() -> Void)?
-    var addColorAction: (() -> Void)?
+    weak var mainContentView: PaletteFooterMainContentView!
+    var section: Int?
+    weak var paletteCollectionEditorVC: PaletteCollectionEditorViewController?
 
     // MARK: - Constructors
     override init(reuseIdentifier: String?) {
@@ -58,20 +58,22 @@ class PaletteFooterView: UITableViewHeaderFooterView {
         
         self.marginView = marginView
         
-        mainContentView.deleteSectionBtn.addTarget(self, action: #selector(deleteSection), for: .touchUpInside)
-        mainContentView.addColorBtn.addTarget(self, action: #selector(addColor), for: .touchUpInside)
+        mainContentView.addColorBtn.addTarget(self, action: #selector(addColorAction), for: .touchUpInside)
+        mainContentView.deleteSectionBtn.addTarget(self, action: #selector(deleteSectionAction), for: .touchUpInside)
     }
     
     // MARK: - Selectors
-    @objc private func deleteSection() {
-        if let deleteSectionAction = deleteSectionAction  {
-            deleteSectionAction()
+    @objc private func deleteSectionAction() {
+        if let paletteCollectionEditorVC = paletteCollectionEditorVC,
+           let section = section {
+            paletteCollectionEditorVC.delettePalette(forSection: section)
         }
     }
     
-    @objc private func addColor() {
-        if let addColorAction = addColorAction  {
-            addColorAction()
+    @objc private func addColorAction() {
+        if let paletteCollectionEditorVC = paletteCollectionEditorVC,
+           let section = section {
+            paletteCollectionEditorVC.addColorToPalette(forSection: section)
         }
     }
 

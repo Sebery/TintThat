@@ -16,6 +16,7 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         static let colorCell = "ColorCell"
         static let paletteHeaderView = "PaletteHeaderView"
         static let paletteFooterView = "PaletteFooterView"
+        static let colorEditorVC = "ColorEditorVC"
     }
     
     struct Tag {
@@ -33,6 +34,33 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         palettes.append(Palette(section: 0, withColors: [.red, .green, .blue]))
         palettes.append(Palette(section: 0, withColors: [.red, .green, .blue]))
         palettes.append(Palette(section: 0, withColors: [.red, .green, .blue]))
+    }
+    
+    func delettePalette(forSection section: Int) {
+        let deleteAlert = UIAlertController(title: "Are you sure you want to delete this palette?", message: nil, preferredStyle: .actionSheet)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let delete = UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            if let controller = self {
+                controller.palettes.remove(at: section)
+                controller.paletteCollectionTB.deleteSections([section], with: .automatic)
+                controller.paletteCollectionTB.reloadSections(IndexSet(integersIn: 0..<controller.palettes.count), with: .automatic)
+            }
+        })
+        
+        deleteAlert.addAction(cancel)
+        deleteAlert.addAction(delete)
+        
+        present(deleteAlert, animated: true, completion: nil)
+    }
+    
+    func addColorToPalette(forSection section: Int) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: Identifier.colorEditorVC) as? ColorEditorViewController {
+            controller.paletteCollectionEditorVC = self
+            controller.section = section
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     // MARK: - Outlets
@@ -74,18 +102,8 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifier.paletteFooterView) as! PaletteFooterView
         
-        footer.deleteSectionAction = { [weak self] in
-            self?.palettes.remove(at: section)
-            self?.paletteCollectionTB.deleteSections([section], with: .automatic)
-        }
-        
-        footer.addColorAction = { [weak self] in
-            let row = self?.palettes[section].colors.count ?? 0
-            self?.palettes[section].colors.insert(.cyan, at: row)
-            self?.paletteCollectionTB.insertRows(at: [IndexPath(row: row, section: section)], with: .automatic)
-        }
-        
-        
+        footer.section = section
+        footer.paletteCollectionEditorVC = self
         
         return footer
     }
