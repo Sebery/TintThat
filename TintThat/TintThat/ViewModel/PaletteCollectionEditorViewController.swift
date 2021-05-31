@@ -17,6 +17,7 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         static let paletteHeaderView = "PaletteHeaderView"
         static let paletteFooterView = "PaletteFooterView"
         static let colorEditorVC = "ColorEditorVC"
+        static let colorOptionsSegue = "ColorOptionsSegue"
     }
     
     struct Tag {
@@ -27,6 +28,11 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         static let colorCellHeight: CGFloat = 44.0
         static let paletteHeaderHeight: CGFloat = 56.0
         static let paletteFooterHeight: CGFloat = 56.0
+    }
+    
+    enum MoveColor: Int {
+        case up = -1
+        case down = 1
     }
     
     // MARK: - Custom methods
@@ -92,6 +98,20 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         palettes[section].colors.insert(color, at: palettes[section].colors.count)
     }
     
+    func deleteColorInPalette(forSection section: Int, inRow row: Int) {
+        palettes[section].colors.remove(at: row)
+        paletteCollectionTB.deleteRows(at: [IndexPath(row: row, section: section)], with: .automatic)
+    }
+    
+    func moveColorInPalette(forSection section: Int, inRow row: Int, to move: MoveColor) {
+        if row >= palettes[section].colors.count - 1 && move == .down || row <= 0 && move == .up {
+            return
+        }
+        
+        palettes[section].colors.swapAt(row, row + move.rawValue)
+        paletteCollectionTB.moveRow(at: IndexPath(row: row, section: section), to: IndexPath(row: row + move.rawValue, section: section))
+    }
+    
     // MARK: - Outlets
     @IBOutlet weak var paletteCollectionTB: UITableView!
     
@@ -109,6 +129,13 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         super.viewWillAppear(animated)
         
         paletteCollectionTB.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Identifier.colorOptionsSegue, let controller = (segue.destination as? UINavigationController)?.viewControllers.first as? ColorOptionsViewController, let cell = (sender as? UIButton)?.superview?.superview as? UITableViewCell, let indexPath = paletteCollectionTB.indexPath(for: cell) {
+            controller.paletteCollectionEditorVC = self
+            controller.colorPath = indexPath
+        }
     }
     
     // MARK: - UITableViewDelegate

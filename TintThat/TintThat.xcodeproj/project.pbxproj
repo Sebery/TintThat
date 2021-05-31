@@ -10,6 +10,7 @@
 		011AF5B326640D7800348132 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AF5B226640D7800348132 /* Color.swift */; };
 		01544694265C75C50082F863 /* MainColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01544693265C75C50082F863 /* MainColor.swift */; };
 		01544697265C7A870082F863 /* UIColor+ToRGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01544696265C7A870082F863 /* UIColor+ToRGBA.swift */; };
+		015704B226644DB200A4424D /* ColorOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015704B126644DB200A4424D /* ColorOptionsViewController.swift */; };
 		01589117266084E600FEBD6E /* PaletteFooterMainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01589116266084E600FEBD6E /* PaletteFooterMainContentView.swift */; };
 		0179EFCB265F38B7003E401F /* PaletteCollectionEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179EFCA265F38B7003E401F /* PaletteCollectionEditorViewController.swift */; };
 		0179EFCD265F3B80003E401F /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179EFCC265F3B80003E401F /* Palette.swift */; };
@@ -29,6 +30,7 @@
 		011AF5B226640D7800348132 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		01544693265C75C50082F863 /* MainColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainColor.swift; sourceTree = "<group>"; };
 		01544696265C7A870082F863 /* UIColor+ToRGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ToRGBA.swift"; sourceTree = "<group>"; };
+		015704B126644DB200A4424D /* ColorOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOptionsViewController.swift; sourceTree = "<group>"; };
 		01589116266084E600FEBD6E /* PaletteFooterMainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteFooterMainContentView.swift; sourceTree = "<group>"; };
 		0179EFCA265F38B7003E401F /* PaletteCollectionEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteCollectionEditorViewController.swift; sourceTree = "<group>"; };
 		0179EFCC265F3B80003E401F /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				0179EFCA265F38B7003E401F /* PaletteCollectionEditorViewController.swift */,
 				01ED74C62661E20400B1FCEC /* ColorEditorViewController.swift */,
 				01C7BD892663E7DE0021FF74 /* RGBAEditorViewController.swift */,
+				015704B126644DB200A4424D /* ColorOptionsViewController.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				01D35A372660729E0084C244 /* UIView+CustomRoundCorners.swift in Sources */,
 				01D35A3526606E750084C244 /* PaletteFooterView.swift in Sources */,
 				0179EFCB265F38B7003E401F /* PaletteCollectionEditorViewController.swift in Sources */,
+				015704B226644DB200A4424D /* ColorOptionsViewController.swift in Sources */,
 				0179EFCD265F3B80003E401F /* Palette.swift in Sources */,
 				01ED74C72661E20400B1FCEC /* ColorEditorViewController.swift in Sources */,
 				01544694265C75C50082F863 /* MainColor.swift in Sources */,
