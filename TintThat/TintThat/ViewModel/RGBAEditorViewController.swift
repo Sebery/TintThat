@@ -16,7 +16,6 @@ class RGBAEditorViewController: UIViewController {
         }
     }
     weak var colorEditorVC: ColorEditorViewController?
-    weak var paletteCollectionEditorVC: PaletteCollectionEditorViewController?
     
     enum Tag: Int {
         case rSlider = 1000
@@ -62,8 +61,17 @@ class RGBAEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var title: String = ""
+        if colorEditorVC?.state == .addColor {
+            title = "Add Color"
+        } else if colorEditorVC?.state == .editColor, let colorEditorVC = colorEditorVC, let color = colorEditorVC.paletteCollectionEditorVC?.getColorFromPalette(forSection: colorEditorVC.colorPath.section, inRow: colorEditorVC.colorPath.row) {
+            title = "Save Changes"
+            currentColor = color
+        }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(doneWithColor))
+        
         setDefaultColor()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Color", style: .done, target: self, action: #selector(doneWithColor))
     }
     
     // MARK: - Custom methods
@@ -82,15 +90,18 @@ class RGBAEditorViewController: UIViewController {
     // MARK: - Selectors
     @objc func doneWithColor() {
         
-        if colorEditorVC?.state == .addColor, let section = colorEditorVC?.colorPath.section {
-            paletteCollectionEditorVC?.addColorToPalette(forSection: section, andColor: currentColor)
-            navigationController?.popToRootViewController(animated: true)
-        } else if colorEditorVC?.state == .editColor {
-            dismiss(animated: true, completion: { [weak self] in
-                if let controller = self, let indexPath = controller.colorEditorVC?.colorPath {
-                    controller.paletteCollectionEditorVC?.setColorInPalette(forSection: indexPath.section, inRow: indexPath.row, withColor: controller.currentColor)
-                }
-            })
+        if let colorEditorVC = colorEditorVC {
+            if colorEditorVC.state == .addColor {
+                colorEditorVC.paletteCollectionEditorVC?.addColorToPalette(forSection: colorEditorVC.colorPath.section, andColor: currentColor)
+                navigationController?.popToRootViewController(animated: true)
+
+            } else if colorEditorVC.state == .editColor {
+                dismiss(animated: true, completion: { [weak self] in
+                    if let controller = self, let indexPath = controller.colorEditorVC?.colorPath {
+                        controller.colorEditorVC?.paletteCollectionEditorVC?.setColorInPalette(forSection: indexPath.section, inRow: indexPath.row, withColor: controller.currentColor)
+                    }
+                })
+            }
         }
 
     }

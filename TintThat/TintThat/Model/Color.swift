@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Color {
+struct Color: Codable {
     
     // MARK: - Properties
     private var formatter = NumberFormatter()
@@ -64,6 +64,11 @@ struct Color {
         rgba = [color.r, color.g, color.b, color.a]
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 0
+    }
+    
+    // MARK: - Codable
+    private enum CodingKeys: String, CodingKey {
+        case rgba
     }
 
 }

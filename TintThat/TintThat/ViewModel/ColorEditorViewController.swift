@@ -31,9 +31,8 @@ class ColorEditorViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Identifier.rgbaEditorSegue, let paletteCollectionEditorVC = paletteCollectionEditorVC, let destinationVC = segue.destination as? RGBAEditorViewController {
+        if segue.identifier == Identifier.rgbaEditorSegue, let destinationVC = segue.destination as? RGBAEditorViewController {
             destinationVC.colorEditorVC = self
-            destinationVC.paletteCollectionEditorVC = paletteCollectionEditorVC
         }
     }
     

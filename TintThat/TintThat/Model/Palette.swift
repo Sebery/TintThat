@@ -7,13 +7,23 @@
 
 import UIKit
 
-struct Palette {
+struct Palette: Codable {
+    
+    // MARK: - Properties
     private let section: Int
     var colors: [Color]
-    var title: String = "My Palette"
+    var title: String
     
+    // MARK: - Constructors
     init(section: Int, withColors colors: [Color]) {
         self.section = section
         self.colors = colors
+        self.title = ""
+    }
+    
+    init(section: Int, withColors colors: [Color], withTitle title: String) {
+        self.section = section
+        self.colors = colors
+        self.title = title
     }
 }
