@@ -10,9 +10,15 @@ import UIKit
 class ColorEditorViewController: UITableViewController {
     
     // MARK: - Properties
-    var section: Int?
+    var colorPath = IndexPath() // Row only necessary if the state is editColor
+    var state: State = .addColor
     weak var paletteCollectionEditorVC: PaletteCollectionEditorViewController?
     
+    enum State {
+        case addColor
+        case editColor
+    }
+
     struct Identifier {
         static let rgbaEditorSegue = "RGBAEditorSegue"
     }
@@ -25,8 +31,8 @@ class ColorEditorViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Identifier.rgbaEditorSegue, let section = section, let paletteCollectionEditorVC = paletteCollectionEditorVC, let destinationVC = segue.destination as? RGBAEditorViewController {
-            destinationVC.section = section
+        if segue.identifier == Identifier.rgbaEditorSegue, let paletteCollectionEditorVC = paletteCollectionEditorVC, let destinationVC = segue.destination as? RGBAEditorViewController {
+            destinationVC.colorEditorVC = self
             destinationVC.paletteCollectionEditorVC = paletteCollectionEditorVC
         }
     }

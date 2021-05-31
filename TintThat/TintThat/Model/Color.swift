@@ -59,5 +59,11 @@ struct Color {
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 0
     }
+    
+    init(color: UIColor) {
+        rgba = [color.r, color.g, color.b, color.a]
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0
+    }
 
 }

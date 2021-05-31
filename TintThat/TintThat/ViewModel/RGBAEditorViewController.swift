@@ -15,7 +15,7 @@ class RGBAEditorViewController: UIViewController {
             colorView.backgroundColor = currentColor.color
         }
     }
-    var section: Int?
+    weak var colorEditorVC: ColorEditorViewController?
     weak var paletteCollectionEditorVC: PaletteCollectionEditorViewController?
     
     enum Tag: Int {
@@ -63,7 +63,7 @@ class RGBAEditorViewController: UIViewController {
         super.viewDidLoad()
         
         setDefaultColor()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Color", style: .done, target: self, action: #selector(addColorToPalette))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Color", style: .done, target: self, action: #selector(doneWithColor))
     }
     
     // MARK: - Custom methods
@@ -80,11 +80,19 @@ class RGBAEditorViewController: UIViewController {
     }
     
     // MARK: - Selectors
-    @objc func addColorToPalette() {
-        if let section = section, let controller = paletteCollectionEditorVC {
-            controller.addColorToPalette(forSection: section, andColor: currentColor.color)
+    @objc func doneWithColor() {
+        
+        if colorEditorVC?.state == .addColor, let section = colorEditorVC?.colorPath.section {
+            paletteCollectionEditorVC?.addColorToPalette(forSection: section, andColor: currentColor)
             navigationController?.popToRootViewController(animated: true)
+        } else if colorEditorVC?.state == .editColor {
+            dismiss(animated: true, completion: { [weak self] in
+                if let controller = self, let indexPath = controller.colorEditorVC?.colorPath {
+                    controller.paletteCollectionEditorVC?.setColorInPalette(forSection: indexPath.section, inRow: indexPath.row, withColor: controller.currentColor)
+                }
+            })
         }
+
     }
 
 }

@@ -37,9 +37,9 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
     
     // MARK: - Custom methods
     private func SetDefaultCollection() {
-        palettes.append(Palette(section: 0, withColors: [.red, .green, .blue]))
-        palettes.append(Palette(section: 0, withColors: [.red, .green, .blue]))
-        palettes.append(Palette(section: 0, withColors: [.red, .green, .blue]))
+        palettes.append(Palette(section: 0, withColors: [.init(color: .red), .init(color: .green), .init(color: .blue)]))
+        palettes.append(Palette(section: 1, withColors: [.init(color: .red), .init(color: .green), .init(color: .blue)]))
+        palettes.append(Palette(section: 2, withColors: [.init(color: .red), .init(color: .green), .init(color: .blue)]))
     }
     
     func showEditTitleAlert(forSection section: Int) {
@@ -86,16 +86,26 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         present(deleteSheet, animated: true, completion: nil)
     }
     
-    func showColorEditor(forSection section: Int) {
+    func showAddColorEditor(forSection section: Int) {
         if let controller = storyboard?.instantiateViewController(withIdentifier: Identifier.colorEditorVC) as? ColorEditorViewController {
             controller.paletteCollectionEditorVC = self
-            controller.section = section
+            controller.state = .addColor
+            controller.colorPath = IndexPath(row: 0, section: section)
             navigationController?.pushViewController(controller, animated: true)
         }
     }
     
-    func addColorToPalette(forSection section: Int, andColor color: UIColor) {
+    func addColorToPalette(forSection section: Int, andColor color: Color) {
         palettes[section].colors.insert(color, at: palettes[section].colors.count)
+    }
+    
+    func getColorFromPalette(forSection section: Int, inRow row: Int) -> Color {
+        return palettes[section].colors[row]
+    }
+    
+    func setColorInPalette(forSection section: Int, inRow row: Int, withColor color: Color) {
+        palettes[section].colors[row] = color
+        paletteCollectionTB.reloadData()
     }
     
     func deleteColorInPalette(forSection section: Int, inRow row: Int) {
@@ -185,7 +195,7 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.colorCell, for: indexPath)
         
         cell.backgroundColor = .lightGray
-        cell.contentView.viewWithTag(Tag.colorCellBgView)?.backgroundColor = palettes[indexPath.section].colors[indexPath.row]
+        cell.contentView.viewWithTag(Tag.colorCellBgView)?.backgroundColor = palettes[indexPath.section].colors[indexPath.row].color
         
         return cell
     }

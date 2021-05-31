@@ -74,7 +74,7 @@ class PaletteFooterView: UITableViewHeaderFooterView {
     @objc private func addColorAction() {
         if let paletteCollectionEditorVC = paletteCollectionEditorVC,
            let section = section {
-            paletteCollectionEditorVC.showColorEditor(forSection: section)
+            paletteCollectionEditorVC.showAddColorEditor(forSection: section)
         }
     }
     

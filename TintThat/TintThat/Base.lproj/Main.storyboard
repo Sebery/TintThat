@@ -110,8 +110,35 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="43.5" id="vx1-Y9-oxM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="43.5" id="QZ9-De-9yh">
                                         <rect key="frame" x="0.0" y="105" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QZ9-De-9yh" id="3F5-aB-N9N">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8Z-ZI-GNX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <state key="normal" title="Edit">
+                                                        <color key="titleColor" systemColor="labelColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="1i5-pJ-2vu" kind="show" identifier="EditColorSegue" id="KCg-Vf-tYr"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="d8Z-ZI-GNX" firstAttribute="top" secondItem="3F5-aB-N9N" secondAttribute="top" id="Hhi-AG-Cq6"/>
+                                                <constraint firstItem="d8Z-ZI-GNX" firstAttribute="leading" secondItem="3F5-aB-N9N" secondAttribute="leading" id="csz-qA-3Kr"/>
+                                                <constraint firstAttribute="bottom" secondItem="d8Z-ZI-GNX" secondAttribute="bottom" id="jLF-P6-hbR"/>
+                                                <constraint firstAttribute="trailing" secondItem="d8Z-ZI-GNX" secondAttribute="trailing" id="jof-tY-R2m"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="43.5" id="vx1-Y9-oxM">
+                                        <rect key="frame" x="0.0" y="148.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vx1-Y9-oxM" id="29c-IQ-lse">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -254,7 +281,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ColorEditorVC" id="1i5-pJ-2vu" userLabel="Color Editor" customClass="ColorEditorViewController" customModule="TintThat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="eNC-qR-SmX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -315,6 +342,7 @@
                             <outlet property="delegate" destination="1i5-pJ-2vu" id="cKD-B7-nIX"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="vP9-4e-Ln4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJm-tW-QyA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -452,10 +480,10 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9O-mo-YOf">
-                                <rect key="frame" x="8" y="8" width="398" height="520"/>
+                                <rect key="frame" x="8" y="64" width="398" height="464"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyA-3r-otf">
-                                        <rect key="frame" x="149" y="210" width="100" height="100"/>
+                                        <rect key="frame" x="149" y="182" width="100" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="5by-r6-1Po"/>

@@ -10,14 +10,27 @@ import UIKit
 class ColorOptionsViewController: UITableViewController {
     
     // MARK: - Properties
-    weak var paletteCollectionEditorVC: PaletteCollectionEditorViewController!
+    weak var paletteCollectionEditorVC: PaletteCollectionEditorViewController?
     var colorPath: IndexPath = IndexPath()
+    
+    struct Identifier {
+        static let editColorSegue = "EditColorSegue"
+    }
+    
+    // MARK: - UIViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Identifier.editColorSegue, let controller = segue.destination as? ColorEditorViewController {
+            controller.paletteCollectionEditorVC = paletteCollectionEditorVC
+            controller.colorPath = colorPath
+            controller.state = .editColor
+        }
+    }
     
     // MARK: - Actions
     @IBAction func moveUp() {
         dismiss(animated: true, completion: { [weak self] in
             if let controller = self {
-                controller.paletteCollectionEditorVC.moveColorInPalette(forSection: controller.colorPath.section, inRow: controller.colorPath.row, to: .up)
+                controller.paletteCollectionEditorVC?.moveColorInPalette(forSection: controller.colorPath.section, inRow: controller.colorPath.row, to: .up)
             }
         })
     }
@@ -25,7 +38,7 @@ class ColorOptionsViewController: UITableViewController {
     @IBAction func moveDown() {
         dismiss(animated: true, completion: { [weak self] in
             if let controller = self {
-                controller.paletteCollectionEditorVC.moveColorInPalette(forSection: controller.colorPath.section, inRow: controller.colorPath.row, to: .down)
+                controller.paletteCollectionEditorVC?.moveColorInPalette(forSection: controller.colorPath.section, inRow: controller.colorPath.row, to: .down)
             }
         })
     }
@@ -33,7 +46,7 @@ class ColorOptionsViewController: UITableViewController {
     @IBAction func delete() {
         dismiss(animated: true, completion: { [weak self] in
             if let controller = self {
-                controller.paletteCollectionEditorVC.deleteColorInPalette(forSection: controller.colorPath.section, inRow: controller.colorPath.row)
+                controller.paletteCollectionEditorVC?.deleteColorInPalette(forSection: controller.colorPath.section, inRow: controller.colorPath.row)
             }
         })
     }
