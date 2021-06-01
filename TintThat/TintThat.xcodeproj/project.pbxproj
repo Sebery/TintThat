@@ -22,6 +22,8 @@
 		0188D3A026653FD600E88113 /* PaletteCollectionOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188D39F26653FD600E88113 /* PaletteCollectionOptionsViewController.swift */; };
 		0188D3A526654BCB00E88113 /* PaletteCollectionFMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188D3A426654BCB00E88113 /* PaletteCollectionFMController.swift */; };
 		018DC7F6266583EE008DA564 /* PaletteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DC7F5266583EE008DA564 /* PaletteCollection.swift */; };
+		019A125F266676D60086FF8C /* PaletteCollectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A125E266676D60086FF8C /* PaletteCollectionListViewController.swift */; };
+		019A126126668AF20086FF8C /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A126026668AF20086FF8C /* AlertController.swift */; };
 		01C7BD8A2663E7DE0021FF74 /* RGBAEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C7BD892663E7DE0021FF74 /* RGBAEditorViewController.swift */; };
 		01D35A33266062C60084C244 /* PaletteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D35A32266062C60084C244 /* PaletteHeaderView.swift */; };
 		01D35A3526606E750084C244 /* PaletteFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D35A3426606E750084C244 /* PaletteFooterView.swift */; };
@@ -47,6 +49,8 @@
 		0188D39F26653FD600E88113 /* PaletteCollectionOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteCollectionOptionsViewController.swift; sourceTree = "<group>"; };
 		0188D3A426654BCB00E88113 /* PaletteCollectionFMController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteCollectionFMController.swift; sourceTree = "<group>"; };
 		018DC7F5266583EE008DA564 /* PaletteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteCollection.swift; sourceTree = "<group>"; };
+		019A125E266676D60086FF8C /* PaletteCollectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteCollectionListViewController.swift; sourceTree = "<group>"; };
+		019A126026668AF20086FF8C /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		01C7BD892663E7DE0021FF74 /* RGBAEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBAEditorViewController.swift; sourceTree = "<group>"; };
 		01D35A32266062C60084C244 /* PaletteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteHeaderView.swift; sourceTree = "<group>"; };
 		01D35A3426606E750084C244 /* PaletteFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteFooterView.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				0188D3A426654BCB00E88113 /* PaletteCollectionFMController.swift */,
+				019A126026668AF20086FF8C /* AlertController.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				01C7BD892663E7DE0021FF74 /* RGBAEditorViewController.swift */,
 				015704B126644DB200A4424D /* ColorOptionsViewController.swift */,
 				0188D39F26653FD600E88113 /* PaletteCollectionOptionsViewController.swift */,
+				019A125E266676D60086FF8C /* PaletteCollectionListViewController.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -227,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				019A125F266676D60086FF8C /* PaletteCollectionListViewController.swift in Sources */,
 				0188D3A526654BCB00E88113 /* PaletteCollectionFMController.swift in Sources */,
 				01589117266084E600FEBD6E /* PaletteFooterMainContentView.swift in Sources */,
 				01544697265C7A870082F863 /* UIColor+ToRGBA.swift in Sources */,
@@ -235,6 +242,7 @@
 				011AF5B326640D7800348132 /* Color.swift in Sources */,
 				01D35A372660729E0084C244 /* UIView+CustomRoundCorners.swift in Sources */,
 				018DC7F6266583EE008DA564 /* PaletteCollection.swift in Sources */,
+				019A126126668AF20086FF8C /* AlertController.swift in Sources */,
 				01D35A3526606E750084C244 /* PaletteFooterView.swift in Sources */,
 				0179EFCB265F38B7003E401F /* PaletteCollectionEditorViewController.swift in Sources */,
 				015704B226644DB200A4424D /* ColorOptionsViewController.swift in Sources */,

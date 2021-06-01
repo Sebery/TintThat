@@ -10,9 +10,31 @@ import UIKit
 class PaletteCollectionFM {
     
     // MARK: - Custom methods
-    static func getPaletteColectionDirectory(fileName: String) -> URL {
+    static func getDocumentsDirectory() -> URL {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return urls[0].appendingPathComponent(fileName)
+        
+        return urls[0]
+    }
+    
+    static func getPaletteColectionDirectory(fileName: String) -> URL {
+        return getDocumentsDirectory().appendingPathComponent(fileName)
+    }
+    
+    static func getDecodedCollections() -> [PaletteCollection] {
+        var collections = [PaletteCollection]()
+        
+        let urls = try? FileManager.default.contentsOfDirectory(at: PaletteCollectionFM.getDocumentsDirectory(), includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+        
+        if let urls = urls {
+            for url in urls {
+                let data = try? Data(contentsOf: url)
+                if let data = data, let collection = PaletteCollectionFM.decode(paletteCollectionData: data) {
+                    collections.append(collection)
+                }
+            }
+        }
+        
+        return collections
     }
     
     static func encode(paletteCollection: PaletteCollection) -> Data? {
@@ -27,5 +49,5 @@ class PaletteCollectionFM {
         
         return paletteCollection
     }
-    
+ 
 }

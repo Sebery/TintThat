@@ -357,7 +357,7 @@
         <scene sceneID="H8U-3E-C01">
             <objects>
                 <tableViewController id="dPr-qm-aWf" customClass="PaletteCollectionOptionsViewController" customModule="TintThat" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="G1m-7q-8mc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="G1m-7q-8mc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -377,6 +377,9 @@
                                                     <state key="normal" title="Load">
                                                         <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="y0g-vZ-DFv" kind="show" identifier="PaletteCollectionListSegue" id="NgG-Uf-TaU"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -508,6 +511,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xU-h9-NCG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1380" y="1544"/>
+        </scene>
+        <!--Palette Collection List View Controller-->
+        <scene sceneID="eaj-ta-dDm">
+            <objects>
+                <tableViewController id="y0g-vZ-DFv" customClass="PaletteCollectionListViewController" customModule="TintThat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="u4r-2B-HBf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaletteCollectionCell" id="LeA-uy-Upk">
+                                <rect key="frame" x="0.0" y="49.5" width="414" height="37"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LeA-uy-Upk" id="Uhs-98-oGY">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOw-A7-cL1">
+                                            <rect key="frame" x="8" y="8" width="398" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="dOw-A7-cL1" firstAttribute="leading" secondItem="Uhs-98-oGY" secondAttribute="leading" constant="8" id="9Uk-ba-Olh"/>
+                                        <constraint firstAttribute="bottom" secondItem="dOw-A7-cL1" secondAttribute="bottom" constant="8" id="A8g-dv-0OS"/>
+                                        <constraint firstAttribute="trailing" secondItem="dOw-A7-cL1" secondAttribute="trailing" constant="8" id="fos-47-h7l"/>
+                                        <constraint firstItem="dOw-A7-cL1" firstAttribute="top" secondItem="Uhs-98-oGY" secondAttribute="top" constant="8" id="rI6-pV-Wee"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="y0g-vZ-DFv" id="a8G-QA-Gtf"/>
+                            <outlet property="delegate" destination="y0g-vZ-DFv" id="IFo-ah-jjF"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="uH9-oq-46v"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ww0-nD-3vo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2270" y="1544"/>
         </scene>
         <!--RGBA Editor-->
         <scene sceneID="pmp-h6-ONS">
@@ -728,6 +775,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

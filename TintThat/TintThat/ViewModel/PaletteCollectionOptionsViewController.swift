@@ -12,6 +12,10 @@ class PaletteCollectionOptionsViewController: UITableViewController {
     // MARK: - Properties
     weak var paletteCollectionEditorVC: PaletteCollectionEditorViewController?
     
+    struct Identifier {
+        static let paletteCollectionListSegue = "PaletteCollectionListSegue"
+    }
+    
     // MARK: - Outlets
     @IBOutlet weak var saveAsBtn: UIButton!
     @IBOutlet weak var saveChangesBtn: UIButton!
@@ -27,22 +31,18 @@ class PaletteCollectionOptionsViewController: UITableViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Identifier.paletteCollectionListSegue, let controller = segue.destination as? PaletteCollectionListViewController {
+            controller.paletteCollectionOptionsVC = self
+        }
+    }
+    
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - Custom Methods
-    private func showStateAlert(withTitle title: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        
-        present(alert, animated: true, completion: {
-            alert.dismiss(animated: true, completion: { [weak self] in
-                self?.navigationController?.popToRootViewController(animated: true)
-            })
-        })
-    }
-    
     private func saveCollection(collectionTitle: String, successTitle: String, failTitle: String) {
         var copy = paletteCollectionEditorVC?.paletteCollection
         copy?.title = collectionTitle
@@ -53,9 +53,13 @@ class PaletteCollectionOptionsViewController: UITableViewController {
                 
                 paletteCollectionEditorVC.paletteCollection.title = collectionTitle
                 paletteCollectionEditorVC.state = .editingCollection
-                showStateAlert(withTitle: "Saved")
+                AlertController.showStateAlert(controller: self, title: "Saved", completion: { [weak self] in
+                    self?.navigationController?.popToRootViewController(animated: true)
+                })
             } catch {
-                showStateAlert(withTitle: "Not saved, try again!")
+                AlertController.showStateAlert(controller: self, title: "Not saved, try again!", completion: { [weak self] in
+                    self?.navigationController?.popToRootViewController(animated: true)
+                })
             }
             
         }
@@ -97,9 +101,9 @@ class PaletteCollectionOptionsViewController: UITableViewController {
         var message = ""
         
         if paletteCollectionEditorVC?.state == .editingCollection {
-            message = "You will loose unsaved changes"
+            message = "You will lose unsaved changes"
         } else if paletteCollectionEditorVC?.state == .creatingCollection {
-            message = "You will loose hte unsaved collection"
+            message = "You will lose the unsaved collection"
         }
         
         let alert = UIAlertController(title: "Insert the title of your new collection", message: message, preferredStyle: .alert)
@@ -124,7 +128,9 @@ class PaletteCollectionOptionsViewController: UITableViewController {
     @IBAction func addPaletteToCollectionAction() {
         if let paletteCollectionEditorVC = paletteCollectionEditorVC {
             paletteCollectionEditorVC.addPaletteToCollection(palette: Palette(section: paletteCollectionEditorVC.paletteCollection.palettes.count, withColors: [.init(color: .black), .init(color: .cyan)], withTitle: "Added"))
-            showStateAlert(withTitle: "Added")
+            AlertController.showStateAlert(controller: self, title: "Added", completion: { [weak self] in
+                self?.navigationController?.popToRootViewController(animated: true)
+            })
         }
     }
 
