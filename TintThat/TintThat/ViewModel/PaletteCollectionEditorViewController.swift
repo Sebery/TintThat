@@ -11,7 +11,7 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
 
     // MARK: - Properties
     var paletteCollection = PaletteCollection()
-    var state: State = .editingCollection
+    var state: State = .creatingCollection
     
     struct Identifier {
         static let colorCell = "ColorCell"
@@ -142,14 +142,13 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         paletteCollectionTB.register(PaletteFooterView.self, forHeaderFooterViewReuseIdentifier: Identifier.paletteFooterView)
         
         SetDefaultCollection()
-        
-        collectionTitle.setTitle(paletteCollection.title, for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         paletteCollectionTB.reloadData()
+        collectionTitle.setTitle(paletteCollection.title, for: .normal)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

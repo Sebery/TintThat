@@ -257,7 +257,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="jCU-qD-PAx">
                         <barButtonItem key="leftBarButtonItem" id="u2D-WG-0My">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K7I-gZ-vd3">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K7I-gZ-vd3">
                                 <rect key="frame" x="20" y="5.5" width="109" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -443,11 +443,11 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhF-WY-WgQ">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                    <state key="normal" title="Save">
+                                                    <state key="normal" title="Save As">
                                                         <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="saveCollectionAction" destination="dPr-qm-aWf" eventType="touchUpInside" id="JVy-ii-lTz"/>
+                                                        <action selector="saveAsCollectionAction" destination="dPr-qm-aWf" eventType="touchUpInside" id="JVy-ii-lTz"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -469,9 +469,12 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-bL-a4j">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                    <state key="normal" title="Save As">
+                                                    <state key="normal" title="Save Changes">
                                                         <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="saveCollectionChangesAction" destination="dPr-qm-aWf" eventType="touchUpInside" id="162-oh-NmO"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -491,6 +494,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Collection Options" id="H1Z-Qh-NPe"/>
+                    <connections>
+                        <outlet property="saveAsBtn" destination="LhF-WY-WgQ" id="fO7-CY-sTJ"/>
+                        <outlet property="saveChangesBtn" destination="MJv-bL-a4j" id="Kbh-a1-CnZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xU-h9-NCG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
