@@ -43,7 +43,7 @@ class PaletteCollectionOptionsViewController: UITableViewController {
         })
     }
     
-    private func saveCollection(collectionTitle: String) {
+    private func saveCollection(collectionTitle: String, successTitle: String, failTitle: String) {
         var copy = paletteCollectionEditorVC?.paletteCollection
         copy?.title = collectionTitle
         
@@ -78,7 +78,7 @@ class PaletteCollectionOptionsViewController: UITableViewController {
                 collectionTitle = text
             }
             
-            self?.saveCollection(collectionTitle: collectionTitle)
+            self?.saveCollection(collectionTitle: collectionTitle, successTitle: "Saved", failTitle: "Not saved, try again!")
         })
         
         titleAlert.addAction(cancelAction)
@@ -89,7 +89,42 @@ class PaletteCollectionOptionsViewController: UITableViewController {
     
     @IBAction func saveCollectionChangesAction() {
         if paletteCollectionEditorVC?.state == .editingCollection, let paletteCollectionEditorVC = paletteCollectionEditorVC {
-            saveCollection(collectionTitle: paletteCollectionEditorVC.paletteCollection.title)
+            saveCollection(collectionTitle: paletteCollectionEditorVC.paletteCollection.title, successTitle: "Saved", failTitle: "Not saved, try again!")
+        }
+    }
+    
+    @IBAction func createNewCollectionAction() {
+        var message = ""
+        
+        if paletteCollectionEditorVC?.state == .editingCollection {
+            message = "You will loose unsaved changes"
+        } else if paletteCollectionEditorVC?.state == .creatingCollection {
+            message = "You will loose hte unsaved collection"
+        }
+        
+        let alert = UIAlertController(title: "Insert the title of your new collection", message: message, preferredStyle: .alert)
+        
+        alert.addTextField(configurationHandler: nil)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let createAction = UIAlertAction(title: "Create", style: .default, handler: { [weak self] _ in
+            if let controller = self, let text = alert.textFields?.first?.text {
+                controller.paletteCollectionEditorVC?.paletteCollection = PaletteCollection(title: text, palettes: [.init(section: 0, withColors: [.init(color: .red), .init(color: .cyan), .init(color: .brown)], withTitle: "My Palette")])
+                controller.paletteCollectionEditorVC?.state = .editingCollection
+                controller.saveCollection(collectionTitle: text, successTitle: "Created", failTitle: "Not created, try again!")
+            }
+        })
+        
+        alert.addAction(cancelAction)
+        alert.addAction(createAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func addPaletteToCollectionAction() {
+        if let paletteCollectionEditorVC = paletteCollectionEditorVC {
+            paletteCollectionEditorVC.addPaletteToCollection(palette: Palette(section: paletteCollectionEditorVC.paletteCollection.palettes.count, withColors: [.init(color: .black), .init(color: .cyan)], withTitle: "Added"))
+            showStateAlert(withTitle: "Added")
         }
     }
 

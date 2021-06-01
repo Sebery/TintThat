@@ -130,6 +130,10 @@ class PaletteCollectionEditorViewController: UIViewController, UITableViewDelega
         paletteCollectionTB.moveRow(at: IndexPath(row: row, section: section), to: IndexPath(row: row + move.rawValue, section: section))
     }
     
+    func addPaletteToCollection(palette: Palette) {
+        paletteCollection.palettes.append(palette)
+    }
+    
     // MARK: - Outlets
     @IBOutlet weak var paletteCollectionTB: UITableView!
     @IBOutlet weak var collectionTitle: UIButton!
