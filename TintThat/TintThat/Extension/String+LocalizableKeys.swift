@@ -10,8 +10,14 @@ import Foundation
 extension String {
     
     // Main tab bar items
-    var editor: String { NSLocalizedString("editor", comment: "") }
-    var myPalettes: String { NSLocalizedString("myPalettes", comment: "") }
-    var settings: String { NSLocalizedString("settings", comment: "") }
+    static var editor: String { NSLocalizedString("editor", comment: "") }
+    static var myPalettes: String { NSLocalizedString("myPalettes", comment: "") }
+    static var settings: String { NSLocalizedString("settings", comment: "") }
+    
+    /* Palette model */
+    static var myPalette: String { NSLocalizedString("myPalette", comment: "") }
+    
+    /* PCEditorVC */
+    static var empty: String { NSLocalizedString("empty", comment: "") }
     
 }

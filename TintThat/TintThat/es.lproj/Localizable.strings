@@ -2,3 +2,9 @@
 editor = "Editor";
 myPalettes = "Mis paletas";
 settings = "Ajustes";
+
+/* Palette model */
+myPalette = "Mi Paleta";
+
+/* PCEditorVC */
+empty = "Vacío";

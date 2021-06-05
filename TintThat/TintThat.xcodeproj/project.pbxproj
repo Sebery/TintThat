@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01742ED7266BB8E30098D973 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01742ED6266BB8E30098D973 /* Color.swift */; };
+		01742ED9266BB93A0098D973 /* UIColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01742ED8266BB93A0098D973 /* UIColor+RGBA.swift */; };
+		01742EDB266BBBAF0098D973 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01742EDA266BBBAF0098D973 /* Palette.swift */; };
+		01742EDD266BBCBA0098D973 /* PaletteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01742EDC266BBCBA0098D973 /* PaletteCollection.swift */; };
+		01742EDF266BC43A0098D973 /* UIFont+FontSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01742EDE266BC43A0098D973 /* UIFont+FontSizes.swift */; };
+		01742EE1266BC83E0098D973 /* UIColor+ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01742EE0266BC83E0098D973 /* UIColor+ColorPalette.swift */; };
+		01742EE3266BCED00098D973 /* UIImage+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01742EE2266BCED00098D973 /* UIImage+Assets.swift */; };
 		01BC43D3266B0E5200D52C01 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01BC43D5266B0E5200D52C01 /* Localizable.strings */; };
 		01BC43D9266B135400D52C01 /* String+LocalizableKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC43D8266B135400D52C01 /* String+LocalizableKeys.swift */; };
 		01D0B108266AA6BA00597C55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D0B107266AA6BA00597C55 /* AppDelegate.swift */; };
@@ -18,6 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01742ED6266BB8E30098D973 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		01742ED8266BB93A0098D973 /* UIColor+RGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBA.swift"; sourceTree = "<group>"; };
+		01742EDA266BBBAF0098D973 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		01742EDC266BBCBA0098D973 /* PaletteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteCollection.swift; sourceTree = "<group>"; };
+		01742EDE266BC43A0098D973 /* UIFont+FontSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+FontSizes.swift"; sourceTree = "<group>"; };
+		01742EE0266BC83E0098D973 /* UIColor+ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorPalette.swift"; sourceTree = "<group>"; };
+		01742EE2266BCED00098D973 /* UIImage+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Assets.swift"; sourceTree = "<group>"; };
 		01BC43D4266B0E5200D52C01 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		01BC43D6266B0E5400D52C01 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		01BC43D8266B135400D52C01 /* String+LocalizableKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LocalizableKeys.swift"; sourceTree = "<group>"; };
@@ -42,10 +56,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01742ED5266BB8D90098D973 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01742ED6266BB8E30098D973 /* Color.swift */,
+				01742EDA266BBBAF0098D973 /* Palette.swift */,
+				01742EDC266BBCBA0098D973 /* PaletteCollection.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		01BC43D7266B133A00D52C01 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				01BC43D8266B135400D52C01 /* String+LocalizableKeys.swift */,
+				01742ED8266BB93A0098D973 /* UIColor+RGBA.swift */,
+				01742EDE266BC43A0098D973 /* UIFont+FontSizes.swift */,
+				01742EE0266BC83E0098D973 /* UIColor+ColorPalette.swift */,
+				01742EE2266BCED00098D973 /* UIImage+Assets.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -69,6 +97,7 @@
 		01D0B106266AA6BA00597C55 /* TintThat */ = {
 			isa = PBXGroup;
 			children = (
+				01742ED5266BB8D90098D973 /* Model */,
 				01BC43D7266B133A00D52C01 /* Extension */,
 				01D0B11B266AA8B500597C55 /* ViewModel */,
 				01D0B107266AA6BA00597C55 /* AppDelegate.swift */,
@@ -165,7 +194,14 @@
 				01D0B108266AA6BA00597C55 /* AppDelegate.swift in Sources */,
 				01D0B11D266AA8C800597C55 /* PCEditorVC.swift in Sources */,
 				01D0B10A266AA6BA00597C55 /* SceneDelegate.swift in Sources */,
+				01742EE1266BC83E0098D973 /* UIColor+ColorPalette.swift in Sources */,
+				01742EDF266BC43A0098D973 /* UIFont+FontSizes.swift in Sources */,
+				01742ED7266BB8E30098D973 /* Color.swift in Sources */,
+				01742EE3266BCED00098D973 /* UIImage+Assets.swift in Sources */,
 				01BC43D9266B135400D52C01 /* String+LocalizableKeys.swift in Sources */,
+				01742EDD266BBCBA0098D973 /* PaletteCollection.swift in Sources */,
+				01742ED9266BB93A0098D973 /* UIColor+RGBA.swift in Sources */,
+				01742EDB266BBBAF0098D973 /* Palette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
