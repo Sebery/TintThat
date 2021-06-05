@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "017A68C626572E7B001D5097"
+               BlueprintIdentifier = "01D0B103266AA6BA00597C55"
                BuildableName = "TintThat.app"
                BlueprintName = "TintThat"
                ReferencedContainer = "container:TintThat.xcodeproj">
@@ -44,7 +44,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "017A68C626572E7B001D5097"
+            BlueprintIdentifier = "01D0B103266AA6BA00597C55"
             BuildableName = "TintThat.app"
             BlueprintName = "TintThat"
             ReferencedContainer = "container:TintThat.xcodeproj">
@@ -61,7 +61,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "017A68C626572E7B001D5097"
+            BlueprintIdentifier = "01D0B103266AA6BA00597C55"
             BuildableName = "TintThat.app"
             BlueprintName = "TintThat"
             ReferencedContainer = "container:TintThat.xcodeproj">

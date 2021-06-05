@@ -1,0 +1,4 @@
+/* Main tab bar items */
+editor = "Editor";
+myPalettes = "My Palettes";
+settings = "Settings";
