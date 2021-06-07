@@ -13,4 +13,12 @@ extension UIFont {
         UIFont.systemFont(ofSize: 17.0, weight: .medium)
     }
     
+    static var customHeader: UIFont {
+        UIFont.systemFont(ofSize: 17.0, weight: .semibold)
+    }
+    
+    static var customRegular: UIFont {
+        UIFont.systemFont(ofSize: 17.0, weight: .regular)
+    }
+    
 }

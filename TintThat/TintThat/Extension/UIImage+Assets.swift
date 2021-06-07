@@ -25,4 +25,8 @@ extension UIImage {
         UIImage(named: "SettingsIcon")!
     }
     
+    static var optionsIcon: UIImage {
+        UIImage(named: "OptionsIcon")!
+    }
+    
 }

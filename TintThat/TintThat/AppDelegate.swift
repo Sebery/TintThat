@@ -11,7 +11,22 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Set default style for UITabBar
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().isTranslucent = false
+        UITabBar.appearance().barTintColor = .secondaryLight
+        UITabBar.appearance().tintColor = .primaryDark
+        UITabBar.appearance().unselectedItemTintColor = .secondaryDark
+        
+        // Set default style for UINavigationBar
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().barTintColor = .secondaryLight
+        UINavigationBar.appearance().tintColor = .secondaryDark
+        
         return true
     }
 

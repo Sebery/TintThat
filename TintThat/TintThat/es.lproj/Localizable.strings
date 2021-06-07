@@ -7,4 +7,10 @@ settings = "Ajustes";
 myPalette = "Mi Paleta";
 
 /* PCEditorVC */
-empty = "Vacío";
+noCollection = "Por favor, carga o crea una colección de paletas para empezar a editar!";
+
+/* PCOptionsVC */
+load = "Cargar";
+create = "Crear";
+addPalette = "Agregar Paleta";
+pcOptions = "Opciones de Colección de Paletas";

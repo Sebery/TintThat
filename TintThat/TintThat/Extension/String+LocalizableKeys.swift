@@ -18,6 +18,12 @@ extension String {
     static var myPalette: String { NSLocalizedString("myPalette", comment: "") }
     
     /* PCEditorVC */
-    static var empty: String { NSLocalizedString("empty", comment: "") }
+    static var noCollection: String { NSLocalizedString("noCollection", comment: "") }
+    
+    /* PCOptionsVC */
+    static var load: String { NSLocalizedString("load", comment: "") }
+    static var create: String { NSLocalizedString("create", comment: "") }
+    static var addPalette: String { NSLocalizedString("addPalette", comment: "") }
+    static var pcOptions: String { NSLocalizedString("pcOptions", comment: "") }
     
 }

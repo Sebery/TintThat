@@ -25,4 +25,12 @@ extension UIColor {
         UIColor(named: "SecondaryLightColor")!
     }
     
+    static var fade: UIColor {
+        UIColor(named: "FadeColor")!
+    }
+    
+    static var abscence: UIColor {
+        UIColor(named: "AbscenceColor")!
+    }
+    
 }
