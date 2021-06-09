@@ -20,9 +20,7 @@ class EditorHeaderView: UITableViewHeaderFooterView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        initialSetup()
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - UITableViewHeaderFooterView
@@ -49,8 +47,8 @@ private extension EditorHeaderView {
         
         label.topAnchor.constraint(equalTo: topAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
-        label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 8).isActive = true
+        label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0).isActive = true
+        label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16.0).isActive = true
         
         titleLabel = label
     }

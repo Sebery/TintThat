@@ -26,5 +26,17 @@ extension UIImage {
     static var optionsIcon: UIImage {
         UIImage(named: "OptionsIcon")!
     }
+    
+    static var editIcon: UIImage {
+        UIImage(named: "EditIcon")!
+    }
+    
+    static var addIcon: UIImage {
+        UIImage(named: "AddIcon")!
+    }
+    
+    static var deleteIcon: UIImage {
+        UIImage(named: "DeleteIcon")!
+    }
 
 }

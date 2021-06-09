@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		018E62562670F97B00968DE3 /* EditorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E62552670F97B00968DE3 /* EditorHeaderView.swift */; };
 		018E62582670FD1800968DE3 /* UIView+CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E62572670FD1800968DE3 /* UIView+CustomRoundCorners.swift */; };
+		018E625A2671011000968DE3 /* EditorFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E62592671011000968DE3 /* EditorFooterView.swift */; };
+		018E625C267106F800968DE3 /* EditorFooterMainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E625B267106F800968DE3 /* EditorFooterMainContentView.swift */; };
 		01BE27D92670262300C42950 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE27D82670262300C42950 /* EditorViewController.swift */; };
 		01BE27DB26702EA900C42950 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE27DA26702EA900C42950 /* Color.swift */; };
 		01BE27DD26702EB500C42950 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE27DC26702EB500C42950 /* Palette.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		018E62552670F97B00968DE3 /* EditorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorHeaderView.swift; sourceTree = "<group>"; };
 		018E62572670FD1800968DE3 /* UIView+CustomRoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CustomRoundCorners.swift"; sourceTree = "<group>"; };
+		018E62592671011000968DE3 /* EditorFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorFooterView.swift; sourceTree = "<group>"; };
+		018E625B267106F800968DE3 /* EditorFooterMainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorFooterMainContentView.swift; sourceTree = "<group>"; };
 		01BE27D82670262300C42950 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		01BE27DA26702EA900C42950 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		01BE27DC26702EB500C42950 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				01DBA134266FFDC90057E483 /* LaunchScreen.storyboard */,
 				01DBA12F266FFDC80057E483 /* Main.storyboard */,
 				018E62552670F97B00968DE3 /* EditorHeaderView.swift */,
+				018E62592671011000968DE3 /* EditorFooterView.swift */,
+				018E625B267106F800968DE3 /* EditorFooterMainContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,6 +235,7 @@
 			files = (
 				018E62582670FD1800968DE3 /* UIView+CustomRoundCorners.swift in Sources */,
 				018E62562670F97B00968DE3 /* EditorHeaderView.swift in Sources */,
+				018E625A2671011000968DE3 /* EditorFooterView.swift in Sources */,
 				01DBA12E266FFDC80057E483 /* ViewController.swift in Sources */,
 				01BE27E2267030BC00C42950 /* UIColor+RGBA.swift in Sources */,
 				01DBA12A266FFDC80057E483 /* AppDelegate.swift in Sources */,
@@ -241,6 +248,7 @@
 				01BE27DF26702EC100C42950 /* Collection.swift in Sources */,
 				01BE27EE2670419700C42950 /* UIColor+ColorPalette.swift in Sources */,
 				01BE27EA267035FD00C42950 /* String+LocalizableKeys.swift in Sources */,
+				018E625C267106F800968DE3 /* EditorFooterMainContentView.swift in Sources */,
 				01BE27D92670262300C42950 /* EditorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
