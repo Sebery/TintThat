@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		018E62562670F97B00968DE3 /* EditorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E62552670F97B00968DE3 /* EditorHeaderView.swift */; };
+		018E62582670FD1800968DE3 /* UIView+CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E62572670FD1800968DE3 /* UIView+CustomRoundCorners.swift */; };
 		01BE27D92670262300C42950 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE27D82670262300C42950 /* EditorViewController.swift */; };
 		01BE27DB26702EA900C42950 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE27DA26702EA900C42950 /* Color.swift */; };
 		01BE27DD26702EB500C42950 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE27DC26702EB500C42950 /* Palette.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		018E62552670F97B00968DE3 /* EditorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorHeaderView.swift; sourceTree = "<group>"; };
+		018E62572670FD1800968DE3 /* UIView+CustomRoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CustomRoundCorners.swift"; sourceTree = "<group>"; };
 		01BE27D82670262300C42950 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		01BE27DA26702EA900C42950 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		01BE27DC26702EB500C42950 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			children = (
 				01DBA134266FFDC90057E483 /* LaunchScreen.storyboard */,
 				01DBA12F266FFDC80057E483 /* Main.storyboard */,
+				018E62552670F97B00968DE3 /* EditorHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 				01BE27ED2670419700C42950 /* UIColor+ColorPalette.swift */,
 				01BE27EF2670471300C42950 /* UIFont+Typography.swift */,
 				01BE27F12670499B00C42950 /* UIImage+Alpha.swift */,
+				018E62572670FD1800968DE3 /* UIView+CustomRoundCorners.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,6 +227,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				018E62582670FD1800968DE3 /* UIView+CustomRoundCorners.swift in Sources */,
+				018E62562670F97B00968DE3 /* EditorHeaderView.swift in Sources */,
 				01DBA12E266FFDC80057E483 /* ViewController.swift in Sources */,
 				01BE27E2267030BC00C42950 /* UIColor+RGBA.swift in Sources */,
 				01DBA12A266FFDC80057E483 /* AppDelegate.swift in Sources */,

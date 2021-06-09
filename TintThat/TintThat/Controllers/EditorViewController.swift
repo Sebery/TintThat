@@ -18,7 +18,9 @@ final class EditorViewController: UIViewController {
     
     private let colorCellID = "ColorCell"
     private let emptyCellID = "EmptyCell"
+    private let headerCellID = "HeaderCell"
     private let colorCellHeight: CGFloat = 44.0
+    private let headerCellHeight: CGFloat = 44.0
     
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -37,6 +39,8 @@ final class EditorViewController: UIViewController {
 private extension EditorViewController {
     
     func initialSetup() {
+        view.backgroundColor = .primaryLight
+        
         // Test (remove this)
         collection = Collection(title: "Test", palettes: [Palette(colors: [.init(color: .red), .init(color: .blue), .init(color: .orange)]), Palette(colors: [.init(color: .red), .init(color: .blue), .init(color: .orange)]), Palette(colors: [.init(color: .red), .init(color: .blue), .init(color: .orange)])])
         
@@ -58,9 +62,9 @@ private extension EditorViewController {
         // Setup optionsBtn
         setupOptionsBtn()
         
-        // Setup other views
-        view.backgroundColor = .primaryLight
+        // Setup collection table view
         collectionTB.backgroundColor = .primaryLight
+        collectionTB.register(EditorHeaderView.self, forHeaderFooterViewReuseIdentifier: headerCellID)
     }
     
     func setupOptionsBtn() {
@@ -104,6 +108,26 @@ extension EditorViewController: UITableViewDelegate {
         }
         
         return colorCellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if collection.isEmpty {
+            return 0
+        }
+        
+        return headerCellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if collection.isEmpty {
+            return nil
+        }
+        
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerCellID) as? EditorHeaderView
+        
+        header?.titleLabel.text = collection.titleOfPalette(in: section)
+        
+        return header
     }
     
 }

@@ -1,0 +1,58 @@
+//
+//  EditorHeaderView.swift
+//  TintThat
+//
+//  Created by Sebastian Cruz on 09/06/21.
+//
+
+import UIKit
+
+class EditorHeaderView: UITableViewHeaderFooterView {
+    
+    // MARK: - Properties
+    weak var titleLabel: UILabel!
+
+    // MARK: - Constructors
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        
+        initialSetup()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        initialSetup()
+    }
+    
+    // MARK: - UITableViewHeaderFooterView
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        customRoundCorners(withRadius: 8.0, forCorners: [.topLeft, .topRight])
+    }
+
+}
+
+// MARK: - Private
+private extension EditorHeaderView {
+    
+    func initialSetup() {
+        contentView.backgroundColor = .primaryAltLight
+        
+        // Setup title label
+        let label = UILabel()
+        label.textColor = .primaryAltDark
+        label.font = .customHeadline
+        label.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(label)
+        
+        label.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
+        label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 8).isActive = true
+        
+        titleLabel = label
+    }
+    
+}

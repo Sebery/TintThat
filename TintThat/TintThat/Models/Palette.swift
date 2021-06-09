@@ -10,21 +10,25 @@ import UIKit
 struct Palette: Codable {
     
     // MARK: - Properties
-    private var title: String
+    private var titleProp: String
     private var colors: [Color]
     
     var count: Int {
         colors.count
     }
     
+    var title: String {
+        titleProp
+    }
+    
     // MARK: - Constructors
     init(colors: [Color]) {
         self.colors = colors
-        self.title = .myPalette
+        self.titleProp = .myPalette
     }
     
     init(title: String, colors: [Color]) {
-        self.title = title
+        self.titleProp = title
         self.colors = colors
     }
     

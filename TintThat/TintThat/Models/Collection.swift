@@ -45,6 +45,10 @@ extension Collection {
         return palettes[section].colorIn(row: row)
     }
     
+    func titleOfPalette(in section: Int) -> String {
+        return palettes[section].title
+    }
+    
 }
 
 
