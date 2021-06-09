@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  TintThat
+
+  Created by Sebastian Cruz on 08/06/21.
+  
+*/
+
+/* Palette model */
+myPalette = "My Palette";
+
+/* Main tab bar */
+editor = "Editor";
+myPalettes = "My Palettes";
+settings = "Settings";
+
+/* Editor view controller */
+empty = "Please, create or load a collection to start editing!";
