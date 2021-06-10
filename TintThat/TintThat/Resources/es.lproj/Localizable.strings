@@ -16,3 +16,9 @@ settings = "Ajustes";
 
 /* Editor view controller */
 empty = "Por favor, crea ocarga una colección para empezar a editar!";
+
+/* Options view controller */
+options = "Opciones de colección";
+load = "Cargar";
+create = "Crear";
+addPalette = "Agregar paleta";

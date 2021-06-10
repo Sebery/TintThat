@@ -16,10 +16,13 @@ final class EditorViewController: UIViewController {
         }
     }
     
+    private lazy var transitionManager = TransitionManager()
+    
     private let colorCellID = "ColorCell"
     private let emptyCellID = "EmptyCell"
     private let headerCellID = "HeaderCell"
     private let footerCellID = "FooterCell"
+    private let optionsVCID = "OptionsVC"
     private let colorCellHeight: CGFloat = 44.0
     private let headerCellHeight: CGFloat = 52.0
     private let footerViewHeight: CGFloat = 52.0
@@ -35,7 +38,7 @@ final class EditorViewController: UIViewController {
         
         initialSetup()
     }
-
+    
 }
 
 // MARK: - Private
@@ -63,10 +66,6 @@ private extension EditorViewController {
         titleLabel.backgroundColor = .secondaryLight
         
         // Setup optionsBtn
-        //let optionsBtn = navigationItem.rightBarButtonItem?.customView?.subviews[0] as! UIButton
-        //optionsBtn.setImage(optionsBtn.image(for: .normal)?.alpha(0.5), for: .highlighted)
-        //optionsBtn.tintColor = .primaryAltDark
-        //optionsBtn.setImage(.optionsIcon.alpha(0.5), for: .highlighted)
         setupOptionsBtn()
         
         // Setup collection table view
@@ -77,16 +76,27 @@ private extension EditorViewController {
     }
     
     func setupOptionsBtn() {
-        let optionsBtn = UIButton(type: .custom)
+        let optionsBtn = UIButton()
         optionsBtn.frame = CGRect(x: 0.0, y: 0.0, width: 28, height: 28)
         optionsBtn.setImage(.optionsIcon, for: .normal)
         optionsBtn.setImage(.optionsIcon.alpha(0.5), for: .highlighted)
-        
+        optionsBtn.addTarget(self, action: #selector(showOptions), for: .touchUpInside)
+
         let rightBarItem = UIBarButtonItem(customView: optionsBtn)
         rightBarItem.customView?.widthAnchor.constraint(equalToConstant: 28).isActive = true
         rightBarItem.customView?.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
         navigationItem.rightBarButtonItem = rightBarItem
+    }
+    
+    // MARK: - Selectors
+    @objc func showOptions() {
+        if let optionsVC = storyboard?.instantiateViewController(withIdentifier: optionsVCID) {
+            optionsVC.modalPresentationStyle = .custom
+            transitionManager.presentationType = .sheet(height: 208.0)
+            optionsVC.transitioningDelegate = transitionManager
+            present(optionsVC, animated: true, completion: nil)
+        }
     }
     
 }
@@ -151,7 +161,7 @@ extension EditorViewController: UITableViewDelegate {
         
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerCellID) as? EditorHeaderView
         
-        header?.titleLabel.text = collection.titleOfPalette(in: section)
+        header?.title = collection.titleOfPalette(in: section)
         
         return header
     }
@@ -191,3 +201,4 @@ extension EditorViewController: UITableViewDataSource {
     }
       
 }
+

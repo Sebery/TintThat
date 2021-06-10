@@ -17,4 +17,8 @@ extension UIFont {
         UIFont.systemFont(ofSize: 17.0, weight: .semibold)
     }
     
+    static var customBody: UIFont {
+        UIFont.systemFont(ofSize: 17.0, weight: .regular)
+    }
+    
 }

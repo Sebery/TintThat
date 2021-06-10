@@ -10,7 +10,12 @@ import UIKit
 class EditorHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
-    weak var titleLabel: UILabel!
+    private weak var titleLabel: UILabel!
+    
+    var title: String {
+        get { titleLabel.text ?? "" }
+        set { titleLabel.text = newValue }
+    }
 
     // MARK: - Constructors
     override init(reuseIdentifier: String?) {

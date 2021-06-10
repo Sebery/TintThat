@@ -19,5 +19,11 @@ extension String {
 
     /* Editor view controller */
     static var empty: String { NSLocalizedString("empty", comment: "") }
+    
+    /* Options view controller */
+    static var options: String { NSLocalizedString("options", comment: "") }
+    static var load: String { NSLocalizedString("load", comment: "") }
+    static var create: String { NSLocalizedString("create", comment: "") }
+    static var addPalette: String { NSLocalizedString("addPalette", comment: "") }
 
 }
