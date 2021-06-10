@@ -19,11 +19,14 @@ final class TransitionManager: NSObject {
     
     enum PresentationType {
         case sheet(height: CGFloat)
+        case alert
         
         var value: CGFloat {
             switch self {
             case .sheet(let height):
                 return height + UIApplication.shared.windows[0].safeAreaInsets.bottom
+            case .alert:
+                return 0.0
             }
         }
     }

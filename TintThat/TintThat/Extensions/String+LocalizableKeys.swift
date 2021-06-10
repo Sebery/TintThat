@@ -25,5 +25,9 @@ extension String {
     static var load: String { NSLocalizedString("load", comment: "") }
     static var create: String { NSLocalizedString("create", comment: "") }
     static var addPalette: String { NSLocalizedString("addPalette", comment: "") }
-
+    
+    /* Create view controller */
+    static var nameCollection: String { NSLocalizedString("nameCollection", comment: "") }
+    static var maxChar: String { NSLocalizedString("maxChar", comment: "") }
+    
 }

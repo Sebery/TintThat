@@ -7,7 +7,18 @@
 
 import UIKit
 
+protocol OptionsViewControllerDelegate: AnyObject {
+    
+    func showCreateCollection()
+    func showLoadCollection()
+    func addPaletteToCollection()
+    
+}
+
 final class OptionsViewController: UIViewController {
+    
+    // MARK: - Properties
+    weak var delegate: OptionsViewControllerDelegate?
 
     // MARK: - UIViewController
     override func viewDidLoad() {
@@ -19,17 +30,23 @@ final class OptionsViewController: UIViewController {
     // MARK: - Actions
     @IBAction func load(sender: UIButton) {
         sender.backgroundColor = .secondaryDark
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            self.delegate?.showLoadCollection()
+        })
     }
     
     @IBAction func create(sender: UIButton) {
         sender.backgroundColor = .secondaryDark
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            self.delegate?.showCreateCollection()
+        })
     }
     
     @IBAction func addPalette(sender: UIButton) {
         sender.backgroundColor = .secondaryDark
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            self.delegate?.addPaletteToCollection()
+        })
     }
     
     @IBAction func buttonSelected(sender: UIButton) {

@@ -65,15 +65,26 @@ final class PresentationController: UIPresentationController {
     }
     
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
+        switch presentationType {
+        case .alert:
+            return CGSize(width: parentSize.width, height: parentSize.height)
+        case .sheet(_):
+            return CGSize(width: parentSize.width, height: presentationType.value)
+        }
         
-        return CGSize(width: parentSize.width, height: presentationType.value)
     }
     
     override var frameOfPresentedViewInContainerView: CGRect {
         var frame: CGRect = .zero
         frame.size = size(forChildContentContainer: presentedViewController,
                             withParentContainerSize: containerView!.bounds.size)
-        frame.origin.y = containerView!.frame.height - presentationType.value
+        
+        switch presentationType {
+        case .alert:
+            frame.origin.y = .zero
+        case .sheet(_):
+            frame.origin.y = containerView!.frame.height - presentationType.value
+        }
         
         return frame
     }
@@ -88,9 +99,12 @@ private extension PresentationController {
         let fadeView = UIView()
         fadeView.backgroundColor = .absence
         fadeView.translatesAutoresizingMaskIntoConstraints = false
-        let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissController))
-        fadeView.addGestureRecognizer(dismissTap)
         self.fadeView = fadeView
+        
+        if case .sheet(_) = presentationType {
+            let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissController))
+            fadeView.addGestureRecognizer(dismissTap)
+        }
     }
     
     // MARK: - Selectors

@@ -23,3 +23,7 @@ load = "Load";
 create = "Create";
 addPalette = "Add palette";
 
+/* Create view controller */
+nameCollection = "Name the collection";
+maxChar = "14 characters maximum";
+

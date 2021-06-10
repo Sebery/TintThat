@@ -15,10 +15,14 @@ myPalettes = "Mis Paletas";
 settings = "Ajustes";
 
 /* Editor view controller */
-empty = "Por favor, crea ocarga una colección para empezar a editar!";
+empty = "¡Por favor, crea o carga una colección para empezar a editar!";
 
 /* Options view controller */
 options = "Opciones de colección";
 load = "Cargar";
 create = "Crear";
 addPalette = "Agregar paleta";
+
+/* Create view controller */
+nameCollection = "Nombra la colección";
+maxChar = "14 caracteres máximo";

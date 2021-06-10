@@ -23,6 +23,7 @@ final class EditorViewController: UIViewController {
     private let headerCellID = "HeaderCell"
     private let footerCellID = "FooterCell"
     private let optionsVCID = "OptionsVC"
+    private let createVCID = "CreateVC"
     private let colorCellHeight: CGFloat = 44.0
     private let headerCellHeight: CGFloat = 52.0
     private let footerViewHeight: CGFloat = 52.0
@@ -91,12 +92,35 @@ private extension EditorViewController {
     
     // MARK: - Selectors
     @objc func showOptions() {
-        if let optionsVC = storyboard?.instantiateViewController(withIdentifier: optionsVCID) {
+        if let optionsVC = storyboard?.instantiateViewController(withIdentifier: optionsVCID) as? OptionsViewController {
             optionsVC.modalPresentationStyle = .custom
             transitionManager.presentationType = .sheet(height: 208.0)
             optionsVC.transitioningDelegate = transitionManager
+            optionsVC.delegate = self
             present(optionsVC, animated: true, completion: nil)
         }
+    }
+    
+}
+
+// MARK: - OptionsViewControllerDelegate
+extension EditorViewController: OptionsViewControllerDelegate {
+    
+    func showCreateCollection() {
+        if let createVC = storyboard?.instantiateViewController(withIdentifier: createVCID) as? CreateViewController {
+            createVC.modalPresentationStyle = .custom
+            transitionManager.presentationType = .alert
+            createVC.transitioningDelegate = transitionManager
+            present(createVC, animated: true, completion: nil)
+        }
+    }
+    
+    func showLoadCollection() {
+        print("showLoadCollection")
+    }
+    
+    func addPaletteToCollection() {
+        print("addPaletteToCollection")
     }
     
 }
