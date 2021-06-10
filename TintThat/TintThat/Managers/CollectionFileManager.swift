@@ -34,15 +34,30 @@ struct CollectionFileManager {
     }
     
     static func saveCollection(collection: Collection) {
-        if let data = CollectionFileManager.encode(collection: collection) {
+        if let data = encode(collection: collection) {
             do {
-                try data.write(to: CollectionFileManager.getCollectionDirectory(collecionID: collection.id.uuidString), options: .atomic)
+                try data.write(to: getCollectionDirectory(collecionID: collection.id.uuidString), options: .atomic)
             } catch {
                 // TODO: Handle if the user can´t save (Not needed for now)
             }
         }
     }
     
-    
+    static func getDecodedCollections() -> [Collection] {
+        var collections = [Collection]()
+        
+        let urls = try? FileManager.default.contentsOfDirectory(at: getDocumentsDirectory(), includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+        
+        if let urls = urls {
+            for url in urls {
+                let data = try? Data(contentsOf: url)
+                if let data = data, let collection = decode(collectionData: data) {
+                    collections.append(collection)
+                }
+            }
+        }
+        
+        return collections
+    }
     
 }

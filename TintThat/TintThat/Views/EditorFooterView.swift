@@ -26,6 +26,8 @@ class EditorFooterView: UITableViewHeaderFooterView {
 private extension EditorFooterView {
     
     func initialSetup() {
+        contentView.backgroundColor = .primaryLight
+        
         // Setup main content view
         let mainContentView = EditorFooterMainContentView(frame: .zero)
         mainContentView.backgroundColor = .primaryAltLight

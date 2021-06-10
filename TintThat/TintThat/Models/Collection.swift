@@ -38,7 +38,7 @@ struct Collection: Codable {
     
 }
 
-// MARK: - Private
+// MARK: - Public
 extension Collection {
     
     func numberOfColors(in section: Int) -> Int {
@@ -51,6 +51,10 @@ extension Collection {
     
     func titleOfPalette(in section: Int) -> String {
         return palettes[section].title
+    }
+    
+    mutating func addPalette(palette: Palette) {
+        palettes.append(palette)
     }
     
 }

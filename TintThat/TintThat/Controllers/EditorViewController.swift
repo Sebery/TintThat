@@ -16,6 +16,8 @@ final class EditorViewController: UIViewController {
         didSet {
             state = .loadedOrCreated
             titleLabel.text = collection.title
+            CollectionFileManager.saveCollection(collection: collection)
+            collectionTB.reloadData()
         }
     }
     
@@ -27,6 +29,7 @@ final class EditorViewController: UIViewController {
     private let footerCellID = "FooterCell"
     private let optionsVCID = "OptionsVC"
     private let createVCID = "CreateVC"
+    private let loadVCID = "LoadVC"
     private let colorCellHeight: CGFloat = 44.0
     private let headerCellHeight: CGFloat = 52.0
     private let footerViewHeight: CGFloat = 52.0
@@ -77,7 +80,7 @@ private extension EditorViewController {
         setupOptionsBtn()
         
         // Setup collection table view
-        collectionTB.contentInset = UIEdgeInsets(top: 16,left: 0,bottom: 0,right: 0)
+        collectionTB.contentInset = UIEdgeInsets(top: 16.0, left: 0.0, bottom: 0.0, right: 0.0)
         collectionTB.backgroundColor = .primaryLight
         collectionTB.register(EditorHeaderView.self, forHeaderFooterViewReuseIdentifier: headerCellID)
         collectionTB.register(EditorFooterView.self, forHeaderFooterViewReuseIdentifier: footerCellID)
@@ -104,6 +107,7 @@ private extension EditorViewController {
             transitionManager.presentationType = .sheet(height: 208.0)
             optionsVC.transitioningDelegate = transitionManager
             optionsVC.delegate = self
+            optionsVC.editorState = state
             present(optionsVC, animated: true, completion: nil)
         }
     }
@@ -124,11 +128,26 @@ extension EditorViewController: OptionsViewControllerDelegate {
     }
     
     func showLoadCollection() {
-        print("showLoadCollection")
+        if let loadVC = storyboard?.instantiateViewController(withIdentifier: loadVCID) as? LoadViewController {
+            loadVC.delegate = self
+            navigationController?.pushViewController(loadVC, animated: true)
+        }
     }
     
     func addPaletteToCollection() {
-        print("addPaletteToCollection")
+        if state == .loadedOrCreated {
+            collection.addPalette(palette: Palette(colors: [.init(color: .secondaryAltLight), .init(color: .secondaryAltDark), .init(color: .secondaryAltLight)]))
+        }
+        
+    }
+    
+}
+
+// MARK: - LoadViewControllerDelegate
+extension EditorViewController: LoadViewControllerDelegate {
+    
+    func loadCollection(collection: Collection) {
+        self.collection = collection
     }
     
 }
@@ -139,7 +158,6 @@ extension EditorViewController: CreateViewControllerDelegate {
     func createCollection(withName name: String) {
         collection = Collection(title: name, palettes: [])
         CollectionFileManager.saveCollection(collection: collection)
-        collectionTB.reloadData()
     }
     
 }

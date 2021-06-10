@@ -19,6 +19,9 @@ final class OptionsViewController: UIViewController {
     
     // MARK: - Properties
     weak var delegate: OptionsViewControllerDelegate?
+    var editorState: EditorViewController.EditorState = .notLoadedOrCreated
+    
+    private let addPaletteBtnTag = 1000
 
     // MARK: - UIViewController
     override func viewDidLoad() {
@@ -43,6 +46,10 @@ final class OptionsViewController: UIViewController {
     }
     
     @IBAction func addPalette(sender: UIButton) {
+        if editorState == .notLoadedOrCreated {
+            return
+        }
+        
         sender.backgroundColor = .secondaryDark
         dismiss(animated: true, completion: {
             self.delegate?.addPaletteToCollection()
@@ -50,10 +57,16 @@ final class OptionsViewController: UIViewController {
     }
     
     @IBAction func buttonSelected(sender: UIButton) {
+        if sender.tag == addPaletteBtnTag, editorState == .notLoadedOrCreated {
+            return
+        }
         sender.backgroundColor = .secondaryAltLight
     }
     
     @IBAction func buttonUnselected(sender: UIButton) {
+        if sender.tag == addPaletteBtnTag, editorState == .notLoadedOrCreated {
+            return
+        }
         sender.backgroundColor = .secondaryDark
     }
 
@@ -89,6 +102,11 @@ private extension OptionsViewController {
             button.layer.cornerRadius = 8.0
             button.setTitleColor(.secondaryLight, for: .normal)
         }
+        
+        if editorState == .notLoadedOrCreated {
+            buttons[2].backgroundColor = .primaryDark
+        }
+        
     }
     
 }
