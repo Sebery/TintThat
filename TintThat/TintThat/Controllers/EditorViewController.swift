@@ -10,8 +10,11 @@ import UIKit
 final class EditorViewController: UIViewController {
 
     // MARK: - Properties
+    private var state: EditorState = .notLoadedOrCreated
+    
     private var collection = Collection(title: "", palettes: []) {
         didSet {
+            state = .loadedOrCreated
             titleLabel.text = collection.title
         }
     }
@@ -28,6 +31,11 @@ final class EditorViewController: UIViewController {
     private let headerCellHeight: CGFloat = 52.0
     private let footerViewHeight: CGFloat = 52.0
     private let sectionMarginHeight: CGFloat = 16.0
+    
+    enum EditorState {
+        case notLoadedOrCreated
+        case loadedOrCreated
+    }
     
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -48,8 +56,7 @@ private extension EditorViewController {
     func initialSetup() {
         view.backgroundColor = .primaryLight
         
-        // Test (remove this)
-        collection = Collection(title: "Collection", palettes: [Palette(colors: [.init(color: .secondaryAltDark), .init(color: .secondaryAltLight), .init(color: .primaryAltDark)]), Palette(colors: [.init(color: .secondaryAltDark), .init(color: .secondaryAltLight), .init(color: .primaryAltDark)]), Palette(colors: [.init(color: .secondaryAltDark), .init(color: .secondaryAltLight), .init(color: .primaryAltDark)])])
+        // TODO: Load the last collection in editor
         
         // Setup main tab bar
         if let items = tabBarController?.tabBar.items {
@@ -111,6 +118,7 @@ extension EditorViewController: OptionsViewControllerDelegate {
             createVC.modalPresentationStyle = .custom
             transitionManager.presentationType = .alert
             createVC.transitioningDelegate = transitionManager
+            createVC.delegate = self
             present(createVC, animated: true, completion: nil)
         }
     }
@@ -121,6 +129,16 @@ extension EditorViewController: OptionsViewControllerDelegate {
     
     func addPaletteToCollection() {
         print("addPaletteToCollection")
+    }
+    
+}
+
+// MARK: - CreateViewControllerDelegate
+extension EditorViewController: CreateViewControllerDelegate {
+    
+    func createCollection(withName name: String) {
+        collection = Collection(title: name, palettes: [])
+        collectionTB.reloadData()
     }
     
 }
@@ -208,7 +226,12 @@ extension EditorViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: emptyCellID, for: indexPath)
             cell.backgroundColor = .primaryLight
             let label = cell.contentView.subviews[0] as! UILabel
-            label.text = .empty
+            if state == .notLoadedOrCreated {
+                label.text = .notLoadedOrCreated
+            } else if state == .loadedOrCreated {
+                label.text = .loadedOrCreated
+            }
+            
             label.textColor = .primaryDark
             label.font = .customHeadline
             return cell

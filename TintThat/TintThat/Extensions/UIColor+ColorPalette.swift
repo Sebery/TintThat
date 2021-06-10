@@ -49,4 +49,12 @@ extension UIColor {
         UIColor(named: "FadeColor")!
     }
     
+    static var errorFade: UIColor {
+        UIColor(named: "ErrorFadeColor")!
+    }
+    
+    static var error: UIColor {
+        UIColor(named: "ErrorColor")!
+    }
+    
 }

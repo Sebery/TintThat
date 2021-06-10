@@ -15,7 +15,8 @@ myPalettes = "Mis Paletas";
 settings = "Ajustes";
 
 /* Editor view controller */
-empty = "¡Por favor, crea o carga una colección para empezar a editar!";
+loadedOrCreated = "¡Por favor, añade paletas de colores a la colección para empezar a editar!";
+notLoadedOrCreated = "¡Por favor, crea o carga una colección para empezar a editar!";
 
 /* Options view controller */
 options = "Opciones de colección";
@@ -25,4 +26,7 @@ addPalette = "Agregar paleta";
 
 /* Create view controller */
 nameCollection = "Nombra la colección";
-maxChar = "14 caracteres máximo";
+maxChar = " caracteres máximo";
+maxCharError = "Demasiado largo (";
+maxCharErrorCause = " caracteres máximo)";
+emptyCharError = "¡El nombre no puede estar vacío!";

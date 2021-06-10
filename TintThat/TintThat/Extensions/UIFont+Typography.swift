@@ -21,4 +21,8 @@ extension UIFont {
         UIFont.systemFont(ofSize: 17.0, weight: .regular)
     }
     
+    static var customCaption: UIFont {
+        UIFont.systemFont(ofSize: 13.0, weight: .regular)
+    }
+    
 }

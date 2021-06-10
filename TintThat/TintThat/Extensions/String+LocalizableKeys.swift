@@ -18,7 +18,8 @@ extension String {
     static var settings: String { NSLocalizedString("settings", comment: "") }
 
     /* Editor view controller */
-    static var empty: String { NSLocalizedString("empty", comment: "") }
+    static var loadedOrCreated: String { NSLocalizedString("loadedOrCreated", comment: "") }
+    static var notLoadedOrCreated: String { NSLocalizedString("notLoadedOrCreated", comment: "") };
     
     /* Options view controller */
     static var options: String { NSLocalizedString("options", comment: "") }
@@ -29,5 +30,8 @@ extension String {
     /* Create view controller */
     static var nameCollection: String { NSLocalizedString("nameCollection", comment: "") }
     static var maxChar: String { NSLocalizedString("maxChar", comment: "") }
+    static var maxCharError: String { NSLocalizedString("maxCharError", comment: "") }
+    static var maxCharErrorCause: String { NSLocalizedString("maxCharErrorCause", comment: "") }
+    static var emptyCharError: String { NSLocalizedString("emptyCharError", comment: "") }
     
 }
