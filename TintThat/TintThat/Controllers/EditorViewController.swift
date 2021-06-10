@@ -138,6 +138,7 @@ extension EditorViewController: CreateViewControllerDelegate {
     
     func createCollection(withName name: String) {
         collection = Collection(title: name, palettes: [])
+        CollectionFileManager.saveCollection(collection: collection)
         collectionTB.reloadData()
     }
     

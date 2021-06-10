@@ -11,7 +11,7 @@ struct Collection: Codable {
     
     // MARK: - Properties
     private var titleProp: String
-    private var id = UUID()
+    private var idProp = UUID()
     private var palettes: [Palette]
     
     var title: String {
@@ -24,6 +24,10 @@ struct Collection: Codable {
     
     var count: Int {
         palettes.count
+    }
+    
+    var id: UUID {
+        idProp
     }
     
     // MARK: - Constructors
