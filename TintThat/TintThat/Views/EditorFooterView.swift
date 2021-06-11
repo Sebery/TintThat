@@ -8,6 +8,10 @@
 import UIKit
 
 class EditorFooterView: UITableViewHeaderFooterView {
+    
+    // MARK: - Properties
+    weak var mainContentView: EditorFooterMainContentView!
+    var section = 0
 
     // MARK: - Constructors
     override init(reuseIdentifier: String?) {
@@ -38,6 +42,8 @@ private extension EditorFooterView {
         mainContentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0.0).isActive = true
         mainContentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0.0).isActive = true
         mainContentView.heightAnchor.constraint(equalToConstant: 52.0).isActive = true
+        
+        self.mainContentView = mainContentView
         
         // Setup margin view
         let marginView = UIView()

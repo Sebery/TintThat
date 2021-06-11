@@ -17,7 +17,6 @@ final class EditorViewController: UIViewController {
             state = .loadedOrCreated
             titleLabel.text = collection.title
             CollectionFileManager.saveCollection(collection: collection)
-            collectionTB.reloadData()
         }
     }
     
@@ -30,6 +29,7 @@ final class EditorViewController: UIViewController {
     private let optionsVCID = "OptionsVC"
     private let createVCID = "CreateVC"
     private let loadVCID = "LoadVC"
+    private let deletePaletteVCID = "DeletePaletteVC"
     private let colorCellHeight: CGFloat = 44.0
     private let headerCellHeight: CGFloat = 52.0
     private let footerViewHeight: CGFloat = 52.0
@@ -112,8 +112,49 @@ private extension EditorViewController {
         }
     }
     
+    @objc func showDeletePalette(sender: UIButton) {
+        if let deletePaletteVC = storyboard?.instantiateViewController(withIdentifier: deletePaletteVCID) as? DeletePaletteViewController {
+            deletePaletteVC.modalPresentationStyle = .custom
+            transitionManager.presentationType = .alert
+            deletePaletteVC.transitioningDelegate = transitionManager
+            deletePaletteVC.delegate = self
+            if let editorFooterView = sender.superview?.superview?.superview as? EditorFooterView {
+                deletePaletteVC.section = editorFooterView.section
+            }
+            present(deletePaletteVC, animated: true, completion: nil)
+        }
+    }
+    
 }
 
+// MARK: - DeletePaletteViewControllerDelegate
+extension EditorViewController: DeletePaletteViewControllerDelegate {
+    
+    func deletePalette(inSection section: Int) {
+
+        
+        collection.deletePalette(inSection: section)
+        collectionTB.beginUpdates()
+        collectionTB.deleteSections([section], with: .automatic)
+        collectionTB.endUpdates()
+        
+        //print(collection.count)
+        //collectionTB.reloadData()
+//        collectionTB.deleteSections([section], with: .automatic)
+//        collection.deletePalette(inSection: section)
+//        UIView.animate(withDuration: 0.2, animations: {
+//            self.collectionTB.deleteSections([section], with: .automatic)
+//        }, completion: { finished in
+//            if finished {
+//
+//                self.collection.deletePalette(inSection: section)
+//                self.collectionTB.reloadData()
+//            }
+//        })
+    }
+    
+}
+ 
 // MARK: - OptionsViewControllerDelegate
 extension EditorViewController: OptionsViewControllerDelegate {
     
@@ -137,6 +178,7 @@ extension EditorViewController: OptionsViewControllerDelegate {
     func addPaletteToCollection() {
         if state == .loadedOrCreated {
             collection.addPalette(palette: Palette(colors: [.init(color: .secondaryAltLight), .init(color: .secondaryAltDark), .init(color: .secondaryAltLight)]))
+            collectionTB.reloadData()
         }
         
     }
@@ -148,6 +190,7 @@ extension EditorViewController: LoadViewControllerDelegate {
     
     func loadCollection(collection: Collection) {
         self.collection = collection
+        collectionTB.reloadData()
     }
     
 }
@@ -157,7 +200,7 @@ extension EditorViewController: CreateViewControllerDelegate {
     
     func createCollection(withName name: String) {
         collection = Collection(title: name, palettes: [])
-        CollectionFileManager.saveCollection(collection: collection)
+        collectionTB.reloadData()
     }
     
 }
@@ -202,7 +245,10 @@ extension EditorViewController: UITableViewDelegate {
             return nil
         }
         
-        let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerCellID)
+        let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerCellID) as! EditorFooterView
+        footer.section = section
+        
+        footer.mainContentView.deletePaletteBtn.addTarget(self, action: #selector(showDeletePalette(sender:)), for: .touchUpInside)
         
         return footer
     }
@@ -231,7 +277,7 @@ extension EditorViewController: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 extension EditorViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if collection.isEmpty {
             return 1

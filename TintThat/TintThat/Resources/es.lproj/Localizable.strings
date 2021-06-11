@@ -30,3 +30,7 @@ maxChar = " caracteres máximo";
 maxCharError = "Demasiado largo (";
 maxCharErrorCause = " caracteres máximo)";
 emptyCharError = "¡El nombre no puede estar vacío!";
+
+/* Delete palette view controller */
+delete = "Eliminar";
+deleteMessage = "¿Estás seguro de que quieres eliminar esta paleta?";

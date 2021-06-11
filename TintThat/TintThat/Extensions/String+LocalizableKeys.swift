@@ -34,4 +34,8 @@ extension String {
     static var maxCharErrorCause: String { NSLocalizedString("maxCharErrorCause", comment: "") }
     static var emptyCharError: String { NSLocalizedString("emptyCharError", comment: "") }
     
+    /* Delete palette view controller */
+    static var delete: String { NSLocalizedString("delete", comment: "") }
+    static var deleteMessage: String { NSLocalizedString("deleteMessage", comment: "") }
+    
 }

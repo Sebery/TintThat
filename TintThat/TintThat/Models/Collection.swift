@@ -57,6 +57,10 @@ extension Collection {
         palettes.append(palette)
     }
     
+    mutating func deletePalette(inSection section: Int) {
+        palettes.remove(at: section)
+    }
+    
 }
 
 

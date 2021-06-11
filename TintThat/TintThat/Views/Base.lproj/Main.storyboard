@@ -475,7 +475,65 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIu-mP-jkZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4386.9565217391309" y="105.80357142857143"/>
+            <point key="canvasLocation" x="4259" y="106"/>
+        </scene>
+        <!--Delete Palette-->
+        <scene sceneID="qz7-2S-YjC">
+            <objects>
+                <viewController storyboardIdentifier="DeletePaletteVC" id="LD6-lJ-GLA" userLabel="Delete Palette" customClass="DeletePaletteViewController" customModule="TintThat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9jd-h4-g5Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxT-EV-gTX">
+                                <rect key="frame" x="51" y="292" width="312" height="312"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pig-S9-P0I">
+                                        <rect key="frame" x="16" y="8" width="280" height="244"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjr-eh-grv">
+                                        <rect key="frame" x="16" y="260" width="280" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="gXN-cR-q9W"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="deletePalette" destination="LD6-lJ-GLA" eventType="touchUpInside" id="QnK-51-UT7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bjr-eh-grv" secondAttribute="trailing" constant="16" id="2YQ-p7-TRr"/>
+                                    <constraint firstItem="bjr-eh-grv" firstAttribute="top" secondItem="Pig-S9-P0I" secondAttribute="bottom" constant="8" id="5Lp-5s-fWu"/>
+                                    <constraint firstAttribute="height" constant="312" id="Tc0-nG-357"/>
+                                    <constraint firstItem="bjr-eh-grv" firstAttribute="leading" secondItem="fxT-EV-gTX" secondAttribute="leading" constant="16" id="W2h-xU-TQd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pig-S9-P0I" secondAttribute="trailing" constant="16" id="WdB-K4-JHL"/>
+                                    <constraint firstItem="Pig-S9-P0I" firstAttribute="leading" secondItem="fxT-EV-gTX" secondAttribute="leading" constant="16" id="dLp-o8-xTj"/>
+                                    <constraint firstAttribute="width" constant="312" id="kMd-Vi-FFh"/>
+                                    <constraint firstAttribute="bottom" secondItem="bjr-eh-grv" secondAttribute="bottom" constant="8" id="of4-jQ-Isg"/>
+                                    <constraint firstItem="Pig-S9-P0I" firstAttribute="top" secondItem="fxT-EV-gTX" secondAttribute="top" constant="8" id="pXe-Qx-h4R"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="X5O-Oy-cVN"/>
+                        <color key="backgroundColor" name="AbsenceColor"/>
+                        <constraints>
+                            <constraint firstItem="fxT-EV-gTX" firstAttribute="centerY" secondItem="9jd-h4-g5Z" secondAttribute="centerY" id="gF6-o8-DnS"/>
+                            <constraint firstItem="fxT-EV-gTX" firstAttribute="centerX" secondItem="9jd-h4-g5Z" secondAttribute="centerX" id="hdQ-eH-XOa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="deleteBtn" destination="bjr-eh-grv" id="l4Z-qR-oQa"/>
+                        <outlet property="deleteLabel" destination="Pig-S9-P0I" id="7kv-wT-LZZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IJj-Uz-SSq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5087" y="106"/>
         </scene>
     </scenes>
     <resources>

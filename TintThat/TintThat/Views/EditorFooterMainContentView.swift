@@ -11,6 +11,7 @@ class EditorFooterMainContentView: UIView {
     
     // MARK: - Properties
     private let topBottomMargins: CGFloat = 12.0
+    weak var deletePaletteBtn: UIButton!
     
     // MARK: - Constructors
     override init(frame: CGRect) {
@@ -63,17 +64,19 @@ private extension EditorFooterMainContentView {
         addColorBtn.widthAnchor.constraint(equalToConstant: 28.0).isActive = true
         
         // Configure deleteSectionBtn
-        let deleteSectionBtn = UIButton(type: .custom)
-        deleteSectionBtn.setImage(.deleteIcon, for: .normal)
-        deleteSectionBtn.setImage(.deleteIcon.alpha(0.5), for: .highlighted)
-        deleteSectionBtn.tintColor = .primaryAltDark
-        deleteSectionBtn.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(deleteSectionBtn)
+        let deletePaletteBtn = UIButton(type: .custom)
+        deletePaletteBtn.setImage(.deleteIcon, for: .normal)
+        deletePaletteBtn.setImage(.deleteIcon.alpha(0.5), for: .highlighted)
+        deletePaletteBtn.tintColor = .primaryAltDark
+        deletePaletteBtn.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(deletePaletteBtn)
         
-        deleteSectionBtn.topAnchor.constraint(equalTo: topAnchor, constant: topBottomMargins).isActive = true
-        deleteSectionBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -topBottomMargins).isActive = true
-        deleteSectionBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.0).isActive = true
-        deleteSectionBtn.widthAnchor.constraint(equalToConstant: 28.0).isActive = true
+        deletePaletteBtn.topAnchor.constraint(equalTo: topAnchor, constant: topBottomMargins).isActive = true
+        deletePaletteBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -topBottomMargins).isActive = true
+        deletePaletteBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.0).isActive = true
+        deletePaletteBtn.widthAnchor.constraint(equalToConstant: 28.0).isActive = true
+        
+        self.deletePaletteBtn = deletePaletteBtn
     }
     
 }
