@@ -11,6 +11,7 @@ final class EditorViewController: UIViewController {
 
     // MARK: - Properties
     private var state: EditorState = .notLoadedOrCreated
+    private var isCollectionTBEmpty = true // To manage empty cell in table view
     
     private var collection = Collection(title: "", palettes: []) {
         didSet {
@@ -59,7 +60,7 @@ private extension EditorViewController {
     func initialSetup() {
         view.backgroundColor = .primaryLight
         
-        // TODO: Load the last collection in editor
+        // TODO: Load the last collection in editor (set isCollectionTBEmpty)
         
         // Setup main tab bar
         if let items = tabBarController?.tabBar.items {
@@ -131,26 +132,17 @@ private extension EditorViewController {
 extension EditorViewController: DeletePaletteViewControllerDelegate {
     
     func deletePalette(inSection section: Int) {
-
-        
         collection.deletePalette(inSection: section)
-        collectionTB.beginUpdates()
-        collectionTB.deleteSections([section], with: .automatic)
-        collectionTB.endUpdates()
         
-        //print(collection.count)
-        //collectionTB.reloadData()
-//        collectionTB.deleteSections([section], with: .automatic)
-//        collection.deletePalette(inSection: section)
-//        UIView.animate(withDuration: 0.2, animations: {
-//            self.collectionTB.deleteSections([section], with: .automatic)
-//        }, completion: { finished in
-//            if finished {
-//
-//                self.collection.deletePalette(inSection: section)
-//                self.collectionTB.reloadData()
-//            }
-//        })
+        collectionTB.performBatchUpdates({
+            collectionTB.deleteSections([section], with: .automatic)
+        }, completion: { finished in
+            if finished, self.collection.isEmpty {
+                self.isCollectionTBEmpty = true
+                self.collectionTB.insertSections([0], with: .automatic)
+            }
+        })
+        
     }
     
 }
@@ -177,8 +169,22 @@ extension EditorViewController: OptionsViewControllerDelegate {
     
     func addPaletteToCollection() {
         if state == .loadedOrCreated {
-            collection.addPalette(palette: Palette(colors: [.init(color: .secondaryAltLight), .init(color: .secondaryAltDark), .init(color: .secondaryAltLight)]))
-            collectionTB.reloadData()
+            if collection.isEmpty {
+                collectionTB.performBatchUpdates({
+                    collectionTB.deleteSections([0], with: .automatic)
+                    self.isCollectionTBEmpty = false
+                }, completion: { finished in
+                    if finished {
+                        self.collection.addPalette(palette: Palette(colors: [.init(color: .secondaryAltLight), .init(color: .secondaryAltDark), .init(color: .secondaryAltLight)]))
+                        
+                        self.collectionTB.insertSections([0], with: .automatic)
+                    }
+                })
+            } else {
+                collection.addPalette(palette: Palette(colors: [.init(color: .secondaryAltLight), .init(color: .secondaryAltDark), .init(color: .secondaryAltLight)]))
+                collectionTB.insertSections([collection.count - 1], with: .automatic)
+            }
+            
         }
         
     }
@@ -209,7 +215,7 @@ extension EditorViewController: CreateViewControllerDelegate {
 extension EditorViewController: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if collection.isEmpty {
+        if isCollectionTBEmpty {
             return 1
         }
         
@@ -225,7 +231,7 @@ extension EditorViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if collection.isEmpty {
+        if isCollectionTBEmpty {
             return 0
         }
         
@@ -233,7 +239,7 @@ extension EditorViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if collection.isEmpty {
+        if isCollectionTBEmpty {
             return UITableView.automaticDimension
         }
         
@@ -241,7 +247,7 @@ extension EditorViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if collection.isEmpty {
+        if isCollectionTBEmpty {
             return nil
         }
         
@@ -254,7 +260,7 @@ extension EditorViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if collection.isEmpty {
+        if isCollectionTBEmpty {
             return 0
         }
         
@@ -262,7 +268,7 @@ extension EditorViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if collection.isEmpty {
+        if isCollectionTBEmpty {
             return nil
         }
         
@@ -279,7 +285,7 @@ extension EditorViewController: UITableViewDelegate {
 extension EditorViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if collection.isEmpty {
+        if isCollectionTBEmpty {
             return 1
         }
         
@@ -287,7 +293,7 @@ extension EditorViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if collection.isEmpty {
+        if isCollectionTBEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: emptyCellID, for: indexPath)
             cell.backgroundColor = .primaryLight
             let label = cell.contentView.subviews[0] as! UILabel

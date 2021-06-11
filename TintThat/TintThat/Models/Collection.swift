@@ -12,18 +12,18 @@ struct Collection: Codable {
     // MARK: - Properties
     private var titleProp: String
     private var idProp = UUID()
-    private var palettes: [Palette]
+    private var palettesProp: [Palette]
     
     var title: String {
         titleProp
     }
     
     var isEmpty: Bool {
-        palettes.isEmpty
+        palettesProp.isEmpty
     }
     
     var count: Int {
-        palettes.count
+        palettesProp.count
     }
     
     var id: UUID {
@@ -33,7 +33,14 @@ struct Collection: Codable {
     // MARK: - Constructors
     init(title: String, palettes: [Palette]) {
         self.titleProp = title
-        self.palettes = palettes
+        self.palettesProp = palettes
+    }
+    
+    // MARK: - Codable
+    private enum CodingKeys: String, CodingKey {
+        case titleProp = "title"
+        case idProp = "id"
+        case palettesProp = "palettes"
     }
     
 }
@@ -42,23 +49,23 @@ struct Collection: Codable {
 extension Collection {
     
     func numberOfColors(in section: Int) -> Int {
-        return palettes[section].count
+        return palettesProp[section].count
     }
     
     func colorOfPalette(in section: Int, forRow row: Int) -> Color {
-        return palettes[section].colorIn(row: row)
+        return palettesProp[section].colorIn(row: row)
     }
     
     func titleOfPalette(in section: Int) -> String {
-        return palettes[section].title
+        return palettesProp[section].title
     }
     
     mutating func addPalette(palette: Palette) {
-        palettes.append(palette)
+        palettesProp.append(palette)
     }
     
     mutating func deletePalette(inSection section: Int) {
-        palettes.remove(at: section)
+        palettesProp.remove(at: section)
     }
     
 }

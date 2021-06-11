@@ -38,4 +38,7 @@ extension String {
     static var delete: String { NSLocalizedString("delete", comment: "") }
     static var deleteMessage: String { NSLocalizedString("deleteMessage", comment: "") }
     
+    /* Load view controller */
+    static var emptyLoads: String { NSLocalizedString("emptyLoads", comment: "") }
+    
 }

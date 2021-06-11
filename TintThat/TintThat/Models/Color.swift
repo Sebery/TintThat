@@ -68,10 +68,7 @@ struct Color: Codable {
         self.init(red: color.r, green: color.g, blue: color.b, alpha: color.a)
     }
     
-    // MARK: - Codable
-    private enum CodingKeys: String, CodingKey {
-        case rgba
-    }
+
     
 }
 

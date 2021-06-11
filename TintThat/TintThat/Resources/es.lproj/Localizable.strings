@@ -34,3 +34,6 @@ emptyCharError = "¡El nombre no puede estar vacío!";
 /* Delete palette view controller */
 delete = "Eliminar";
 deleteMessage = "¿Estás seguro de que quieres eliminar esta paleta?";
+
+/* Load view controller */
+emptyLoads = "¡No hay colecciones para cargar, crea una!";

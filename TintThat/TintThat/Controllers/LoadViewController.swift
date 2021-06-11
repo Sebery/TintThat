@@ -72,6 +72,9 @@ extension LoadViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if collections.isEmpty {
+            return
+        }
         let contentView = tableView.cellForRow(at: indexPath)?.contentView.subviews[0]
         contentView?.backgroundColor = .primaryDark
         
@@ -104,8 +107,11 @@ extension LoadViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if collections.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: emptyCellID, for: indexPath)
+            cell.backgroundColor = .primaryLight
             let emptyLabel = cell.contentView.subviews[0] as! UILabel
-            emptyLabel.text = "Empty"
+            emptyLabel.text = .emptyLoads
+            emptyLabel.font = .customHeadline
+            emptyLabel.textColor = .primaryDark
 
             return cell
         }
