@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		010F943226719120006A5588 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F943126719120006A5588 /* CreateViewController.swift */; };
 		010FB8922672ADC20085F837 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010FB8912672ADC20085F837 /* LoadViewController.swift */; };
+		011C30EE267411FE00DE85AD /* ColorEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C30ED267411FE00DE85AD /* ColorEditorViewController.swift */; };
 		01416C3426727B1400F39398 /* CollectionFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01416C3326727B1400F39398 /* CollectionFileManager.swift */; };
 		01523A3E2672E263008D1398 /* DeletePaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01523A3D2672E263008D1398 /* DeletePaletteViewController.swift */; };
 		018E62562670F97B00968DE3 /* EditorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E62552670F97B00968DE3 /* EditorHeaderView.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		010F943126719120006A5588 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		010FB8912672ADC20085F837 /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
+		011C30ED267411FE00DE85AD /* ColorEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEditorViewController.swift; sourceTree = "<group>"; };
 		01416C3326727B1400F39398 /* CollectionFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFileManager.swift; sourceTree = "<group>"; };
 		01523A3D2672E263008D1398 /* DeletePaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePaletteViewController.swift; sourceTree = "<group>"; };
 		018E62552670F97B00968DE3 /* EditorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorHeaderView.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				010F943126719120006A5588 /* CreateViewController.swift */,
 				010FB8912672ADC20085F837 /* LoadViewController.swift */,
 				01523A3D2672E263008D1398 /* DeletePaletteViewController.swift */,
+				011C30ED267411FE00DE85AD /* ColorEditorViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				018E62582670FD1800968DE3 /* UIView+CustomRoundCorners.swift in Sources */,
 				010F943226719120006A5588 /* CreateViewController.swift in Sources */,
 				018E62562670F97B00968DE3 /* EditorHeaderView.swift in Sources */,
+				011C30EE267411FE00DE85AD /* ColorEditorViewController.swift in Sources */,
 				018E625A2671011000968DE3 /* EditorFooterView.swift in Sources */,
 				01416C3426727B1400F39398 /* CollectionFileManager.swift in Sources */,
 				018E625E26712B6C00968DE3 /* OptionsViewController.swift in Sources */,

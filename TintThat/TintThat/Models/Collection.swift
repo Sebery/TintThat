@@ -68,6 +68,17 @@ extension Collection {
         palettesProp.remove(at: section)
     }
     
+    mutating func setTitleOfPalette(inSection section: Int, withName name: String) {
+        palettesProp[section].title = name
+    }
+    
+    // Returns the index of the color added to the palette
+    mutating func addColorToPalette(inSection section: Int) -> Int {
+        palettesProp[section].appendColor()
+        
+        return palettesProp[section].count - 1
+    }
+    
 }
 
 

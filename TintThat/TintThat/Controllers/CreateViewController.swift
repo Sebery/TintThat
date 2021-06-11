@@ -11,13 +11,40 @@ protocol CreateViewControllerDelegate: AnyObject {
     
     func createCollection(withName name: String)
     
+    func editTitle(ofPalette section: Int, withName name: String)
+    
 }
 
 final class CreateViewController: UIViewController {
     
     // MARK: - Properties
-    weak var delegate: CreateViewControllerDelegate?
     private let maxChar = 14
+    weak var delegate: CreateViewControllerDelegate?
+    private var alertTitleProp = ""
+    private var alertBtnTitleProp = ""
+    private var textFieldTitleProp = ""
+    var section = 0
+    var alertState: alertState = .create
+    
+    var alertTitle: String {
+        get { alertTitleProp }
+        set { alertTitleProp = newValue }
+    }
+    
+    var alertBtnTitle: String {
+        get { alertBtnTitleProp }
+        set { alertBtnTitleProp = newValue }
+    }
+    
+    var textFieldTitle: String {
+        get { textFieldTitleProp }
+        set { textFieldTitleProp = newValue }
+    }
+    
+    enum alertState {
+        case create
+        case edit
+    }
     
     // MARK: - Outlets
     @IBOutlet weak var nameTextField: UITextField!
@@ -26,8 +53,8 @@ final class CreateViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
 
     // MARK: - UIViewController
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         initialSetup()
     }
@@ -51,7 +78,12 @@ final class CreateViewController: UIViewController {
         sender.backgroundColor = .secondaryDark
         if let name = nameTextField.text, checkCollectionName(name: name) {
             dismiss(animated: true, completion: {
-                self.delegate?.createCollection(withName: name)
+                if self.alertState == .create {
+                    self.delegate?.createCollection(withName: name)
+                } else if self.alertState == .edit {
+                    self.delegate?.editTitle(ofPalette: self.section, withName: name)
+                }
+                
             })
         }
     }
@@ -76,7 +108,7 @@ private extension CreateViewController {
         titleContentView.backgroundColor = .primaryDark
         let titleLabel = titleContentView.subviews[0] as! UILabel
         titleLabel.textColor = .primaryLight
-        titleLabel.text = .nameCollection
+        titleLabel.text = alertTitle
         titleLabel.font = .customHeadline
         
         nameTextField.backgroundColor = .primaryLight
@@ -84,11 +116,12 @@ private extension CreateViewController {
         nameTextField.textColor = .primaryDark
         nameTextField.font = .customBody
         nameTextField.attributedPlaceholder = NSAttributedString(string: String(maxChar) + .maxChar, attributes: [NSAttributedString.Key.foregroundColor: UIColor.fade])
+        nameTextField.text = textFieldTitle
         
         createBtn.backgroundColor = .secondaryDark
         createBtn.setTitleColor(.secondaryLight, for: .normal)
         createBtn.layer.cornerRadius = 8.0
-        createBtn.setAttributedTitle(NSAttributedString(string: .create, attributes: [NSAttributedString.Key.font : UIFont.customBody]), for: .normal)
+        createBtn.setAttributedTitle(NSAttributedString(string: alertBtnTitle, attributes: [NSAttributedString.Key.font : UIFont.customBody]), for: .normal)
         
         errorLabel.text = ""
         errorLabel.textColor = .error

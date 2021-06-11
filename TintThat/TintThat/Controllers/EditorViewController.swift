@@ -30,6 +30,7 @@ final class EditorViewController: UIViewController {
     private let optionsVCID = "OptionsVC"
     private let createVCID = "CreateVC"
     private let loadVCID = "LoadVC"
+    private let colorEditorVCID = "ColorEditorVC"
     private let deletePaletteVCID = "DeletePaletteVC"
     private let colorCellHeight: CGFloat = 44.0
     private let headerCellHeight: CGFloat = 52.0
@@ -81,7 +82,7 @@ private extension EditorViewController {
         setupOptionsBtn()
         
         // Setup collection table view
-        collectionTB.contentInset = UIEdgeInsets(top: 16.0, left: 0.0, bottom: 0.0, right: 0.0)
+        collectionTB.contentInset = UIEdgeInsets(top: -16.0, left: 0.0, bottom: -16.0, right: 0.0)
         collectionTB.backgroundColor = .primaryLight
         collectionTB.register(EditorHeaderView.self, forHeaderFooterViewReuseIdentifier: headerCellID)
         collectionTB.register(EditorFooterView.self, forHeaderFooterViewReuseIdentifier: footerCellID)
@@ -113,6 +114,16 @@ private extension EditorViewController {
         }
     }
     
+    @objc func showColorEditor() {
+        if let colorEditorVC = storyboard?.instantiateViewController(withIdentifier: colorEditorVCID) as? ColorEditorViewController {
+            colorEditorVC.modalPresentationStyle = .custom
+            transitionManager.presentationType = .sheet(height: 156.0)
+            colorEditorVC.transitioningDelegate = transitionManager
+            colorEditorVC.delegate = self
+            present(colorEditorVC, animated: true, completion: nil)
+        }
+    }
+    
     @objc func showDeletePalette(sender: UIButton) {
         if let deletePaletteVC = storyboard?.instantiateViewController(withIdentifier: deletePaletteVCID) as? DeletePaletteViewController {
             deletePaletteVC.modalPresentationStyle = .custom
@@ -126,8 +137,43 @@ private extension EditorViewController {
         }
     }
     
+    @objc func addColorToPalette(sender: UIButton) {
+        if let editorFooterView = sender.superview?.superview?.superview as? EditorFooterView {
+            let row = collection.addColorToPalette(inSection: editorFooterView.section)
+            collectionTB.insertRows(at: [IndexPath(row: row, section: editorFooterView.section)], with: .automatic)
+        }
+    }
+    
+    @objc func showEditPaletteTitle(sender: UIButton) {
+        if let editorFooterView = sender.superview?.superview?.superview as? EditorFooterView, let createVC = storyboard?.instantiateViewController(withIdentifier: createVCID) as? CreateViewController  {
+            createVC.modalPresentationStyle = .custom
+            transitionManager.presentationType = .alert
+            createVC.transitioningDelegate = transitionManager
+            createVC.delegate = self
+            createVC.alertTitle = .editPaletteName
+            createVC.alertBtnTitle = .save
+            createVC.textFieldTitle = collection.titleOfPalette(in: editorFooterView.section)
+            createVC.alertState = .edit
+            createVC.section = editorFooterView.section
+            present(createVC, animated: true, completion: nil)
+        }
+    }
+    
 }
 
+// MARK: - ColorEditorViewControllerDelegate
+extension EditorViewController: ColorEditorViewControllerDelegate {
+    
+    func showSearchColor() {
+        
+    }
+    
+    func showEditRGBA() {
+        
+    }
+    
+}
+ 
 // MARK: - DeletePaletteViewControllerDelegate
 extension EditorViewController: DeletePaletteViewControllerDelegate {
     
@@ -137,6 +183,8 @@ extension EditorViewController: DeletePaletteViewControllerDelegate {
         collectionTB.performBatchUpdates({
             collectionTB.deleteSections([section], with: .automatic)
         }, completion: { finished in
+            self.collectionTB.reloadData()
+            
             if finished, self.collection.isEmpty {
                 self.isCollectionTBEmpty = true
                 self.collectionTB.insertSections([0], with: .automatic)
@@ -156,6 +204,9 @@ extension EditorViewController: OptionsViewControllerDelegate {
             transitionManager.presentationType = .alert
             createVC.transitioningDelegate = transitionManager
             createVC.delegate = self
+            createVC.alertTitle = .nameCollection
+            createVC.alertBtnTitle = .create
+            createVC.alertState = .create
             present(createVC, animated: true, completion: nil)
         }
     }
@@ -196,6 +247,7 @@ extension EditorViewController: LoadViewControllerDelegate {
     
     func loadCollection(collection: Collection) {
         self.collection = collection
+        isCollectionTBEmpty = collection.isEmpty
         collectionTB.reloadData()
     }
     
@@ -203,9 +255,15 @@ extension EditorViewController: LoadViewControllerDelegate {
 
 // MARK: - CreateViewControllerDelegate
 extension EditorViewController: CreateViewControllerDelegate {
-    
+
     func createCollection(withName name: String) {
         collection = Collection(title: name, palettes: [])
+        isCollectionTBEmpty = true
+        collectionTB.reloadData()
+    }
+    
+    func editTitle(ofPalette section: Int, withName name: String) {
+        collection.setTitleOfPalette(inSection: section, withName: name)
         collectionTB.reloadData()
     }
     
@@ -255,6 +313,8 @@ extension EditorViewController: UITableViewDelegate {
         footer.section = section
         
         footer.mainContentView.deletePaletteBtn.addTarget(self, action: #selector(showDeletePalette(sender:)), for: .touchUpInside)
+        footer.mainContentView.addColorBtn.addTarget(self, action: #selector(addColorToPalette(sender:)), for: .touchUpInside)
+        footer.mainContentView.editTitleBtn.addTarget(self, action: #selector(showEditPaletteTitle(sender:)), for: .touchUpInside)
         
         return footer
     }
@@ -273,7 +333,6 @@ extension EditorViewController: UITableViewDelegate {
         }
         
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerCellID) as? EditorHeaderView
-        
         header?.title = collection.titleOfPalette(in: section)
         
         return header
@@ -314,6 +373,7 @@ extension EditorViewController: UITableViewDataSource {
         let colorBtn = cell.contentView.subviews[1] as! UIButton
         colorBtn.tintColor = .primaryAltDark
         colorBtn.setImage(.optionsIcon.alpha(0.5), for: .highlighted)
+        colorBtn.addTarget(self, action: #selector(showColorEditor), for: .touchUpInside)
         
         return cell
     }

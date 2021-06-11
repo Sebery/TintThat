@@ -37,3 +37,12 @@ deleteMessage = "¿Estás seguro de que quieres eliminar esta paleta?";
 
 /* Load view controller */
 emptyLoads = "¡No hay colecciones para cargar, crea una!";
+
+/* Edit Palette Name */
+editPaletteName = "Edita el nombre de la paleta";
+save = "Guardar";
+
+/* Color editor view controller */
+editColor = "Editar color";
+searchColor = "Buscar color";
+editRGBA = "Editar RGBA";

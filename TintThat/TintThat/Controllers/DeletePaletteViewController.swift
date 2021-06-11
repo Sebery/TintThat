@@ -40,10 +40,14 @@ final class DeletePaletteViewController: UIViewController {
 }
 
 // MARK: - Private
-extension DeletePaletteViewController {
+private extension DeletePaletteViewController {
     
     func initialSetup() {
-
+        // Setup main view
+        let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissDeletePaletteVC))
+        dismissTap.delegate = self
+        view.addGestureRecognizer(dismissTap)
+        
         // Setup main content view
         let mainContentView = view.subviews[0]
         mainContentView.layer.cornerRadius = 8.0
@@ -59,6 +63,24 @@ extension DeletePaletteViewController {
         deleteBtn.backgroundColor = .secondaryDark
         deleteBtn.layer.cornerRadius = 8.0
         deleteBtn.setTitleColor(.secondaryLight, for: .normal)
+    }
+    
+    // MARK: - Selectors
+    @objc func dismissDeletePaletteVC() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - UIGestureRecognizerDelegate
+extension DeletePaletteViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view?.isDescendant(of: view.subviews[0]) == true {
+            return false
+        }
+        
+        return true
     }
     
 }

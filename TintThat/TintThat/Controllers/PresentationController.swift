@@ -42,7 +42,6 @@ final class PresentationController: UIPresentationController {
         coordinator.animate(alongsideTransition: { _ in
             self.fadeView.backgroundColor = .fade
         }, completion: nil)
-        
     }
     
     override func dismissalTransitionWillBegin() {

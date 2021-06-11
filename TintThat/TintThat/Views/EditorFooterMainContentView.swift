@@ -12,6 +12,8 @@ class EditorFooterMainContentView: UIView {
     // MARK: - Properties
     private let topBottomMargins: CGFloat = 12.0
     weak var deletePaletteBtn: UIButton!
+    weak var addColorBtn: UIButton!
+    weak var editTitleBtn: UIButton!
     
     // MARK: - Constructors
     override init(frame: CGRect) {
@@ -49,6 +51,7 @@ private extension EditorFooterMainContentView {
         editTitleBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -topBottomMargins).isActive = true
         editTitleBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0).isActive = true
         editTitleBtn.widthAnchor.constraint(equalToConstant: 28.0).isActive = true
+        self.editTitleBtn = editTitleBtn
         
         // Setup addColorBtn
         let addColorBtn = UIButton(type: .custom)
@@ -62,6 +65,8 @@ private extension EditorFooterMainContentView {
         addColorBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -topBottomMargins).isActive = true
         addColorBtn.leadingAnchor.constraint(equalTo: editTitleBtn.trailingAnchor, constant: 16.0).isActive = true
         addColorBtn.widthAnchor.constraint(equalToConstant: 28.0).isActive = true
+        
+        self.addColorBtn = addColorBtn
         
         // Configure deleteSectionBtn
         let deletePaletteBtn = UIButton(type: .custom)

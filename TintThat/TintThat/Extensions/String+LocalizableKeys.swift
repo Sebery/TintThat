@@ -41,4 +41,13 @@ extension String {
     /* Load view controller */
     static var emptyLoads: String { NSLocalizedString("emptyLoads", comment: "") }
     
+    /* Edit Palette Name */
+    static var editPaletteName: String { NSLocalizedString("editPaletteName", comment: "") }
+    static var save: String { NSLocalizedString("save", comment: "") }
+    
+    /* Color editor view controller */
+    static var editColor: String { NSLocalizedString("editColor", comment: "") }
+    static var searchColor: String { NSLocalizedString("searchColor", comment: "") }
+    static var editRGBA: String { NSLocalizedString("editRGBA", comment: "") }
+    
 }

@@ -46,7 +46,7 @@ private extension LoadViewController {
         collections = CollectionFileManager.getDecodedCollections()
         
         // Setup collectionsTB
-        collectionsTB.contentInset = UIEdgeInsets(top: 16.0, left: 0.0, bottom: 0.0, right: 0.0)
+        collectionsTB.contentInset = UIEdgeInsets(top: -16.0, left: 0.0, bottom: -16.0, right: 0.0)
         collectionsTB.backgroundColor = .primaryLight
     }
     

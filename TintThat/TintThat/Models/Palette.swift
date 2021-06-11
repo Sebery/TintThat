@@ -18,7 +18,8 @@ struct Palette: Codable {
     }
     
     var title: String {
-        titleProp
+        get { titleProp }
+        set { titleProp = newValue }
     }
     
     // MARK: - Constructors
@@ -39,6 +40,10 @@ extension Palette {
     
     func colorIn(row: Int) -> Color {
         return colors[row]
+    }
+    
+    mutating func appendColor() {
+        colors.append(Color(color: .secondaryAltDark))
     }
     
 }
