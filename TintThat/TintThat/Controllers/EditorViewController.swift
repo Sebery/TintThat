@@ -32,6 +32,7 @@ final class EditorViewController: UIViewController {
     private let loadVCID = "LoadVC"
     private let colorEditorVCID = "ColorEditorVC"
     private let deletePaletteVCID = "DeletePaletteVC"
+    private let editRGBAVCID = "EditRGBAVC"
     private let colorCellHeight: CGFloat = 44.0
     private let headerCellHeight: CGFloat = 52.0
     private let footerViewHeight: CGFloat = 52.0
@@ -114,12 +115,13 @@ private extension EditorViewController {
         }
     }
     
-    @objc func showColorEditor() {
+    @objc func showColorEditor(sender: ColorOptionsButton) {
         if let colorEditorVC = storyboard?.instantiateViewController(withIdentifier: colorEditorVCID) as? ColorEditorViewController {
             colorEditorVC.modalPresentationStyle = .custom
             transitionManager.presentationType = .sheet(height: 156.0)
             colorEditorVC.transitioningDelegate = transitionManager
             colorEditorVC.delegate = self
+            colorEditorVC.indexPath = sender.indexPath
             present(colorEditorVC, animated: true, completion: nil)
         }
     }
@@ -163,13 +165,16 @@ private extension EditorViewController {
 
 // MARK: - ColorEditorViewControllerDelegate
 extension EditorViewController: ColorEditorViewControllerDelegate {
-    
+
     func showSearchColor() {
         
     }
     
-    func showEditRGBA() {
-        
+    func showEditRGBA(forColorIn indexPath: IndexPath) {
+        if let editRGBAVC = storyboard?.instantiateViewController(withIdentifier: editRGBAVCID) as? EditRGBAViewController {
+            editRGBAVC.color = collection.colorOfPalette(in: indexPath.section, forRow: indexPath.row)
+            navigationController?.pushViewController(editRGBAVC, animated: true)
+        }
     }
     
 }
@@ -370,13 +375,13 @@ extension EditorViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: colorCellID, for: indexPath)
         cell.contentView.backgroundColor = .primaryAltLight
         cell.contentView.subviews[0].backgroundColor = collection.colorOfPalette(in: indexPath.section, forRow: indexPath.row).color
-        let colorBtn = cell.contentView.subviews[1] as! UIButton
+        let colorBtn = cell.contentView.subviews[1] as! ColorOptionsButton
+        colorBtn.indexPath = indexPath
         colorBtn.tintColor = .primaryAltDark
         colorBtn.setImage(.optionsIcon.alpha(0.5), for: .highlighted)
-        colorBtn.addTarget(self, action: #selector(showColorEditor), for: .touchUpInside)
+        colorBtn.addTarget(self, action: #selector(showColorEditor(sender:)), for: .touchUpInside)
         
         return cell
     }
       
 }
-

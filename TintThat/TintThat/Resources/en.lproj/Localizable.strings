@@ -46,3 +46,9 @@ save = "Save";
 editColor = "Edit color";
 searchColor = "Search color";
 editRGBA = "Edit RGBA";
+
+/* Edit RGBA view controller */
+red = "Red";
+green = "Green";
+blue = "Blue";
+alpha = "Alpha";

@@ -50,4 +50,10 @@ extension String {
     static var searchColor: String { NSLocalizedString("searchColor", comment: "") }
     static var editRGBA: String { NSLocalizedString("editRGBA", comment: "") }
     
+    /* Edit RGBA view controller */
+    static var red: String { NSLocalizedString("red", comment: "") }
+    static var green: String { NSLocalizedString("green", comment: "") }
+    static var blue: String { NSLocalizedString("blue", comment: "") }
+    static var alpha: String { NSLocalizedString("alpha", comment: "") }
+    
 }

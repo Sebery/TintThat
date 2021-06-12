@@ -10,7 +10,7 @@ import UIKit
 protocol ColorEditorViewControllerDelegate: AnyObject {
     
     func showSearchColor()
-    func showEditRGBA()
+    func showEditRGBA(forColorIn indexPath: IndexPath)
     
 }
 
@@ -18,6 +18,7 @@ final class ColorEditorViewController: UIViewController {
     
     // MARK: - Properties
     weak var delegate: ColorEditorViewControllerDelegate?
+    var indexPath = IndexPath(row: 0, section: 0)
 
     // MARK: - UIViewController
     override func viewDidLoad() {
@@ -37,7 +38,7 @@ final class ColorEditorViewController: UIViewController {
     @IBAction func editRGBA(sender: UIButton) {
         sender.backgroundColor = .secondaryDark
         dismiss(animated: true, completion: {
-            self.delegate?.showEditRGBA()
+            self.delegate?.showEditRGBA(forColorIn: self.indexPath)
         })
     }
     

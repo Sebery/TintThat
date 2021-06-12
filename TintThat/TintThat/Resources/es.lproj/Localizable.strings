@@ -46,3 +46,9 @@ save = "Guardar";
 editColor = "Editar color";
 searchColor = "Buscar color";
 editRGBA = "Editar RGBA";
+
+/* Edit RGBA view controller */
+red = "Rojo";
+green = "Verde";
+blue = "Azul";
+alpha = "Transparencia";
