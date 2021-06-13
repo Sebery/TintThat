@@ -37,6 +37,7 @@ deleteMessage = "Are you sure you want to delete this palette?";
 
 /* Load view controller */
 emptyLoads = "No collections to load, create one!";
+cancel = "Cancel";
 
 /* Edit Palette Name */
 editPaletteName = "Edit the palette name";

@@ -40,6 +40,7 @@ extension String {
     
     /* Load view controller */
     static var emptyLoads: String { NSLocalizedString("emptyLoads", comment: "") }
+    static var cancel: String { NSLocalizedString("cancel", comment: "") }
     
     /* Edit Palette Name */
     static var editPaletteName: String { NSLocalizedString("editPaletteName", comment: "") }

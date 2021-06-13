@@ -8,53 +8,45 @@
 import UIKit
 
 extension UIColor {
-    
-    static var primaryLight: UIColor {
-        UIColor(named: "PrimaryLightColor")!
-    }
-    
-    static var primaryDark: UIColor {
-        UIColor(named: "PrimaryDarkColor")!
-    }
-    
-    static var primaryAltLight: UIColor {
-        UIColor(named: "PrimaryAltLightColor")!
-    }
-    
-    static var primaryAltDark: UIColor {
-        UIColor(named: "PrimaryAltDarkColor")!
-    }
-    
-    static var secondaryLight: UIColor {
-        UIColor(named: "SecondaryLightColor")!
-    }
-    
-    static var secondaryDark: UIColor {
-        UIColor(named: "SecondaryDarkColor")!
-    }
-    
-    static var secondaryAltLight: UIColor {
-        UIColor(named: "SecondaryAltLightColor")!
-    }
-    
-    static var secondaryAltDark: UIColor {
-        UIColor(named: "SecondaryAltDarkColor")!
-    }
-    
+
     static var absence: UIColor {
         UIColor(named: "AbsenceColor")!
+    }
+    
+    static var light: UIColor {
+        UIColor(named: "LightColor")!
+    }
+    
+    static var dark: UIColor {
+        UIColor(named: "DarkColor")!
+    }
+    
+    static var lightContext: UIColor {
+        UIColor(named: "LightContextColor")!
+    }
+    
+    static var darkContext: UIColor {
+        UIColor(named: "DarkContextColor")!
     }
     
     static var fade: UIColor {
         UIColor(named: "FadeColor")!
     }
     
-    static var errorFade: UIColor {
-        UIColor(named: "ErrorFadeColor")!
-    }
-    
     static var error: UIColor {
         UIColor(named: "ErrorColor")!
+    }
+    
+    static var secondary01: UIColor {
+        UIColor(named: "Secondary01Color")!
+    }
+    
+    static var secondary02: UIColor {
+        UIColor(named: "Secondary02Color")!
+    }
+    
+    static var secondary03: UIColor {
+        UIColor(named: "Secondary03Color")!
     }
     
 }

@@ -42,8 +42,8 @@ private extension EditorFooterMainContentView {
         // Setup editTitleBtn
         let editTitleBtn = UIButton(type: .custom)
         editTitleBtn.setImage(.editIcon, for: .normal)
-        editTitleBtn.setImage(.editIcon.alpha(0.5), for: .highlighted)
-        editTitleBtn.tintColor = .primaryAltDark
+        editTitleBtn.setImage(.editIcon.maskWithColor(color: .lightContext), for: .highlighted)
+        editTitleBtn.tintColor = .dark
         editTitleBtn.translatesAutoresizingMaskIntoConstraints = false
         addSubview(editTitleBtn)
         
@@ -55,9 +55,8 @@ private extension EditorFooterMainContentView {
         
         // Setup addColorBtn
         let addColorBtn = UIButton(type: .custom)
-        addColorBtn.setImage(.addIcon, for: .normal)
-        addColorBtn.setImage(.addIcon.alpha(0.5), for: .highlighted)
-        addColorBtn.tintColor = .primaryAltDark
+        addColorBtn.setImage(.addIcon.maskWithColor(color: .dark), for: .normal)
+        addColorBtn.setImage(.addIcon.maskWithColor(color: .lightContext), for: .highlighted)
         addColorBtn.translatesAutoresizingMaskIntoConstraints = false
         addSubview(addColorBtn)
         
@@ -70,9 +69,8 @@ private extension EditorFooterMainContentView {
         
         // Configure deleteSectionBtn
         let deletePaletteBtn = UIButton(type: .custom)
-        deletePaletteBtn.setImage(.deleteIcon, for: .normal)
-        deletePaletteBtn.setImage(.deleteIcon.alpha(0.5), for: .highlighted)
-        deletePaletteBtn.tintColor = .primaryAltDark
+        deletePaletteBtn.setImage(.deleteIcon.maskWithColor(color: .dark), for: .normal)
+        deletePaletteBtn.setImage(.deleteIcon.maskWithColor(color: .lightContext), for: .highlighted)
         deletePaletteBtn.translatesAutoresizingMaskIntoConstraints = false
         addSubview(deletePaletteBtn)
         

@@ -41,11 +41,11 @@ class EditorHeaderView: UITableViewHeaderFooterView {
 private extension EditorHeaderView {
     
     func initialSetup() {
-        contentView.backgroundColor = .primaryAltLight
+        contentView.backgroundColor = .light
         
         // Setup title label
         let label = UILabel()
-        label.textColor = .primaryAltDark
+        label.textColor = .dark
         label.font = .customHeadline
         label.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(label)

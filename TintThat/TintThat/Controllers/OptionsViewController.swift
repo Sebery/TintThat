@@ -32,14 +32,14 @@ final class OptionsViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func load(sender: UIButton) {
-        sender.backgroundColor = .secondaryDark
+        sender.backgroundColor = .dark
         dismiss(animated: true, completion: {
             self.delegate?.showLoadCollection()
         })
     }
     
     @IBAction func create(sender: UIButton) {
-        sender.backgroundColor = .secondaryDark
+        sender.backgroundColor = .dark
         dismiss(animated: true, completion: {
             self.delegate?.showCreateCollection()
         })
@@ -50,7 +50,7 @@ final class OptionsViewController: UIViewController {
             return
         }
         
-        sender.backgroundColor = .secondaryDark
+        sender.backgroundColor = .dark
         dismiss(animated: true, completion: {
             self.delegate?.addPaletteToCollection()
         })
@@ -60,14 +60,14 @@ final class OptionsViewController: UIViewController {
         if sender.tag == addPaletteBtnTag, editorState == .notLoadedOrCreated {
             return
         }
-        sender.backgroundColor = .secondaryAltLight
+        sender.backgroundColor = .lightContext
     }
     
     @IBAction func buttonUnselected(sender: UIButton) {
         if sender.tag == addPaletteBtnTag, editorState == .notLoadedOrCreated {
             return
         }
-        sender.backgroundColor = .secondaryDark
+        sender.backgroundColor = .dark
     }
 
 }
@@ -76,19 +76,19 @@ final class OptionsViewController: UIViewController {
 private extension OptionsViewController {
     
     func initialSetup() {
-        view.backgroundColor = .secondaryLight
+        view.backgroundColor = .light
         view.customRoundCorners(withRadius: 8.0, forCorners: [.topLeft, .topRight])
         
         // Setup main content view
         let mainContentView = view.subviews[0]
-        mainContentView.backgroundColor = .secondaryLight
+        mainContentView.backgroundColor = .light
         mainContentView.customRoundCorners(withRadius: 8.0, forCorners: [.topLeft, .topRight])
         
         let titleLabel = mainContentView.subviews[0].subviews[0] as! UILabel
-        mainContentView.subviews[0].backgroundColor = .primaryDark
+        mainContentView.subviews[0].backgroundColor = .light
         titleLabel.text = .options
-        titleLabel.backgroundColor = .primaryDark
-        titleLabel.textColor = .primaryLight
+        titleLabel.backgroundColor = .light
+        titleLabel.textColor = .dark
         titleLabel.font = .customHeadline
         
         let buttons = mainContentView.subviews[1].subviews as! [UIButton]
@@ -98,13 +98,13 @@ private extension OptionsViewController {
         buttons[2].setAttributedTitle(NSAttributedString(string: .addPalette, attributes: titleAttributes), for: .normal)
         
         for button in buttons {
-            button.backgroundColor = .secondaryDark
+            button.backgroundColor = .dark
             button.layer.cornerRadius = 8.0
-            button.setTitleColor(.secondaryLight, for: .normal)
+            button.setTitleColor(.light, for: .normal)
         }
         
         if editorState == .notLoadedOrCreated {
-            buttons[2].backgroundColor = .primaryDark
+            buttons[2].backgroundColor = .fade
         }
         
     }

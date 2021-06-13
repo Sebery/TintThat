@@ -38,5 +38,10 @@ extension UIImage {
     static var deleteIcon: UIImage {
         UIImage(named: "DeleteIcon")!
     }
+    
+    /* Edit RGBA view controller */
+    static var sliderIcon: UIImage {
+        UIImage(named: "SliderIcon")!
+    }
 
 }

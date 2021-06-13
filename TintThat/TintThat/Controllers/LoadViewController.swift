@@ -40,16 +40,31 @@ final class LoadViewController: UIViewController {
 private extension LoadViewController {
     
     func initialSetup() {
-        view.backgroundColor = .primaryLight
+        view.backgroundColor = .light
         
         // Get collections
         collections = CollectionFileManager.getDecodedCollections()
         
         // Setup collectionsTB
         collectionsTB.contentInset = UIEdgeInsets(top: -16.0, left: 0.0, bottom: -16.0, right: 0.0)
-        collectionsTB.backgroundColor = .primaryLight
+        collectionsTB.backgroundColor = .light
+        
+        // Setup cancel button
+        setupCancelBtn()
     }
     
+    func setupCancelBtn() {
+        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        cancelBtn.title = .cancel
+        cancelBtn.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.customHeadline], for: .normal)
+        cancelBtn.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.customHeadline, NSAttributedString.Key.foregroundColor : UIColor.lightContext], for: .highlighted)
+        navigationItem.leftBarButtonItem = cancelBtn
+    }
+    
+    // MARK: - Selectors
+    @objc func cancel() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -76,10 +91,8 @@ extension LoadViewController: UITableViewDelegate {
             return
         }
         let contentView = tableView.cellForRow(at: indexPath)?.contentView.subviews[0]
-        contentView?.backgroundColor = .primaryDark
+        contentView?.backgroundColor = .lightContext
         
-        let titleLabel = contentView?.subviews[0] as! UILabel
-        titleLabel.textColor = .secondaryAltLight
         tableView.deselectRow(at: indexPath, animated: true)
         
         delegate?.loadCollection(collection: collections[indexPath.row])
@@ -107,28 +120,28 @@ extension LoadViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if collections.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: emptyCellID, for: indexPath)
-            cell.backgroundColor = .primaryLight
+            cell.backgroundColor = .light
             let emptyLabel = cell.contentView.subviews[0] as! UILabel
             emptyLabel.text = .emptyLoads
             emptyLabel.font = .customHeadline
-            emptyLabel.textColor = .primaryDark
+            emptyLabel.textColor = .dark
 
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: collectionCellID, for: indexPath)
-        cell.contentView.backgroundColor = .primaryLight
+        cell.contentView.backgroundColor = .light
         let contentView = cell.contentView.subviews[0]
-        contentView.backgroundColor = .primaryAltLight
+        contentView.backgroundColor = .dark
         contentView.layer.cornerRadius = 8.0
         
         let titleLabel = contentView.subviews[0] as! UILabel
         titleLabel.text = collections[indexPath.row].title
-        titleLabel.textColor = .secondaryAltDark
+        titleLabel.textColor = .light
         titleLabel.font = .customBody
         
         let marginView = cell.contentView.subviews[1]
-        marginView.backgroundColor = .primaryLight
+        marginView.backgroundColor = .light
         
         return cell
     }

@@ -60,7 +60,7 @@ final class EditorViewController: UIViewController {
 private extension EditorViewController {
     
     func initialSetup() {
-        view.backgroundColor = .primaryLight
+        view.backgroundColor = .light
         
         // TODO: Load the last collection in editor (set isCollectionTBEmpty)
         
@@ -75,16 +75,16 @@ private extension EditorViewController {
         }
         
         // Setup titleLabel
-        titleLabel.textColor = .primaryDark
+        titleLabel.textColor = .dark
         titleLabel.font = .customTitle
-        titleLabel.backgroundColor = .secondaryLight
+        titleLabel.backgroundColor = .light
         
         // Setup optionsBtn
         setupOptionsBtn()
         
         // Setup collection table view
         collectionTB.contentInset = UIEdgeInsets(top: -16.0, left: 0.0, bottom: -16.0, right: 0.0)
-        collectionTB.backgroundColor = .primaryLight
+        collectionTB.backgroundColor = .light
         collectionTB.register(EditorHeaderView.self, forHeaderFooterViewReuseIdentifier: headerCellID)
         collectionTB.register(EditorFooterView.self, forHeaderFooterViewReuseIdentifier: footerCellID)
     }
@@ -93,7 +93,7 @@ private extension EditorViewController {
         let optionsBtn = UIButton()
         optionsBtn.frame = CGRect(x: 0.0, y: 0.0, width: 28, height: 28)
         optionsBtn.setImage(.optionsIcon, for: .normal)
-        optionsBtn.setImage(.optionsIcon.alpha(0.5), for: .highlighted)
+        optionsBtn.setImage(.optionsIcon.maskWithColor(color: .lightContext), for: .highlighted)
         optionsBtn.addTarget(self, action: #selector(showOptions), for: .touchUpInside)
 
         let rightBarItem = UIBarButtonItem(customView: optionsBtn)
@@ -243,13 +243,13 @@ extension EditorViewController: OptionsViewControllerDelegate {
                     self.isCollectionTBEmpty = false
                 }, completion: { finished in
                     if finished {
-                        self.collection.addPalette(palette: Palette(colors: [.init(color: .secondaryAltLight), .init(color: .secondaryAltDark), .init(color: .secondaryAltLight)]))
+                        self.collection.addPalette(palette: Palette(colors: [.init(color: .secondary01), .init(color: .secondary02), .init(color: .secondary03)]))
                         
                         self.collectionTB.insertSections([0], with: .automatic)
                     }
                 })
             } else {
-                collection.addPalette(palette: Palette(colors: [.init(color: .secondaryAltLight), .init(color: .secondaryAltDark), .init(color: .secondaryAltLight)]))
+                collection.addPalette(palette: Palette(colors: [.init(color: .secondary01), .init(color: .secondary02), .init(color: .secondary03)]))
                 collectionTB.insertSections([collection.count - 1], with: .automatic)
             }
             
@@ -371,7 +371,7 @@ extension EditorViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isCollectionTBEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: emptyCellID, for: indexPath)
-            cell.backgroundColor = .primaryLight
+            cell.backgroundColor = .light
             let label = cell.contentView.subviews[0] as! UILabel
             if state == .notLoadedOrCreated {
                 label.text = .notLoadedOrCreated
@@ -379,18 +379,19 @@ extension EditorViewController: UITableViewDataSource {
                 label.text = .loadedOrCreated
             }
             
-            label.textColor = .primaryDark
+            label.textColor = .dark
             label.font = .customHeadline
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: colorCellID, for: indexPath)
-        cell.contentView.backgroundColor = .primaryAltLight
+        cell.contentView.backgroundColor = .light
         cell.contentView.subviews[0].backgroundColor = collection.colorOfPalette(in: indexPath.section, forRow: indexPath.row).color
         let colorBtn = cell.contentView.subviews[1] as! ColorOptionsButton
         colorBtn.indexPath = indexPath
-        colorBtn.tintColor = .primaryAltDark
-        colorBtn.setImage(.optionsIcon.alpha(0.5), for: .highlighted)
+        colorBtn.setImage(.optionsIcon.maskWithColor(color: .lightContext), for: .highlighted)
+        colorBtn.setImage(.optionsIcon.maskWithColor(color: .lightContext), for: .disabled)
+        colorBtn.tintColor = .dark
         colorBtn.addTarget(self, action: #selector(showColorEditor(sender:)), for: .touchUpInside)
         
         return cell

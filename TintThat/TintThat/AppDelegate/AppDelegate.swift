@@ -16,16 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().isTranslucent = false
-        UITabBar.appearance().barTintColor = .secondaryLight
-        UITabBar.appearance().tintColor = .secondaryDark
-        UITabBar.appearance().unselectedItemTintColor = .primaryDark
+        UITabBar.appearance().barTintColor = .light
+        UITabBar.appearance().tintColor = .lightContext
+        UITabBar.appearance().unselectedItemTintColor = .black
         
         // Navigation bar appearance
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().barTintColor = .secondaryLight
-        UINavigationBar.appearance().tintColor = .primaryDark
+        UINavigationBar.appearance().barTintColor = .light
+        UINavigationBar.appearance().tintColor = .dark
         
         return true
     }

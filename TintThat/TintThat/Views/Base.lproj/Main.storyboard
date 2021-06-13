@@ -504,7 +504,9 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="deletePalette" destination="LD6-lJ-GLA" eventType="touchUpInside" id="QnK-51-UT7"/>
+                                            <action selector="buttonSelectedWithSender:" destination="LD6-lJ-GLA" eventType="touchDown" id="kzg-Qk-L74"/>
+                                            <action selector="buttonUnselectedWithSender:" destination="LD6-lJ-GLA" eventType="touchUpOutside" id="5xx-hO-Uja"/>
+                                            <action selector="deletePaletteWithSender:" destination="LD6-lJ-GLA" eventType="touchUpInside" id="IDl-ax-wG2"/>
                                         </connections>
                                     </button>
                                 </subviews>

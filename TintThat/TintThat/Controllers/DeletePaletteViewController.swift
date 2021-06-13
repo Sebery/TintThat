@@ -24,10 +24,19 @@ final class DeletePaletteViewController: UIViewController {
     @IBOutlet weak var deleteBtn: UIButton!
     
     // MARK: - Actions
-    @IBAction func deletePalette() {
+    @IBAction func deletePalette(sender: UIButton) {
+        sender.backgroundColor = .dark
         dismiss(animated: true, completion: {
             self.delegate?.deletePalette(inSection: self.section)
         })
+    }
+    
+    @IBAction func buttonSelected(sender: UIButton) {
+        sender.backgroundColor = .lightContext
+    }
+    
+    @IBAction func buttonUnselected(sender: UIButton) {
+        sender.backgroundColor = .dark
     }
     
     // MARK: - UIViewController
@@ -51,18 +60,18 @@ private extension DeletePaletteViewController {
         // Setup main content view
         let mainContentView = view.subviews[0]
         mainContentView.layer.cornerRadius = 8.0
-        mainContentView.backgroundColor = .secondaryLight
+        mainContentView.backgroundColor = .light
         
         // Setup deleteLabel
         deleteLabel.text = .deleteMessage
         deleteLabel.font = .customHeadline
-        deleteLabel.textColor = .primaryDark
+        deleteLabel.textColor = .dark
         
         // Setup deleteBtn
         deleteBtn.setAttributedTitle(NSAttributedString(string: .delete, attributes: [NSAttributedString.Key.font : UIFont.customBody]), for: .normal)
-        deleteBtn.backgroundColor = .secondaryDark
+        deleteBtn.backgroundColor = .dark
         deleteBtn.layer.cornerRadius = 8.0
-        deleteBtn.setTitleColor(.secondaryLight, for: .normal)
+        deleteBtn.setTitleColor(.light, for: .normal)
     }
     
     // MARK: - Selectors

@@ -67,15 +67,14 @@ final class CreateViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func buttonSelected(sender: UIButton) {
-        sender.backgroundColor = .secondaryAltLight
+        sender.backgroundColor = .lightContext
     }
     
     @IBAction func buttonUnselected(sender: UIButton) {
-        sender.backgroundColor = .secondaryDark
+        sender.backgroundColor = .dark
     }
     
     @IBAction func create(sender: UIButton) {
-        sender.backgroundColor = .secondaryDark
         if let name = nameTextField.text, checkCollectionName(name: name) {
             dismiss(animated: true, completion: {
                 if self.alertState == .create {
@@ -102,24 +101,24 @@ private extension CreateViewController {
         //Setup main content view
         let mainContentView = view.subviews[0]
         mainContentView.layer.cornerRadius = 8.0
-        mainContentView.backgroundColor = .secondaryLight
+        mainContentView.backgroundColor = .light
         
         titleContentView.customRoundCorners(withRadius: 8.0, forCorners: [.topLeft, .topRight])
-        titleContentView.backgroundColor = .primaryDark
+        titleContentView.backgroundColor = .light
         let titleLabel = titleContentView.subviews[0] as! UILabel
-        titleLabel.textColor = .primaryLight
+        titleLabel.textColor = .dark
         titleLabel.text = alertTitle
         titleLabel.font = .customHeadline
         
-        nameTextField.backgroundColor = .primaryLight
+        nameTextField.backgroundColor = .light
         nameTextField.layer.cornerRadius = 8.0
-        nameTextField.textColor = .primaryDark
+        nameTextField.textColor = .dark
         nameTextField.font = .customBody
         nameTextField.attributedPlaceholder = NSAttributedString(string: String(maxChar) + .maxChar, attributes: [NSAttributedString.Key.foregroundColor: UIColor.fade])
         nameTextField.text = textFieldTitle
         
-        createBtn.backgroundColor = .secondaryDark
-        createBtn.setTitleColor(.secondaryLight, for: .normal)
+        createBtn.backgroundColor = .dark
+        createBtn.setTitleColor(.light, for: .normal)
         createBtn.layer.cornerRadius = 8.0
         createBtn.setAttributedTitle(NSAttributedString(string: alertBtnTitle, attributes: [NSAttributedString.Key.font : UIFont.customBody]), for: .normal)
         

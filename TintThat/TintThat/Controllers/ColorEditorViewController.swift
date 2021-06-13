@@ -29,25 +29,25 @@ final class ColorEditorViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func searchColor(sender: UIButton) {
-        sender.backgroundColor = .secondaryDark
+        sender.backgroundColor = .dark
         dismiss(animated: true, completion: {
             self.delegate?.showSearchColor()
         })
     }
     
     @IBAction func editRGBA(sender: UIButton) {
-        sender.backgroundColor = .secondaryDark
+        sender.backgroundColor = .dark
         dismiss(animated: true, completion: {
             self.delegate?.showEditRGBA(forColorIn: self.indexPath)
         })
     }
     
     @IBAction func buttonSelected(sender: UIButton) {
-        sender.backgroundColor = .secondaryAltLight
+        sender.backgroundColor = .lightContext
     }
     
     @IBAction func buttonUnselected(sender: UIButton) {
-        sender.backgroundColor = .secondaryDark
+        sender.backgroundColor = .dark
     }
 
 }
@@ -56,19 +56,19 @@ final class ColorEditorViewController: UIViewController {
 private extension ColorEditorViewController {
     
     func initialSetup() {
-        view.backgroundColor = .secondaryLight
+        view.backgroundColor = .light
         view.customRoundCorners(withRadius: 8.0, forCorners: [.topLeft, .topRight])
         
         // Setup main content view
         let mainContentView = view.subviews[0]
-        mainContentView.backgroundColor = .secondaryLight
+        mainContentView.backgroundColor = .light
         mainContentView.customRoundCorners(withRadius: 8.0, forCorners: [.topLeft, .topRight])
         
         let titleLabel = mainContentView.subviews[0].subviews[0] as! UILabel
-        mainContentView.subviews[0].backgroundColor = .primaryDark
+        mainContentView.subviews[0].backgroundColor = .light
         titleLabel.text = .editColor
-        titleLabel.backgroundColor = .primaryDark
-        titleLabel.textColor = .primaryLight
+        titleLabel.backgroundColor = .light
+        titleLabel.textColor = .dark
         titleLabel.font = .customHeadline
         
         let buttons = mainContentView.subviews[1].subviews as! [UIButton]
@@ -77,9 +77,9 @@ private extension ColorEditorViewController {
         buttons[1].setAttributedTitle(NSAttributedString(string: .editRGBA, attributes: titleAttributes), for: .normal)
         
         for button in buttons {
-            button.backgroundColor = .secondaryDark
+            button.backgroundColor = .dark
             button.layer.cornerRadius = 8.0
-            button.setTitleColor(.secondaryLight, for: .normal)
+            button.setTitleColor(.light, for: .normal)
         }
     }
     

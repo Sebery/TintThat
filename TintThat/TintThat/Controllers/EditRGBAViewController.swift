@@ -70,10 +70,10 @@ final class EditRGBAViewController: UIViewController {
 private extension EditRGBAViewController {
     
     func initialsetup() {
-        view.backgroundColor = .primaryLight
+        view.backgroundColor = .light
         
         // Setup color view
-        view.subviews[0].backgroundColor = .primaryLight
+        view.subviews[0].backgroundColor = .light
         view.subviews[0].subviews[0].backgroundColor = currentColor.color
         view.subviews[0].subviews[0].layer.cornerRadius = 8.0
         
@@ -81,21 +81,37 @@ private extension EditRGBAViewController {
         let stackViews = view.subviews[1].subviews
         let redLabel = stackViews[0].subviews[0] as! UILabel
         redLabel.text = .red
+        redLabel.textColor = .dark
+        redLabel.font = .customHeadline
         let greenLabel = stackViews[1].subviews[0] as! UILabel
         greenLabel.text = .green
+        greenLabel.textColor = .dark
+        greenLabel.font = .customHeadline
         let blueLabel = stackViews[2].subviews[0] as! UILabel
         blueLabel.text = .blue
+        blueLabel.textColor = .dark
+        blueLabel.font = .customHeadline
         let alphaLabel = stackViews[3].subviews[0] as! UILabel
         alphaLabel.text = .alpha
+        alphaLabel.textColor = .dark
+        alphaLabel.font = .customHeadline
         
         let redSliderLabel = stackViews[0].subviews[2] as! UILabel
         redSliderLabel.text = currentColor.rTo255
+        redSliderLabel.textColor = .dark
+        redSliderLabel.font = .customBody
         let greenSliderLabel = stackViews[1].subviews[2] as! UILabel
+        greenSliderLabel.textColor = .dark
         greenSliderLabel.text = currentColor.gTo255
+        greenSliderLabel.font = .customBody
         let blueSliderLabel = stackViews[2].subviews[2] as! UILabel
+        blueSliderLabel.textColor = .dark
         blueSliderLabel.text = currentColor.bTo255
+        blueSliderLabel.font = .customBody
         let alphaSliderLabel = stackViews[3].subviews[2] as! UILabel
+        alphaSliderLabel.textColor = .dark
         alphaSliderLabel.text = currentColor.aTo255
+        alphaSliderLabel.font = .customBody
         
         self.redSliderLabel = redSliderLabel
         self.greenSliderLabel = greenSliderLabel
@@ -104,23 +120,49 @@ private extension EditRGBAViewController {
         
         let redSlider = stackViews[0].subviews[1] as! UISlider
         redSlider.value = Float(currentColor.r)
+        redSlider.tintColor = .lightContext
+        redSlider.setThumbImage(.sliderIcon.maskWithColor(color: .darkContext), for: .normal)
         let greenSlider = stackViews[1].subviews[1] as! UISlider
         greenSlider.value = Float(currentColor.g)
+        greenSlider.tintColor = .lightContext
+        greenSlider.setThumbImage(.sliderIcon.maskWithColor(color: .darkContext), for: .normal)
         let blueSlider = stackViews[2].subviews[1] as! UISlider
         blueSlider.value = Float(currentColor.b)
+        blueSlider.tintColor = .lightContext
+        blueSlider.setThumbImage(.sliderIcon.maskWithColor(color: .darkContext), for: .normal)
         let alphaSlider = stackViews[3].subviews[1] as! UISlider
         alphaSlider.value = Float(currentColor.a)
+        alphaSlider.tintColor = .lightContext
+        alphaSlider.setThumbImage(.sliderIcon.maskWithColor(color: .darkContext), for: .normal)
         
-        // Setup save button
-        let saveBtn = UIButton(type: .custom)
-        saveBtn.setTitle(.save, for: .normal)
-        saveBtn.addTarget(self, action: #selector(save), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveBtn)
+        // Setup navigation buttons
+        setupCancelBtn()
+        setupSaveBtn()
+    }
+    
+    func setupCancelBtn() {
+        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        cancelBtn.title = .cancel
+        cancelBtn.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.customHeadline], for: .normal)
+        cancelBtn.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.customHeadline, NSAttributedString.Key.foregroundColor : UIColor.lightContext], for: .highlighted)
+        navigationItem.leftBarButtonItem = cancelBtn
+    }
+    
+    func setupSaveBtn() {
+        let saveBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(save))
+        saveBtn.title = .save
+        saveBtn.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.customHeadline], for: .normal)
+        saveBtn.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.customHeadline, NSAttributedString.Key.foregroundColor : UIColor.lightContext], for: .highlighted)
+        navigationItem.rightBarButtonItem = saveBtn
     }
     
     // MARK: - Selectors
     @objc func save() {
         delegate?.saveColor(inPath: indexPath, withColor: currentColor)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func cancel() {
         navigationController?.popViewController(animated: true)
     }
     
