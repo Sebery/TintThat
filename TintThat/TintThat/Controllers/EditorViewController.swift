@@ -173,8 +173,20 @@ extension EditorViewController: ColorEditorViewControllerDelegate {
     func showEditRGBA(forColorIn indexPath: IndexPath) {
         if let editRGBAVC = storyboard?.instantiateViewController(withIdentifier: editRGBAVCID) as? EditRGBAViewController {
             editRGBAVC.color = collection.colorOfPalette(in: indexPath.section, forRow: indexPath.row)
+            editRGBAVC.indexPath = indexPath
+            editRGBAVC.delegate = self
             navigationController?.pushViewController(editRGBAVC, animated: true)
         }
+    }
+    
+}
+
+// MARK: - EditRGBAViewControllerDelegate
+extension EditorViewController: EditRGBAViewControllerDelegate {
+    
+    func saveColor(inPath path: IndexPath, withColor color: Color) {
+        collection.setColorOfPalette(inPath: path, withColor: color)
+        collectionTB.reloadData()
     }
     
 }

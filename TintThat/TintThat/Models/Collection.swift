@@ -72,6 +72,10 @@ extension Collection {
         palettesProp[section].title = name
     }
     
+    mutating func setColorOfPalette(inPath path: IndexPath, withColor color: Color) {
+        palettesProp[path.section].setColorIn(row: path.row, withColor: color)
+    }
+    
     // Returns the index of the color added to the palette
     mutating func addColorToPalette(inSection section: Int) -> Int {
         palettesProp[section].appendColor()

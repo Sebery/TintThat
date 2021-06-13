@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol EditRGBAViewControllerDelegate: AnyObject {
+    
+    func saveColor(inPath path: IndexPath, withColor color: Color)
+    
+}
+
 final class EditRGBAViewController: UIViewController {
     
     // MARK: - Properties
+    weak var delegate: EditRGBAViewControllerDelegate?
     private var currentColor = Color(color: .absence) {
         didSet {
             if isViewLoaded {
@@ -21,6 +28,7 @@ final class EditRGBAViewController: UIViewController {
             }
         }
     }
+    var indexPath = IndexPath(row: 0, section: 0)
     
     private weak var redSliderLabel: UILabel?
     private weak var greenSliderLabel: UILabel?
@@ -31,7 +39,7 @@ final class EditRGBAViewController: UIViewController {
         get { currentColor }
         set { currentColor = newValue }
     }
-
+    
     // MARK: - UIViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -80,13 +88,13 @@ private extension EditRGBAViewController {
         let alphaLabel = stackViews[3].subviews[0] as! UILabel
         alphaLabel.text = .alpha
         
-        let redSliderLabel = stackViews[0].subviews[1].subviews[0] as! UILabel
+        let redSliderLabel = stackViews[0].subviews[2] as! UILabel
         redSliderLabel.text = currentColor.rTo255
-        let greenSliderLabel = stackViews[1].subviews[1].subviews[0] as! UILabel
+        let greenSliderLabel = stackViews[1].subviews[2] as! UILabel
         greenSliderLabel.text = currentColor.gTo255
-        let blueSliderLabel = stackViews[2].subviews[1].subviews[0] as! UILabel
+        let blueSliderLabel = stackViews[2].subviews[2] as! UILabel
         blueSliderLabel.text = currentColor.bTo255
-        let alphaSliderLabel = stackViews[3].subviews[1].subviews[0] as! UILabel
+        let alphaSliderLabel = stackViews[3].subviews[2] as! UILabel
         alphaSliderLabel.text = currentColor.aTo255
         
         self.redSliderLabel = redSliderLabel
@@ -94,14 +102,26 @@ private extension EditRGBAViewController {
         self.blueSliderLabel = blueSliderLabel
         self.alphaSliderLabel = alphaSliderLabel
         
-        let redSlider = stackViews[0].subviews[1].subviews[1] as! UISlider
+        let redSlider = stackViews[0].subviews[1] as! UISlider
         redSlider.value = Float(currentColor.r)
-        let greenSlider = stackViews[1].subviews[1].subviews[1] as! UISlider
+        let greenSlider = stackViews[1].subviews[1] as! UISlider
         greenSlider.value = Float(currentColor.g)
-        let blueSlider = stackViews[2].subviews[1].subviews[1] as! UISlider
+        let blueSlider = stackViews[2].subviews[1] as! UISlider
         blueSlider.value = Float(currentColor.b)
-        let alphaSlider = stackViews[3].subviews[1].subviews[1] as! UISlider
+        let alphaSlider = stackViews[3].subviews[1] as! UISlider
         alphaSlider.value = Float(currentColor.a)
+        
+        // Setup save button
+        let saveBtn = UIButton(type: .custom)
+        saveBtn.setTitle(.save, for: .normal)
+        saveBtn.addTarget(self, action: #selector(save), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveBtn)
+    }
+    
+    // MARK: - Selectors
+    @objc func save() {
+        delegate?.saveColor(inPath: indexPath, withColor: currentColor)
+        navigationController?.popViewController(animated: true)
     }
     
 }

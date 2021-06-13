@@ -46,4 +46,8 @@ extension Palette {
         colors.append(Color(color: .secondaryAltDark))
     }
     
+    mutating func setColorIn(row: Int, withColor color: Color) {
+        colors[row] = color
+    }
+    
 }
