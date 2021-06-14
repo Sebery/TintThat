@@ -45,11 +45,11 @@ save = "Guardar";
 
 /* Color editor view controller */
 editColor = "Editar color";
-searchColor = "Buscar color";
-editRGBA = "Editar RGBA";
-
-/* Edit RGBA view controller */
 red = "Rojo";
 green = "Verde";
 blue = "Azul";
-alpha = "Transparencia";
+opacity = "Opacidad";
+hue = "Matiz";
+saturation = "Saturación";
+brightness = "Brillo";
+

@@ -44,7 +44,7 @@ extension Palette {
     
     mutating func appendColor() {
         let secondaryColors = [UIColor.secondary01, UIColor.secondary02, UIColor.secondary03]
-        colors.append(Color(color: secondaryColors[Int.random(in: 0..<3)]))
+        colors.append(Color(rgbColor: secondaryColors[Int.random(in: 0..<3)]))
     }
     
     mutating func setColorIn(row: Int, withColor color: Color) {

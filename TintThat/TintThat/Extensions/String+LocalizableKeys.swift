@@ -48,13 +48,12 @@ extension String {
     
     /* Color editor view controller */
     static var editColor: String { NSLocalizedString("editColor", comment: "") }
-    static var searchColor: String { NSLocalizedString("searchColor", comment: "") }
-    static var editRGBA: String { NSLocalizedString("editRGBA", comment: "") }
-    
-    /* Edit RGBA view controller */
     static var red: String { NSLocalizedString("red", comment: "") }
     static var green: String { NSLocalizedString("green", comment: "") }
     static var blue: String { NSLocalizedString("blue", comment: "") }
-    static var alpha: String { NSLocalizedString("alpha", comment: "") }
+    static var opacity: String { NSLocalizedString("opacity", comment: "") }
+    static var hue: String { NSLocalizedString("hue", comment: "") }
+    static var saturation: String { NSLocalizedString("saturation", comment: "") }
+    static var brightness: String { NSLocalizedString("brightness", comment: "") }
     
 }

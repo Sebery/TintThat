@@ -34,7 +34,7 @@ final class EditorViewController: UIViewController {
     private let loadVCID = "LoadVC"
     private let colorEditorVCID = "ColorEditorVC"
     private let deletePaletteVCID = "DeletePaletteVC"
-    private let editRGBAVCID = "EditRGBAVC"
+    private let colorOptionsVCID = "ColorOptionsVC"
     private let colorCellHeight: CGFloat = 44.0
     private let headerCellHeight: CGFloat = 52.0
     private let footerViewHeight: CGFloat = 52.0
@@ -139,14 +139,14 @@ private extension EditorViewController {
         }
     }
     
-    @objc func showColorEditor(sender: ColorOptionsButton) {
-        if let colorEditorVC = storyboard?.instantiateViewController(withIdentifier: colorEditorVCID) as? ColorEditorViewController {
-            colorEditorVC.modalPresentationStyle = .custom
+    @objc func showColorOptions(sender: ColorOptionsButton) {
+        if let colorOptionsVC = storyboard?.instantiateViewController(withIdentifier: colorOptionsVCID) as? ColorOptionsViewController {
+            colorOptionsVC.modalPresentationStyle = .custom
             transitionManager.presentationType = .sheet(height: 156.0)
-            colorEditorVC.transitioningDelegate = transitionManager
-            colorEditorVC.delegate = self
-            colorEditorVC.indexPath = sender.indexPath
-            present(colorEditorVC, animated: true, completion: nil)
+            colorOptionsVC.transitioningDelegate = transitionManager
+            colorOptionsVC.delegate = self
+            colorOptionsVC.indexPath = sender.indexPath
+            present(colorOptionsVC, animated: true, completion: nil)
         }
     }
     
@@ -188,25 +188,22 @@ private extension EditorViewController {
 }
 
 // MARK: - ColorEditorViewControllerDelegate
-extension EditorViewController: ColorEditorViewControllerDelegate {
-
-    func showSearchColor() {
-        
-    }
+extension EditorViewController: ColorOptionsViewControllerDelegate {
     
-    func showEditRGBA(forColorIn indexPath: IndexPath) {
-        if let editRGBAVC = storyboard?.instantiateViewController(withIdentifier: editRGBAVCID) as? EditRGBAViewController {
-            editRGBAVC.color = collection.colorOfPalette(in: indexPath.section, forRow: indexPath.row)
-            editRGBAVC.indexPath = indexPath
-            editRGBAVC.delegate = self
-            navigationController?.pushViewController(editRGBAVC, animated: true)
+    func showColorEditor(withState state: ColorOptionsViewController.EditorState, forColorIn indexPath: IndexPath) {
+        if let colorEditorVC = storyboard?.instantiateViewController(withIdentifier: colorEditorVCID) as? ColorEditorViewController {
+            colorEditorVC.color = collection.colorOfPalette(in: indexPath.section, forRow: indexPath.row)
+            colorEditorVC.indexPath = indexPath
+            colorEditorVC.delegate = self
+            colorEditorVC.editorState = state
+            navigationController?.pushViewController(colorEditorVC, animated: true)
         }
     }
     
 }
 
 // MARK: - EditRGBAViewControllerDelegate
-extension EditorViewController: EditRGBAViewControllerDelegate {
+extension EditorViewController: ColorEditorViewControllerDelegate {
     
     func saveColor(inPath path: IndexPath, withColor color: Color) {
         collection.setColorOfPalette(inPath: path, withColor: color)
@@ -267,13 +264,13 @@ extension EditorViewController: OptionsViewControllerDelegate {
                     self.isCollectionTBEmpty = false
                 }, completion: { finished in
                     if finished {
-                        self.collection.addPalette(palette: Palette(colors: [.init(color: .secondary01), .init(color: .secondary02), .init(color: .secondary03)]))
+                        self.collection.addPalette(palette: Palette(colors: [.init(rgbColor: .secondary01), .init(rgbColor: .secondary02), .init(rgbColor: .secondary03)]))
                         
                         self.collectionTB.insertSections([0], with: .automatic)
                     }
                 })
             } else {
-                collection.addPalette(palette: Palette(colors: [.init(color: .secondary01), .init(color: .secondary02), .init(color: .secondary03)]))
+                collection.addPalette(palette: Palette(colors: [.init(rgbColor: .secondary01), .init(rgbColor: .secondary02), .init(rgbColor: .secondary03)]))
                 collectionTB.insertSections([collection.count - 1], with: .automatic)
             }
             
@@ -412,13 +409,13 @@ extension EditorViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: colorCellID, for: indexPath)
         cell.contentView.backgroundColor = .light
-        cell.contentView.subviews[0].backgroundColor = collection.colorOfPalette(in: indexPath.section, forRow: indexPath.row).color
+        cell.contentView.subviews[0].backgroundColor = collection.colorOfPalette(in: indexPath.section, forRow: indexPath.row).rgbColor
         let colorBtn = cell.contentView.subviews[1] as! ColorOptionsButton
         colorBtn.indexPath = indexPath
         colorBtn.setImage(.optionsIcon.maskWithColor(color: .lightContext), for: .highlighted)
         colorBtn.setImage(.optionsIcon.maskWithColor(color: .lightContext), for: .disabled)
         colorBtn.tintColor = .dark
-        colorBtn.addTarget(self, action: #selector(showColorEditor(sender:)), for: .touchUpInside)
+        colorBtn.addTarget(self, action: #selector(showColorOptions(sender:)), for: .touchUpInside)
         
         return cell
     }

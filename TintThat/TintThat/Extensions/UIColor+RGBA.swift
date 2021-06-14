@@ -8,6 +8,14 @@
 import UIKit
 
 extension UIColor {
+    
+    var a: CGFloat {
+        var value: CGFloat = 0.0
+        getRed(nil, green: nil, blue: nil, alpha: &value)
+        return value
+    }
+    
+    // RGB
     var r: CGFloat {
         var value: CGFloat = 0.0
         getRed(&value, green: nil, blue: nil, alpha: nil)
@@ -26,9 +34,22 @@ extension UIColor {
         return value
     }
     
-    var a: CGFloat {
+    // HSB
+    var h: CGFloat {
         var value: CGFloat = 0.0
-        getRed(nil, green: nil, blue: nil, alpha: &value)
+        getHue(&value, saturation: nil, brightness: nil, alpha: nil)
+        return value
+    }
+    
+    var s: CGFloat {
+        var value: CGFloat = 0.0
+        getHue(nil, saturation: &value, brightness: nil, alpha: nil)
+        return value
+    }
+    
+    var v: CGFloat {
+        var value: CGFloat = 0.0
+        getHue(nil, saturation: nil, brightness: &value, alpha: nil)
         return value
     }
 }

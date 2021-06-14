@@ -540,10 +540,10 @@
             </objects>
             <point key="canvasLocation" x="3425" y="-567"/>
         </scene>
-        <!--Edit RGBA-->
+        <!--Color Editor-->
         <scene sceneID="S6y-5V-CNJ">
             <objects>
-                <viewController storyboardIdentifier="EditRGBAVC" id="lcK-0q-HfM" userLabel="Edit RGBA" customClass="EditRGBAViewController" customModule="TintThat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ColorEditorVC" id="lcK-0q-HfM" userLabel="Color Editor" customClass="ColorEditorViewController" customModule="TintThat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m4c-nu-1qe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -581,7 +581,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tE2-K1-l7f">
                                                 <rect key="frame" x="-2" y="20.5" width="386" height="31"/>
                                                 <connections>
-                                                    <action selector="rSliderChangedWithSender:" destination="lcK-0q-HfM" eventType="valueChanged" id="ZYN-WF-AEd"/>
+                                                    <action selector="firstSliderChangedActionWithSender:" destination="lcK-0q-HfM" eventType="valueChanged" id="bwF-PB-59W"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEk-yz-Abb">
@@ -604,7 +604,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uPP-RK-bDS">
                                                 <rect key="frame" x="-2" y="20.5" width="386" height="31"/>
                                                 <connections>
-                                                    <action selector="gSliderChangedWithSender:" destination="lcK-0q-HfM" eventType="valueChanged" id="Rn2-Qm-aMD"/>
+                                                    <action selector="secondSliderChangedActionWithSender:" destination="lcK-0q-HfM" eventType="valueChanged" id="yiM-iH-M4G"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch6-pv-ZRz">
@@ -627,7 +627,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eKT-My-MAp">
                                                 <rect key="frame" x="-2" y="20.5" width="386" height="31"/>
                                                 <connections>
-                                                    <action selector="bSliderChangedWithSender:" destination="lcK-0q-HfM" eventType="valueChanged" id="LRi-df-nag"/>
+                                                    <action selector="thirdSliderChangedActionWithSender:" destination="lcK-0q-HfM" eventType="valueChanged" id="kPi-oL-6HI"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ac1-xm-M6N">
@@ -650,7 +650,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hOM-db-oNB">
                                                 <rect key="frame" x="-2" y="20.5" width="386" height="31"/>
                                                 <connections>
-                                                    <action selector="aSliderChangedWithSender:" destination="lcK-0q-HfM" eventType="valueChanged" id="hna-CY-4AW"/>
+                                                    <action selector="opacityChangedActionWithSender:" destination="lcK-0q-HfM" eventType="valueChanged" id="n23-j7-hcN"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bC3-iT-Akm">
@@ -676,15 +676,22 @@
                             <constraint firstItem="Enn-9O-RGe" firstAttribute="top" secondItem="e6v-J5-KMq" secondAttribute="top" id="l1u-co-6TT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="colorView" destination="T3L-AY-2Rc" id="z4i-fr-YlB"/>
+                        <outlet property="firstSliderLabel" destination="iEk-yz-Abb" id="nPr-8A-5EI"/>
+                        <outlet property="opacitySliderLabel" destination="bC3-iT-Akm" id="n58-JF-ftE"/>
+                        <outlet property="secondSliderLabel" destination="Ch6-pv-ZRz" id="gns-Uk-loA"/>
+                        <outlet property="thirdSliderLabel" destination="ac1-xm-M6N" id="PeU-SB-OYK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tnt-vX-DaR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1774" y="-567"/>
         </scene>
-        <!--Color Editor-->
+        <!--Color Options-->
         <scene sceneID="rX1-Ku-2kV">
             <objects>
-                <viewController storyboardIdentifier="ColorEditorVC" id="ift-DK-Xnb" userLabel="Color Editor" customClass="ColorEditorViewController" customModule="TintThat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ColorOptionsVC" id="ift-DK-Xnb" userLabel="Color Options" customClass="ColorOptionsViewController" customModule="TintThat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wYK-eE-JY3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -718,9 +725,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
+                                                    <action selector="EditHSBAWithSender:" destination="ift-DK-Xnb" eventType="touchUpInside" id="QIl-Yz-vch"/>
                                                     <action selector="buttonSelectedWithSender:" destination="ift-DK-Xnb" eventType="touchDown" id="Fvd-YQ-J6U"/>
                                                     <action selector="buttonUnselectedWithSender:" destination="ift-DK-Xnb" eventType="touchUpOutside" id="vcg-Hp-H8J"/>
-                                                    <action selector="searchColorWithSender:" destination="ift-DK-Xnb" eventType="touchUpInside" id="QIl-Yz-vch"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dey-De-ssl">
