@@ -21,8 +21,10 @@ final class EditorViewController: UIViewController {
         }
     }
     
+    
     private lazy var transitionManager = TransitionManager()
     
+    private let currentCollectionID = "CurrentCollection"
     private let colorCellID = "ColorCell"
     private let emptyCellID = "EmptyCell"
     private let headerCellID = "HeaderCell"
@@ -54,6 +56,17 @@ final class EditorViewController: UIViewController {
         initialSetup()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Load the last collection in editor
+        if let currentCollection = getCurrentCollection() {
+            collection = currentCollection
+            isCollectionTBEmpty = collection.isEmpty
+            collectionTB.reloadData()
+        }
+    }
+    
 }
 
 // MARK: - Private
@@ -61,8 +74,6 @@ private extension EditorViewController {
     
     func initialSetup() {
         view.backgroundColor = .light
-        
-        // TODO: Load the last collection in editor (set isCollectionTBEmpty)
         
         // Setup main tab bar
         if let items = tabBarController?.tabBar.items {
@@ -101,6 +112,19 @@ private extension EditorViewController {
         rightBarItem.customView?.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
         navigationItem.rightBarButtonItem = rightBarItem
+    }
+    
+    func setCurrentCollection() {
+        UserDefaults.standard.setValue(collection.id.uuidString, forKey: currentCollectionID)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func getCurrentCollection() -> Collection? {
+        if let collectionID = UserDefaults.standard.object(forKey: currentCollectionID) as? String, let collection = CollectionFileManager.getDecodedCollection(collectionID: collectionID) {
+            return collection
+        }
+        
+        return nil
     }
     
     // MARK: - Selectors
@@ -264,6 +288,7 @@ extension EditorViewController: LoadViewControllerDelegate {
     
     func loadCollection(collection: Collection) {
         self.collection = collection
+        setCurrentCollection()
         isCollectionTBEmpty = collection.isEmpty
         collectionTB.reloadData()
     }
@@ -275,6 +300,7 @@ extension EditorViewController: CreateViewControllerDelegate {
 
     func createCollection(withName name: String) {
         collection = Collection(title: name, palettes: [])
+        setCurrentCollection()
         isCollectionTBEmpty = true
         collectionTB.reloadData()
     }

@@ -60,4 +60,14 @@ struct CollectionFileManager {
         return collections
     }
     
+    static func getDecodedCollection(collectionID: String) -> Collection? {
+        let data = FileManager.default.contents(atPath: getDocumentsDirectory().appendingPathComponent(collectionID).path)
+        
+        if let data = data, let collection = decode(collectionData: data) {
+            return collection
+        }
+        
+        return nil
+    }
+    
 }
