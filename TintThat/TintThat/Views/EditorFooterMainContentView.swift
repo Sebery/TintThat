@@ -14,6 +14,7 @@ class EditorFooterMainContentView: UIView {
     weak var deletePaletteBtn: UIButton!
     weak var addColorBtn: UIButton!
     weak var editTitleBtn: UIButton!
+    weak var exportPaletteBtn: UIButton!
     
     // MARK: - Constructors
     override init(frame: CGRect) {
@@ -67,7 +68,21 @@ private extension EditorFooterMainContentView {
         
         self.addColorBtn = addColorBtn
         
-        // Configure deleteSectionBtn
+        // Setup exportPaletteBtn
+        let exportPaletteBtn = UIButton(type: .custom)
+        exportPaletteBtn.setImage(.exportIcon.maskWithColor(color: .dark), for: .normal)
+        exportPaletteBtn.setImage(.exportIcon.maskWithColor(color: .lightContext), for: .highlighted)
+        exportPaletteBtn.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(exportPaletteBtn)
+        
+        exportPaletteBtn.topAnchor.constraint(equalTo: topAnchor, constant: topBottomMargins).isActive = true
+        exportPaletteBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -topBottomMargins).isActive = true
+        exportPaletteBtn.leadingAnchor.constraint(equalTo: addColorBtn.trailingAnchor, constant: 16.0).isActive = true
+        exportPaletteBtn.widthAnchor.constraint(equalToConstant: 28.0).isActive = true
+        
+        self.exportPaletteBtn = exportPaletteBtn
+        
+        // Setup deleteSectionBtn
         let deletePaletteBtn = UIButton(type: .custom)
         deletePaletteBtn.setImage(.deleteIcon.maskWithColor(color: .dark), for: .normal)
         deletePaletteBtn.setImage(.deleteIcon.maskWithColor(color: .lightContext), for: .highlighted)
