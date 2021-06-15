@@ -21,7 +21,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="wQ2-s5-2x8" kind="relationship" relationship="viewControllers" id="Ldb-b1-O16"/>
-                        <segue destination="X0s-WR-dvH" kind="relationship" relationship="viewControllers" id="pFD-1T-1fQ"/>
                         <segue destination="ALw-Ip-xEM" kind="relationship" relationship="viewControllers" id="jQd-ST-miA"/>
                     </connections>
                 </tabBarController>
@@ -32,6 +31,7 @@
         <!--Settings-->
         <scene sceneID="qmP-p3-inw">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mmC-j0-Efa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="ALw-Ip-xEM" userLabel="Settings" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="whr-b9-Z0R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -41,25 +41,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="Tl6-ir-GeU"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mmC-j0-Efa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-370" y="811"/>
-        </scene>
-        <!--My Palettes-->
-        <scene sceneID="sL2-hP-Yal">
-            <objects>
-                <viewController id="X0s-WR-dvH" userLabel="My Palettes" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Tci-Kt-Lyt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="JfX-sK-RKj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="My Palettes" id="w3R-fu-yVL"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="thy-Pg-3dQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="339" y="811"/>
+            <point key="canvasLocation" x="-13" y="872"/>
         </scene>
         <!--Editor Navigation-->
         <scene sceneID="RJi-ky-KtH">
@@ -199,7 +182,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHj-3I-34d">
-                                <rect key="frame" x="0.0" y="654" width="414" height="208"/>
+                                <rect key="frame" x="0.0" y="602" width="414" height="260"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzo-L3-e4Z">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -221,7 +204,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CrX-gx-1Up">
-                                        <rect key="frame" x="16" y="52" width="382" height="148"/>
+                                        <rect key="frame" x="16" y="52" width="382" height="200"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wC2-VM-jl7">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
@@ -241,8 +224,17 @@
                                                     <action selector="createWithSender:" destination="O0x-aY-3zm" eventType="touchUpInside" id="6iO-uw-3A2"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIv-GQ-NFZ">
+                                            <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkb-3Y-qbY">
                                                 <rect key="frame" x="0.0" y="104" width="382" height="44"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="buttonSelectedWithSender:" destination="O0x-aY-3zm" eventType="touchDown" id="pGN-Nn-POy"/>
+                                                    <action selector="buttonUnselectedWithSender:" destination="O0x-aY-3zm" eventType="touchUpOutside" id="QYX-co-SO8"/>
+                                                    <action selector="deleteWithSender:" destination="O0x-aY-3zm" eventType="touchUpInside" id="Bc3-Yt-pxR"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIv-GQ-NFZ">
+                                                <rect key="frame" x="0.0" y="156" width="382" height="44"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
                                                     <action selector="addPaletteWithSender:" destination="O0x-aY-3zm" eventType="touchUpInside" id="FRc-bc-c0A"/>
@@ -252,7 +244,7 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="148" id="ljr-gv-yor"/>
+                                            <constraint firstAttribute="height" constant="200" id="ljr-gv-yor"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -263,7 +255,7 @@
                                     <constraint firstItem="Wzo-L3-e4Z" firstAttribute="top" secondItem="yHj-3I-34d" secondAttribute="top" id="PC5-tN-7EK"/>
                                     <constraint firstAttribute="trailing" secondItem="CrX-gx-1Up" secondAttribute="trailing" constant="16" id="a6A-1G-OR2"/>
                                     <constraint firstAttribute="bottom" secondItem="CrX-gx-1Up" secondAttribute="bottom" constant="8" id="oEi-6e-xlg"/>
-                                    <constraint firstAttribute="height" constant="208" id="s31-Nb-7wK"/>
+                                    <constraint firstAttribute="height" constant="260" id="s31-Nb-7wK"/>
                                     <constraint firstAttribute="trailing" secondItem="Wzo-L3-e4Z" secondAttribute="trailing" id="udX-1a-3jk"/>
                                 </constraints>
                             </view>

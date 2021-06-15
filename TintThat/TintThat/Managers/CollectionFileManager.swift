@@ -70,4 +70,14 @@ struct CollectionFileManager {
         return nil
     }
     
+    static func deleteCollectionFile(collectionID: String) -> Bool {
+        do {
+            try FileManager.default.removeItem(atPath: getDocumentsDirectory().appendingPathComponent(collectionID).path)
+            return true
+        } catch {
+            return false
+        }
+        
+    }
+    
 }

@@ -12,6 +12,7 @@ protocol OptionsViewControllerDelegate: AnyObject {
     func showCreateCollection()
     func showLoadCollection()
     func addPaletteToCollection()
+    func deleteCurrentCollection()
     
 }
 
@@ -22,6 +23,7 @@ final class OptionsViewController: UIViewController {
     var editorState: EditorViewController.EditorState = .notLoadedOrCreated
     
     private let addPaletteBtnTag = 1000
+    private let deleteCollectionTag = 1001
 
     // MARK: - UIViewController
     override func viewDidLoad() {
@@ -45,6 +47,17 @@ final class OptionsViewController: UIViewController {
         })
     }
     
+    @IBAction func delete(sender: UIButton) {
+        if editorState == .notLoadedOrCreated {
+            return
+        }
+        
+        sender.backgroundColor = .dark
+        dismiss(animated: true, completion: {
+            self.delegate?.deleteCurrentCollection()
+        })
+    }
+    
     @IBAction func addPalette(sender: UIButton) {
         if editorState == .notLoadedOrCreated {
             return
@@ -57,7 +70,7 @@ final class OptionsViewController: UIViewController {
     }
     
     @IBAction func buttonSelected(sender: UIButton) {
-        if sender.tag == addPaletteBtnTag, editorState == .notLoadedOrCreated {
+        if (sender.tag == addPaletteBtnTag || sender.tag == deleteCollectionTag), editorState == .notLoadedOrCreated {
             return
         }
         sender.backgroundColor = .lightContext
@@ -95,7 +108,8 @@ private extension OptionsViewController {
         let titleAttributes = [NSAttributedString.Key.font : UIFont.customBody]
         buttons[0].setAttributedTitle(NSAttributedString(string: .load, attributes: titleAttributes), for: .normal)
         buttons[1].setAttributedTitle(NSAttributedString(string: .create, attributes: titleAttributes), for: .normal)
-        buttons[2].setAttributedTitle(NSAttributedString(string: .addPalette, attributes: titleAttributes), for: .normal)
+        buttons[2].setAttributedTitle(NSAttributedString(string: .delete, attributes: titleAttributes), for: .normal)
+        buttons[3].setAttributedTitle(NSAttributedString(string: .addPalette, attributes: titleAttributes), for: .normal)
         
         for button in buttons {
             button.backgroundColor = .dark
@@ -105,6 +119,7 @@ private extension OptionsViewController {
         
         if editorState == .notLoadedOrCreated {
             buttons[2].backgroundColor = .fade
+            buttons[3].backgroundColor = .fade
         }
         
     }

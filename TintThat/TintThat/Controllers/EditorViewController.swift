@@ -15,6 +15,10 @@ final class EditorViewController: UIViewController {
     
     private var collection = Collection(title: "", palettes: []) {
         didSet {
+            if collection.title.isEmpty {
+                titleLabel.text = collection.title
+                return
+            }
             state = .loadedOrCreated
             titleLabel.text = collection.title
             CollectionFileManager.saveCollection(collection: collection)
@@ -60,7 +64,7 @@ final class EditorViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // Load the last collection in editor
-        if let currentCollection = getCurrentCollection() {
+        if let currentCollection = getCollectionKey() {
             collection = currentCollection
             isCollectionTBEmpty = collection.isEmpty
             collectionTB.reloadData()
@@ -79,10 +83,8 @@ private extension EditorViewController {
         if let items = tabBarController?.tabBar.items {
             items[0].image = .editorIcon
             items[0].title = .editor
-            items[1].title = .myPalettes
-            items[1].image = .myPalettesIcon
-            items[2].title = .settings
-            items[2].image = .settingsIcon
+            items[1].title = .settings
+            items[1].image = .settingsIcon
         }
         
         // Setup titleLabel
@@ -114,12 +116,17 @@ private extension EditorViewController {
         navigationItem.rightBarButtonItem = rightBarItem
     }
     
-    func setCurrentCollection() {
+    func setCollectionKey() {
         UserDefaults.standard.setValue(collection.id.uuidString, forKey: currentCollectionID)
         UserDefaults.standard.synchronize()
     }
     
-    func getCurrentCollection() -> Collection? {
+    func deleteCollectionKey() {
+        UserDefaults.standard.removeObject(forKey: currentCollectionID)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func getCollectionKey() -> Collection? {
         if let collectionID = UserDefaults.standard.object(forKey: currentCollectionID) as? String, let collection = CollectionFileManager.getDecodedCollection(collectionID: collectionID) {
             return collection
         }
@@ -131,7 +138,7 @@ private extension EditorViewController {
     @objc func showOptions() {
         if let optionsVC = storyboard?.instantiateViewController(withIdentifier: optionsVCID) as? OptionsViewController {
             optionsVC.modalPresentationStyle = .custom
-            transitionManager.presentationType = .sheet(height: 208.0)
+            transitionManager.presentationType = .sheet(height: 260.0)
             optionsVC.transitioningDelegate = transitionManager
             optionsVC.delegate = self
             optionsVC.editorState = state
@@ -235,7 +242,7 @@ extension EditorViewController: DeletePaletteViewControllerDelegate {
  
 // MARK: - OptionsViewControllerDelegate
 extension EditorViewController: OptionsViewControllerDelegate {
-    
+
     func showCreateCollection() {
         if let createVC = storyboard?.instantiateViewController(withIdentifier: createVCID) as? CreateViewController {
             createVC.modalPresentationStyle = .custom
@@ -246,6 +253,16 @@ extension EditorViewController: OptionsViewControllerDelegate {
             createVC.alertBtnTitle = .create
             createVC.alertState = .create
             present(createVC, animated: true, completion: nil)
+        }
+    }
+    
+    func deleteCurrentCollection() {
+        if CollectionFileManager.deleteCollectionFile(collectionID: collection.id.uuidString) {
+            deleteCollectionKey()
+            state = .notLoadedOrCreated
+            isCollectionTBEmpty = true
+            collection = Collection(title: "", palettes: [])
+            collectionTB.reloadData()
         }
     }
     
@@ -285,7 +302,7 @@ extension EditorViewController: LoadViewControllerDelegate {
     
     func loadCollection(collection: Collection) {
         self.collection = collection
-        setCurrentCollection()
+        setCollectionKey()
         isCollectionTBEmpty = collection.isEmpty
         collectionTB.reloadData()
     }
@@ -297,7 +314,7 @@ extension EditorViewController: CreateViewControllerDelegate {
 
     func createCollection(withName name: String) {
         collection = Collection(title: name, palettes: [])
-        setCurrentCollection()
+        setCollectionKey()
         isCollectionTBEmpty = true
         collectionTB.reloadData()
     }
