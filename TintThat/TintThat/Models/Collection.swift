@@ -56,6 +56,10 @@ extension Collection {
         return palettesProp[section].colorIn(row: row)
     }
     
+    func colorsOfPalette(in section: Int) -> [Color] {
+        return palettesProp[section].colors
+    }
+    
     func titleOfPalette(in section: Int) -> String {
         return palettesProp[section].title
     }

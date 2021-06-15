@@ -17,6 +17,8 @@ settings = "Settings";
 /* Editor view controller */
 loadedOrCreated = "Please, add color palettes to the collection to start editing!";
 notLoadedOrCreated = "Please, create or load a collection to start editing!";
+saveFailed = "Save failed";
+saved = "Saved";
 
 /* Options view controller */
 options = "Collection options";

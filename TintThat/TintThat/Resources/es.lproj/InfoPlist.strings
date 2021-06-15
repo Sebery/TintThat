@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  TintThat
+
+  Created by Sebastian Cruz on 15/06/21.
+  
+*/
+
+NSPhotoLibraryAddUsageDescription = "Esta aplicación necesita permiso para poder guardar una imagen de tu paleta de color en la biblioteca.";

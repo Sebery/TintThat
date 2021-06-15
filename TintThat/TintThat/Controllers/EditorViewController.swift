@@ -134,6 +134,14 @@ private extension EditorViewController {
         return nil
     }
     
+    func showStateAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        present(alert, animated: true, completion: {
+            alert.dismiss(animated: true, completion: nil)
+        })
+    }
+    
     // MARK: - Selectors
     @objc func showOptions() {
         if let optionsVC = storyboard?.instantiateViewController(withIdentifier: optionsVCID) as? OptionsViewController {
@@ -174,6 +182,31 @@ private extension EditorViewController {
         if let editorFooterView = sender.superview?.superview?.superview as? EditorFooterView {
             let row = collection.addColorToPalette(inSection: editorFooterView.section)
             collectionTB.insertRows(at: [IndexPath(row: row, section: editorFooterView.section)], with: .automatic)
+        }
+    }
+    
+    @objc func exportColorPalette(sender: UIButton) {
+        if let editorFooterView = sender.superview?.superview?.superview as? EditorFooterView {
+            var colors = [UIColor]()
+            for color in collection.colorsOfPalette(in: editorFooterView.section) {
+                colors.append(color.rgbColor)
+            }
+            
+            let paletteImage = UIImage(colors: colors, width: 600.0, cellHeight: 100.0)
+            
+            if let paletteImage = paletteImage {
+                UIImageWriteToSavedPhotosAlbum(paletteImage, self, #selector(savedToPhotosAlbum(_:didFinishSavingWithError:contextInfo:)), nil)
+            } else {
+                showStateAlert(title: .saveFailed)
+            }
+        }
+    }
+    
+    @objc private func savedToPhotosAlbum(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if error != nil {
+            showStateAlert(title: .saveFailed)
+        } else {
+            showStateAlert(title: .saved)
         }
     }
     
@@ -372,6 +405,7 @@ extension EditorViewController: UITableViewDelegate {
         footer.mainContentView.deletePaletteBtn.addTarget(self, action: #selector(showDeletePalette(sender:)), for: .touchUpInside)
         footer.mainContentView.addColorBtn.addTarget(self, action: #selector(addColorToPalette(sender:)), for: .touchUpInside)
         footer.mainContentView.editTitleBtn.addTarget(self, action: #selector(showEditPaletteTitle(sender:)), for: .touchUpInside)
+        footer.mainContentView.exportPaletteBtn.addTarget(self, action: #selector(exportColorPalette(sender:)), for: .touchUpInside)
         
         return footer
     }

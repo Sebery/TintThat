@@ -17,6 +17,8 @@ settings = "Ajustes";
 /* Editor view controller */
 loadedOrCreated = "¡Por favor, añade paletas de colores a la colección para empezar a editar!";
 notLoadedOrCreated = "¡Por favor, crea o carga una colección para empezar a editar!";
+saveFailed = "Error al guardar";
+saved = "Guardado";
 
 /* Options view controller */
 options = "Opciones de colección";

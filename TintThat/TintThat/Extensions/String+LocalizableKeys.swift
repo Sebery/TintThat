@@ -20,6 +20,8 @@ extension String {
     /* Editor view controller */
     static var loadedOrCreated: String { NSLocalizedString("loadedOrCreated", comment: "") }
     static var notLoadedOrCreated: String { NSLocalizedString("notLoadedOrCreated", comment: "") };
+    static var saveFailed: String { NSLocalizedString("saveFailed", comment: "") }
+    static var saved: String { NSLocalizedString("saved", comment: "") }
     
     /* Options view controller */
     static var options: String { NSLocalizedString("options", comment: "") }
